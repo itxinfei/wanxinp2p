@@ -1,0 +1,1 @@
+wanxinp2p-consumer-service ：用户中心微服务，端口号53050
