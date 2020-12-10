@@ -6,9 +6,7 @@ import java.util.UUID;
 
 public abstract class GuidGenerator {
 
-
     private static RandomValueStringGenerator defaultClientSecretGenerator = new RandomValueStringGenerator(32);
-
 
     /**
      * private constructor

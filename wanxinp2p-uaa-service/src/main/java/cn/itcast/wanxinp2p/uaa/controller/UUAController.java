@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-
+/**
+ * 统一认证数据
+ */
 @Controller
 public class UUAController {
 
@@ -33,13 +35,11 @@ public class UUAController {
     public String confirmAccess() {
         return "/oauth_approval";
     }
-    
+
     @RequestMapping("/oauth_error")
     public String oauthError() {
         return "/oauth_error";
     }
-
-
 
     @Autowired
     private AuthorizationServerTokenServices tokenService;
@@ -64,6 +64,4 @@ public class UUAController {
         Map<String, ?> rst = accessTokenConverter.convertAccessToken(token, authentication);
         return rst;
     }
-
-
 }

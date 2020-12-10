@@ -15,7 +15,6 @@ public class OauthUserApprovalHandler extends TokenStoreUserApprovalHandler {
     public OauthUserApprovalHandler() {
     }
 
-
     public boolean isApproved(AuthorizationRequest authorizationRequest, Authentication userAuthentication) {
         if (super.isApproved(authorizationRequest, userAuthentication)) {
             return true;
@@ -26,7 +25,6 @@ public class OauthUserApprovalHandler extends TokenStoreUserApprovalHandler {
 
         OauthClientDetails clientDetails = oauthService.loadOauthClientDetails(authorizationRequest.getClientId());
         return clientDetails != null && clientDetails.trusted();
-
     }
 
     public void setOauthService(OauthService oauthService) {

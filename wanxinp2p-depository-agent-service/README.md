@@ -1,1 +1,1 @@
-wanxinp2p-discover-server ：服务注册中心（Eureka），端口号53000
+### 存管代理微服务

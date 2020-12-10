@@ -13,15 +13,10 @@ import java.util.List;
 @Repository("oauthRepositoryJdbc")
 public class OauthRepositoryJdbc implements OauthRepository {
 
-
-
     private static OauthClientDetailsRowMapper oauthClientDetailsRowMapper = new OauthClientDetailsRowMapper();
-
-
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
 
     @Override
     public OauthClientDetails findOauthClientDetails(String clientId) {
@@ -68,9 +63,4 @@ public class OauthRepositoryJdbc implements OauthRepository {
 
         });
     }
-    
-
-    
-
-    
 }

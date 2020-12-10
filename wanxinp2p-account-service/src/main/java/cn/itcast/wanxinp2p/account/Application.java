@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+/**
+ * 统一账户服务
+ */
 @SpringBootApplication(exclude = {MongoAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class}, scanBasePackages = {"org.dromara.hmily", "cn.itcast.wanxinp2p.account"})
 @EnableDiscoveryClient
 @MapperScan("cn.itcast.wanxinp2p.account.mapper") //设置mapper接口的扫描包

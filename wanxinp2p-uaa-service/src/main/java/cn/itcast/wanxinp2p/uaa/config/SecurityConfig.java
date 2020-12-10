@@ -29,26 +29,26 @@ import java.util.List;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Bean
-	public IntegrationUserDetailsAuthenticationHandler integrationUserDetailsAuthenticationHandler(){
-		IntegrationUserDetailsAuthenticationHandler authenticationHandler = new IntegrationUserDetailsAuthenticationHandler();
-		return authenticationHandler;
-	}
+    @Bean
+    public IntegrationUserDetailsAuthenticationHandler integrationUserDetailsAuthenticationHandler() {
+        IntegrationUserDetailsAuthenticationHandler authenticationHandler = new IntegrationUserDetailsAuthenticationHandler();
+        return authenticationHandler;
+    }
 
-	@Bean
-	public IntegrationUserDetailsAuthenticationProvider integrationUserDetailsAuthenticationProvider(){
-		IntegrationUserDetailsAuthenticationProvider provider = new IntegrationUserDetailsAuthenticationProvider(integrationUserDetailsAuthenticationHandler());
-		return provider;
-	}
+    @Bean
+    public IntegrationUserDetailsAuthenticationProvider integrationUserDetailsAuthenticationProvider() {
+        IntegrationUserDetailsAuthenticationProvider provider = new IntegrationUserDetailsAuthenticationProvider(integrationUserDetailsAuthenticationHandler());
+        return provider;
+    }
 
-	@Autowired
-	private AuthenticationDetailsSource<HttpServletRequest, WebAuthenticationDetails> integrationWebAuthenticationDetailsSource;
+    @Autowired
+    private AuthenticationDetailsSource<HttpServletRequest, WebAuthenticationDetails> integrationWebAuthenticationDetailsSource;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(integrationUserDetailsAuthenticationProvider());
+        auth.authenticationProvider(integrationUserDetailsAuthenticationProvider());
     }
-    
+
 
     //不定义没有password grant_type
     @Override
@@ -56,88 +56,88 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-    
-    
+
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/public/**", "/webjars/**", "/v2/**", "/swagger**", "/static/**", "/resources/**");
-		//web.httpFirewall(new DefaultHttpFirewall());//StrictHttpFirewall 去除验url非法验证防火墙
-		
+        //web.httpFirewall(new DefaultHttpFirewall());//StrictHttpFirewall 去除验url非法验证防火墙
+
     }
-    
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        
-		http.authorizeRequests()
-        .antMatchers("/login*").permitAll()
-		.antMatchers("/logout*").permitAll()
-		.antMatchers("/druid/**").permitAll()
-		.antMatchers("/hi").permitAll()
-		.anyRequest().authenticated()
-        .and()
-        .formLogin()
-        .loginPage("/login") // 登录页面
-		.authenticationDetailsSource(integrationWebAuthenticationDetailsSource)
-        .loginProcessingUrl("/login.do") // 登录处理url
-        .failureUrl("/login?authentication_error=1")
-		.defaultSuccessUrl("/oauth/authorize")
-        .usernameParameter("username")
-        .passwordParameter("password")
-        .and()
-        .logout()
-        .logoutUrl("/logout.do")
-        .deleteCookies("JSESSIONID")
-        .logoutSuccessUrl("/")
-        .and()
-        .csrf().disable()
-        .exceptionHandling()
-        .accessDeniedPage("/login?authorization_error=2")
-        .and().requestCache().requestCache(getRequestCache(http));
+
+        http.authorizeRequests()
+                .antMatchers("/login*").permitAll()
+                .antMatchers("/logout*").permitAll()
+                .antMatchers("/druid/**").permitAll()
+                .antMatchers("/hi").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login") // 登录页面
+                .authenticationDetailsSource(integrationWebAuthenticationDetailsSource)
+                .loginProcessingUrl("/login.do") // 登录处理url
+                .failureUrl("/login?authentication_error=1")
+                .defaultSuccessUrl("/oauth/authorize")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .and()
+                .logout()
+                .logoutUrl("/logout.do")
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/")
+                .and()
+                .csrf().disable()
+                .exceptionHandling()
+                .accessDeniedPage("/login?authorization_error=2")
+                .and().requestCache().requestCache(getRequestCache(http));
 
     }
-    
-    
+
+
     private RequestCache getRequestCache(HttpSecurity http) {
-		RequestCache result = http.getSharedObject(RequestCache.class);
-		if (result != null) {
-			return result;
-		}
-		HttpSessionRequestCache defaultCache = new HttpSessionRequestCache();
-		defaultCache.setRequestMatcher(createDefaultSavedRequestMatcher(http));
-		return defaultCache;
-	}
+        RequestCache result = http.getSharedObject(RequestCache.class);
+        if (result != null) {
+            return result;
+        }
+        HttpSessionRequestCache defaultCache = new HttpSessionRequestCache();
+        defaultCache.setRequestMatcher(createDefaultSavedRequestMatcher(http));
+        return defaultCache;
+    }
 
 
-	private RequestMatcher createDefaultSavedRequestMatcher(HttpSecurity http) {
-		ContentNegotiationStrategy contentNegotiationStrategy = http
-				.getSharedObject(ContentNegotiationStrategy.class);
-		if (contentNegotiationStrategy == null) {
-			contentNegotiationStrategy = new HeaderContentNegotiationStrategy();
-		}
+    private RequestMatcher createDefaultSavedRequestMatcher(HttpSecurity http) {
+        ContentNegotiationStrategy contentNegotiationStrategy = http
+                .getSharedObject(ContentNegotiationStrategy.class);
+        if (contentNegotiationStrategy == null) {
+            contentNegotiationStrategy = new HeaderContentNegotiationStrategy();
+        }
 
-		RequestMatcher notFavIcon = new NegatedRequestMatcher(new AntPathRequestMatcher(
-				"/**/favicon.ico"));
+        RequestMatcher notFavIcon = new NegatedRequestMatcher(new AntPathRequestMatcher(
+                "/**/favicon.ico"));
 
-		MediaTypeRequestMatcher jsonRequest = new MediaTypeRequestMatcher(
-				contentNegotiationStrategy, MediaType.APPLICATION_JSON);
-		jsonRequest.setIgnoredMediaTypes(Collections.singleton(MediaType.ALL));
-		RequestMatcher notJson = new NegatedRequestMatcher(jsonRequest);
+        MediaTypeRequestMatcher jsonRequest = new MediaTypeRequestMatcher(
+                contentNegotiationStrategy, MediaType.APPLICATION_JSON);
+        jsonRequest.setIgnoredMediaTypes(Collections.singleton(MediaType.ALL));
+        RequestMatcher notJson = new NegatedRequestMatcher(jsonRequest);
 
-		RequestMatcher notXRequestedWith = new NegatedRequestMatcher(
-				new RequestHeaderRequestMatcher("X-Requested-With", "XMLHttpRequest"));
+        RequestMatcher notXRequestedWith = new NegatedRequestMatcher(
+                new RequestHeaderRequestMatcher("X-Requested-With", "XMLHttpRequest"));
 
-		boolean isCsrfEnabled = http.getConfigurer(CsrfConfigurer.class) != null;
+        boolean isCsrfEnabled = http.getConfigurer(CsrfConfigurer.class) != null;
 
-		List<RequestMatcher> matchers = new ArrayList<>();
-		if (isCsrfEnabled) {
-			RequestMatcher getRequests = new AntPathRequestMatcher("/**", "GET");
-			matchers.add(0, getRequests);
-		}
-		matchers.add(notFavIcon);
-		matchers.add(notJson);
-		//matchers.add(notXRequestedWith);
+        List<RequestMatcher> matchers = new ArrayList<>();
+        if (isCsrfEnabled) {
+            RequestMatcher getRequests = new AntPathRequestMatcher("/**", "GET");
+            matchers.add(0, getRequests);
+        }
+        matchers.add(notFavIcon);
+        matchers.add(notJson);
+        //matchers.add(notXRequestedWith);
 
-		return new AndRequestMatcher(matchers);
-	}
+        return new AndRequestMatcher(matchers);
+    }
 
 }
