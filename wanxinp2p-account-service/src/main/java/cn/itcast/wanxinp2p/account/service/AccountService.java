@@ -10,11 +10,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 public interface AccountService extends IService<Account> {
 
-    RestResponse getSMSCode(String mobile) ;
+    RestResponse getSMSCode(String mobile);
 
-    Integer checkMobile(String mobile,String key,String code);
+    Integer checkMobile(String mobile, String key, String code);
 
-    AccountDTO register(AccountRegisterDTO accountRegisterDTO) ;
+    AccountDTO register(AccountRegisterDTO accountRegisterDTO);
 
     AccountDTO login(AccountLoginDTO accountLoginDTO);
 }

@@ -1,1 +1,1 @@
-### 注册与发现 (wanxinp2p-discover-server)：53000
+### 注册与发现:53000

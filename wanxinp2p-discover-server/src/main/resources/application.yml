@@ -1,12 +1,10 @@
 # 应用程序名称
 spring:
-    application:
-        name: hnradio-discovery
-
+  application:
+    name: hnradio-discovery
 # 启动端口
 server:
-    port: 53000
-
+  port: 53000
 eureka:
   server:
     enable-self-preservation: false    #关闭服务器自我保护，客户端心跳检测15分钟内错误达到80%服务会保护，导致别人还认为是好用的服务
@@ -20,7 +18,6 @@ eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}
     prefer-ip-address: true  #注册时使用IP地址，而不是服务名
-
 # 日志配置
-logging: 
+logging:
   config: classpath:log4j2-dev.xml

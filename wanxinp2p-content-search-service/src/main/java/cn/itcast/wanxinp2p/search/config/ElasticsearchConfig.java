@@ -22,5 +22,4 @@ public class ElasticsearchConfig {
         HttpHost httpHost=new HttpHost(ip,port);
         return new RestHighLevelClient(RestClient.builder(httpHost));
     }
-
 }

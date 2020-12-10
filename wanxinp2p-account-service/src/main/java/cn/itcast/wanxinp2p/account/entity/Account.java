@@ -2,7 +2,9 @@ package cn.itcast.wanxinp2p.account.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+
 import java.io.Serializable;
+
 import lombok.Data;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -49,10 +51,10 @@ public class Account implements Serializable {
     @TableField("STATUS")
     private Integer status;
 
-	/**
-	 * 域(c：c端用户；b：b端用户)
-	 */
-	@TableField("DOMAIN")
-	private String domain;
+    /**
+     * 域(c：c端用户；b：b端用户)
+     */
+    @TableField("DOMAIN")
+    private String domain;
 
 }

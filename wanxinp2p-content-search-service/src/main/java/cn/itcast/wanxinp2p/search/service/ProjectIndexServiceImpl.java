@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class ProjectIndexServiceImpl implements ProjectIndexService{
+public class ProjectIndexServiceImpl implements ProjectIndexService {
 
     @Autowired
     private RestHighLevelClient restHighLevelClient;
@@ -36,47 +36,47 @@ public class ProjectIndexServiceImpl implements ProjectIndexService{
     public PageVO<ProjectDTO> queryProjectIndex(ProjectQueryParamsDTO projectQueryParamsDTO, Integer pageNo, Integer pageSize, String sortBy, String order) {
 
         //1.创建搜索请求对象
-        SearchRequest searchRequest=new SearchRequest(projectIndex);
+        SearchRequest searchRequest = new SearchRequest(projectIndex);
 
         //2.搜索条件
         //2.1 创建条件封装对象
-        BoolQueryBuilder queryBuilder= QueryBuilders.boolQuery();
+        BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
         //2.2 非空判断并封装条件
-        if(StringUtils.isNotBlank(projectQueryParamsDTO.getName())){
-            queryBuilder.must(QueryBuilders.termQuery("name",projectQueryParamsDTO.getName()));
+        if (StringUtils.isNotBlank(projectQueryParamsDTO.getName())) {
+            queryBuilder.must(QueryBuilders.termQuery("name", projectQueryParamsDTO.getName()));
         }
-        if(projectQueryParamsDTO.getStartPeriod()!=null){
+        if (projectQueryParamsDTO.getStartPeriod() != null) {
             queryBuilder.must(QueryBuilders.rangeQuery("period").gte(projectQueryParamsDTO.getStartPeriod()));
         }
-        if(projectQueryParamsDTO.getEndPeriod()!=null){
+        if (projectQueryParamsDTO.getEndPeriod() != null) {
             queryBuilder.must(QueryBuilders.rangeQuery("period").lte(projectQueryParamsDTO.getEndPeriod()));
         }
 
         //3.创建SearchSourceBuilder对象---总的封装对象
-        SearchSourceBuilder searchSourceBuilder=new SearchSourceBuilder();
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         //3.1 封装条件
         searchSourceBuilder.query(queryBuilder);
         //3.2 设置排序参数
-        if(StringUtils.isNotBlank(sortBy)&&StringUtils.isNotBlank(order)){
-            if(order.toLowerCase().equals("asc")){
+        if (StringUtils.isNotBlank(sortBy) && StringUtils.isNotBlank(order)) {
+            if (order.toLowerCase().equals("asc")) {
                 searchSourceBuilder.sort(sortBy, SortOrder.ASC);
             }
-            if(order.toLowerCase().equals("desc")){
+            if (order.toLowerCase().equals("desc")) {
                 searchSourceBuilder.sort(sortBy, SortOrder.DESC);
             }
-        }else{
-            searchSourceBuilder.sort("createdate",SortOrder.DESC);
+        } else {
+            searchSourceBuilder.sort("createdate", SortOrder.DESC);
         }
 
         //3.2 设置分页参数
-        searchSourceBuilder.from((pageNo-1)*pageSize);
+        searchSourceBuilder.from((pageNo - 1) * pageSize);
         searchSourceBuilder.size(pageSize);
 
         //4.完成封装
         searchRequest.source(searchSourceBuilder);
 
         //5.执行搜索
-        List<ProjectDTO> list=new ArrayList<>();
+        List<ProjectDTO> list = new ArrayList<>();
         PageVO<ProjectDTO> pageVO = new PageVO<>();
         try {
             SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
@@ -86,7 +86,7 @@ public class ProjectIndexServiceImpl implements ProjectIndexService{
             pageVO.setTotal(totalHits);
             SearchHit[] searchHits = hits.getHits();//获取匹配数据
             //7.循环封装DTO
-            for(SearchHit hit:searchHits) {
+            for (SearchHit hit : searchHits) {
                 ProjectDTO projectDTO = new ProjectDTO();
                 Map<String, Object> sourceAsMap = hit.getSourceAsMap();
                 Double amount = (Double) sourceAsMap.get("amount");
@@ -94,17 +94,17 @@ public class ProjectIndexServiceImpl implements ProjectIndexService{
                 Integer period = Integer.parseInt(sourceAsMap.get("period").toString());
                 String name = (String) sourceAsMap.get("name");
                 String description = (String) sourceAsMap.get("description");
-				BigDecimal annualRate=new BigDecimal(sourceAsMap.get("annualrate").toString());
+                BigDecimal annualRate = new BigDecimal(sourceAsMap.get("annualrate").toString());
                 projectDTO.setAmount(new BigDecimal(amount));
                 projectDTO.setProjectStatus(projectstatus);
                 projectDTO.setPeriod(period);
                 projectDTO.setName(name);
                 projectDTO.setDescription(description);
-				projectDTO.setAnnualRate(annualRate);
+                projectDTO.setAnnualRate(annualRate);
                 projectDTO.setId(Long.parseLong(sourceAsMap.get("id").toString()));
                 list.add(projectDTO);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
         //8.封装为PageVO对象并返回

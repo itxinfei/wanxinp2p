@@ -12,7 +12,6 @@
     <artifactId>wanxinp2p-repayment-service</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

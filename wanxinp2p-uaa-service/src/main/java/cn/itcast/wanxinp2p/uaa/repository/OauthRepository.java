@@ -15,5 +15,4 @@ public interface OauthRepository {
 
     void saveOauthClientDetails(OauthClientDetails clientDetails);
 
-    
 }

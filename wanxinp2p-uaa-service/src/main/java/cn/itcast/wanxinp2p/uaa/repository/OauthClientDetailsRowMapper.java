@@ -11,7 +11,6 @@ import java.sql.SQLException;
 
 public class OauthClientDetailsRowMapper implements RowMapper<OauthClientDetails> {
 
-
     public OauthClientDetailsRowMapper() {
     }
 

@@ -4,11 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.3.RELEASE</version>
+    </parent>
+
     <groupId>cn.itcast.wanxinp2p</groupId>
     <artifactId>wanxinp2p</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
+    <!--万信金融子模块-->
     <modules>
         <module>wanxinp2p-common</module>
         <module>wanxinp2p-api</module>
@@ -17,18 +24,12 @@
         <module>wanxinp2p-uaa-service</module>
         <module>wanxinp2p-transaction-service</module>
         <module>wanxinp2p-repayment-service</module>
+        <module>wanxinp2p-depository</module>
         <module>wanxinp2p-depository-agent-service</module>
         <module>wanxinp2p-content-search-service</module>
         <module>wanxinp2p-account-service</module>
         <module>wanxinp2p-discover-server</module>
-        <module>wanxinp2p-demo</module>
     </modules>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.3.RELEASE</version>
-    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -159,7 +160,6 @@
                 <artifactId>spring-security-jwt</artifactId>
                 <version>1.0.9.RELEASE</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/org.springframework.security.oauth.boot/spring-security-oauth2-autoconfigure -->
             <dependency>
                 <groupId>org.springframework.security.oauth.boot</groupId>
                 <artifactId>spring-security-oauth2-autoconfigure</artifactId>
