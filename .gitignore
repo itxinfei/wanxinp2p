@@ -27,7 +27,6 @@ xc-ui-pc-static-portal/plugins/jquery/src/css/.DS_Store
 xc-ui-pc-static-portal/plugins/jquery/src/data/.DS_Store
 xc-ui-pc-static-portal/plugins/jquery/src/manipulation/.DS_Store
 xc-ui-pc-static-portal/plugins/jquery/src/traversing/.DS_Store
-Doc/nginx-1.12.2/temp/
 xc-framework-utils/src/main/resources/
 xc-framework-utils/src/test/
 xc-service-base-filesystem/src/test/
@@ -39,9 +38,4 @@ xc-service-manage-media/src/test/
 xc-service-manage-order/src/test/
 xc-service-search/src/test/
 xc-service-ucenter/src/test/
-xc-web/xc-ui-pc-sysmanage/src/module/cms/components/
-xc-web/xc-ui-pc-sysmanage/src/module/home/components/
-xc-web/xc-ui-pc-sysmanage/src/statics/images/
-xc-web/xc-ui-pc-teach/src/module/media/components/
-xc-web/xc-ui-pc-teach/src/statics/images/
-Doc/nginx-1.12.2/
+
