@@ -40,7 +40,6 @@ public class OauthClientDetailsRowMapper implements RowMapper<OauthClientDetails
         return clientDetails;
     }
 
-
     private Integer getInteger(ResultSet rs, String columnName) throws SQLException {
         final Object object = rs.getObject(columnName);
         if (object != null) {
@@ -48,5 +47,4 @@ public class OauthClientDetailsRowMapper implements RowMapper<OauthClientDetails
         }
         return null;
     }
-
 }

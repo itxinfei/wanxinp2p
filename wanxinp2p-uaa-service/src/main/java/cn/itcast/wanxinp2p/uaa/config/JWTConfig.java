@@ -12,7 +12,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 public class JWTConfig {
 
-  private String SIGNING_KEY = "wanxin123";
+    private String SIGNING_KEY = "wanxin123";
 
     @Bean
     public TokenStore tokenStore() {
@@ -28,5 +28,4 @@ public class JWTConfig {
         converter.setAccessTokenConverter(accessTokenConverter);
         return converter;
     }
-
 }

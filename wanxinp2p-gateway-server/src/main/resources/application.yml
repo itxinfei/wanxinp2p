@@ -10,8 +10,8 @@ spring:
   application:
     name: gateway-server
 
-logging:
-  config: classpath:log4j2-dev.xml
+#logging:
+#  config: classpath:log4j2-dev.xml
 
 
 

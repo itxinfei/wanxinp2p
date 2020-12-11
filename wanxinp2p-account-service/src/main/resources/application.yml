@@ -10,6 +10,7 @@ apollo:
 spring:
   application:
     name: account-service
+# 日志配置-会代替springboot原生日志颜色
 logging:
   config: classpath:log4j2-dev.xml
 

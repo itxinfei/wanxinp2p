@@ -7,16 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 
 public class WebUtils {
 
-
     public static final String UTF_8 = "UTF-8";
-
-
 
     public static final String VERSION = "2.0.1";
 
-
     private static ThreadLocal<String> ipThreadLocal = new ThreadLocal<>();
-
 
     public static void setIp(String ip) {
         ipThreadLocal.set(ip);
@@ -29,7 +24,6 @@ public class WebUtils {
     //private
     private WebUtils() {
     }
-
 
     /**
      * Retrieve client ip address
@@ -54,5 +48,4 @@ public class WebUtils {
     private static boolean isUnAvailableIp(String ip) {
         return StringUtils.isEmpty(ip) || "unknown".equalsIgnoreCase(ip);
     }
-
 }

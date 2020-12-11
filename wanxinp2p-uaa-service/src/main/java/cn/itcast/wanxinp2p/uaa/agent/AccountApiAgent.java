@@ -11,5 +11,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface AccountApiAgent {
 
     @PostMapping(value = "/account/l/accounts/session")
-    public RestResponse<AccountDTO> login(@RequestBody AccountLoginDTO accountLoginDTO);
+    RestResponse<AccountDTO> login(@RequestBody AccountLoginDTO accountLoginDTO);
 }
