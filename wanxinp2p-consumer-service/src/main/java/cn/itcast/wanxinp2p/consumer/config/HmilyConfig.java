@@ -9,15 +9,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.env.Environment;
 
+/**
+ * 分布式事务TCC-Hmily
+ */
 @Configuration
-@EnableAspectJAutoProxy(proxyTargetClass=true)
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class HmilyConfig {
 
     @Autowired
     private Environment env;
 
     @Bean
-    public HmilyTransactionBootstrap hmilyTransactionBootstrap(HmilyInitService hmilyInitService){
+    public HmilyTransactionBootstrap hmilyTransactionBootstrap(HmilyInitService hmilyInitService) {
         HmilyTransactionBootstrap hmilyTransactionBootstrap = new HmilyTransactionBootstrap(hmilyInitService);
         hmilyTransactionBootstrap.setSerializer(env.getProperty("org.dromara.hmily.serializer"));
         hmilyTransactionBootstrap.setRetryMax(Integer.parseInt(env.getProperty("org.dromara.hmily.retryMax")));
@@ -31,5 +34,4 @@ public class HmilyConfig {
         hmilyTransactionBootstrap.setHmilyDbConfig(hmilyDbConfig);
         return hmilyTransactionBootstrap;
     }
-
 }

@@ -18,28 +18,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 /**
- * 统一认证数据
+ * 统一认证
  */
 @Controller
 public class UUAController {
 
     private static final Logger LOG = LoggerFactory.getLogger(UUAController.class);
-
-    @GetMapping(value = {"/login"})
-    public String login(Model model) {
-        LOG.info("Go to login, IP: {}", WebUtils.getIp());
-        return "login";
-    }
-
-    @RequestMapping("/confirm_access")
-    public String confirmAccess() {
-        return "/oauth_approval";
-    }
-
-    @RequestMapping("/oauth_error")
-    public String oauthError() {
-        return "/oauth_error";
-    }
 
     @Autowired
     private AuthorizationServerTokenServices tokenService;
@@ -47,16 +31,47 @@ public class UUAController {
     @Autowired
     private AccessTokenConverter accessTokenConverter;
 
-    @RequestMapping(value = "/oauth/check_token", method = RequestMethod.POST)
+    /**
+     * @param model
+     * @return
+     */
+    //@GetMapping(value = {"/login"})
+    @RequestMapping(value = {"/login"})
+    public String login(Model model) {
+        LOG.info("Go to login, IP: {}", WebUtils.getIp());
+        return "login";
+    }
+
+    /**
+     * @return
+     */
+    @RequestMapping("/confirm_access")
+    public String confirmAccess() {
+        return "/oauth_approval";
+    }
+
+    /**
+     * @return
+     */
+    @RequestMapping("/oauth_error")
+    public String oauthError() {
+        return "/oauth_error";
+    }
+
+    /**
+     * @param value
+     * @return
+     */
+    //@RequestMapping(value = "/oauth/check_token", method = RequestMethod.POST)
+    //@RequestMapping(value = "/oauth/token", method = RequestMethod.POST)
+    @RequestMapping("/oauth/token")
     @ResponseBody
     public Map<String, ?> checkToken(@RequestParam("token") String value) {
         DefaultTokenServices tokenServices = (DefaultTokenServices) tokenService;
-
         OAuth2AccessToken token = tokenServices.readAccessToken(value);
         if (token == null) {
             throw new InvalidTokenException("Token was not recognised");
         }
-
         if (token.isExpired()) {
             throw new InvalidTokenException("Token has expired");
         }

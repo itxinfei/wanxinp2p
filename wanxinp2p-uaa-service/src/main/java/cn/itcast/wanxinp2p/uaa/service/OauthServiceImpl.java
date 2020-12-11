@@ -14,10 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
+/**
+ * 授权
+ */
 @Service("oauthService")
 public class OauthServiceImpl implements OauthService {
-
 
     private static final Logger LOG = LoggerFactory.getLogger(OauthServiceImpl.class);
 
@@ -51,7 +52,6 @@ public class OauthServiceImpl implements OauthService {
         return oauthClientDetails != null ? new OauthClientDetailsDto(oauthClientDetails) : null;
     }
 
-
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public void registerClientDetails(OauthClientDetailsDto formDto) {
@@ -59,7 +59,4 @@ public class OauthServiceImpl implements OauthService {
         oauthRepository.saveOauthClientDetails(clientDetails);
         LOG.debug("{}|Save OauthClientDetails: {}", WebUtils.getIp(), clientDetails);
     }
-
-    
-
 }

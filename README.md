@@ -79,9 +79,16 @@ P2P金融又叫P2P信贷，P2P是 peer-to-peer 或 person-to-person 的简写，
 | p2p_reconciliation 对账数据               |
 
 #### 七、项目部署
-
+##### 1、导入数据库
 - 安装MySQL数据库(v5.6.5+)
 - 执行wanxinp2p-init.sql 创建P2P平台数据库并导入初始数据
 - 执行wanxindepository-init.sql 创建银行存管系统数据库并导入初始数据
 
-**注：项目基本功能都写完了，有问题有需求可以在群（QQ群：863662849 ）里咨询，感谢！！！**
+##### 2、搭建中间件
+Apollo安装和导入sql,添加配置文件。
+
+##### 3、编译工程
+添加vm参数，在application.yml文件头部。比如：-Denv=dev -Dapollo.cluster=DEFAULT -Dserver.port=53010
+
+
+**注：以后有时间在整理文档，安装部署的注意事项吧。项目基本功能都写完了，有问题有需求可以在群（QQ群：863662849 ）里咨询，感谢！！！**

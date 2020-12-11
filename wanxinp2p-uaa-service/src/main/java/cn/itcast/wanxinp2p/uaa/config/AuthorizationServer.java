@@ -32,81 +32,77 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServer extends
-		AuthorizationServerConfigurerAdapter {
+public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
-	@Autowired
-	private TokenStore tokenStore;
+    @Autowired
+    private TokenStore tokenStore;
 
-	@Autowired
-	private JwtAccessTokenConverter accessTokenConverter;
-	
-
-	@Autowired
-	private ClientDetailsService clientDetailsService;
-
-	@Autowired
-	private AuthorizationCodeServices authorizationCodeServices;
+    @Autowired
+    private JwtAccessTokenConverter accessTokenConverter;
 
 
-	@Autowired
-	private OauthService oauthService;
+    @Autowired
+    private ClientDetailsService clientDetailsService;
 
-	@Autowired
-	private AuthenticationManager authenticationManager;
+    @Autowired
+    private AuthorizationCodeServices authorizationCodeServices;
 
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return NoOpPasswordEncoder.getInstance();
-	}
+    @Autowired
+    private OauthService oauthService;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
 
     @Bean
     public ClientDetailsService clientDetailsService(DataSource dataSource) {
-		ClientDetailsService clientDetailsService = new CustomJdbcClientDetailsService(dataSource);
-		((CustomJdbcClientDetailsService) clientDetailsService).setPasswordEncoder(passwordEncoder());
+        ClientDetailsService clientDetailsService = new CustomJdbcClientDetailsService(dataSource);
+        ((CustomJdbcClientDetailsService) clientDetailsService).setPasswordEncoder(passwordEncoder());
         return clientDetailsService;
     }
-    
+
     @Bean
-   	public AuthorizationServerTokenServices tokenService() {
-       	DefaultTokenServices service=new DefaultTokenServices();
-       	service.setClientDetailsService(clientDetailsService);
-       	service.setSupportRefreshToken(true);
-   		service.setTokenStore(tokenStore);
+    public AuthorizationServerTokenServices tokenService() {
+        DefaultTokenServices service = new DefaultTokenServices();
+        service.setClientDetailsService(clientDetailsService);
+        service.setSupportRefreshToken(true);
+        service.setTokenStore(tokenStore);
 
-		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
-		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(), accessTokenConverter));
-   		service.setTokenEnhancer(tokenEnhancerChain);
+        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(), accessTokenConverter));
+        service.setTokenEnhancer(tokenEnhancerChain);
 
-   		service.setAccessTokenValiditySeconds(7200); // 令牌默认有效期2小时
-   		service.setRefreshTokenValiditySeconds(259200); // 刷新令牌默认有效期3天
-   		return service;
+        service.setAccessTokenValiditySeconds(7200); // 令牌默认有效期2小时
+        service.setRefreshTokenValiditySeconds(259200); // 刷新令牌默认有效期3天
+        return service;
     }
-    
-    
+
+
     @Bean
     public AuthorizationCodeServices authorizationCodeServices(DataSource dataSource) {
         return new JdbcAuthorizationCodeServices(dataSource);
     }
-    
+
     @Override
-	public void configure(ClientDetailsServiceConfigurer clients)
-			throws Exception {
-		 clients.withClientDetails(clientDetailsService);
-	}
-  
-    
+    public void configure(ClientDetailsServiceConfigurer clients)
+            throws Exception {
+        clients.withClientDetails(clientDetailsService);
+    }
+
     @Bean
     public OAuth2RequestFactory oAuth2RequestFactory() {
         return new DefaultOAuth2RequestFactory(clientDetailsService);
     }
-    
-    
-    
+
+
     @Bean
     public UserApprovalHandler userApprovalHandler() {
         OauthUserApprovalHandler userApprovalHandler = new OauthUserApprovalHandler();
@@ -117,21 +113,21 @@ public class AuthorizationServer extends
         return userApprovalHandler;
     }
 
-	@Override
-	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-		endpoints.authenticationManager(authenticationManager)
-				//.userDetailsService(userDetailsService)// 若无，refresh_token会有UserDetailsService	 is required错误
-				.authorizationCodeServices(authorizationCodeServices)
-				.userApprovalHandler(userApprovalHandler())
-				.tokenServices(tokenService())
-			    .pathMapping("/oauth/confirm_access", "/confirm_access")
-				.pathMapping("/oauth/error", "/oauth_error")
-				.allowedTokenEndpointRequestMethods(HttpMethod.POST)
-				.exceptionTranslator(new RestOAuth2WebResponseExceptionTranslator());
-	}
-	
-	@Bean
-    public TokenEnhancer tokenEnhancer(){
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+        endpoints.authenticationManager(authenticationManager)
+                //.userDetailsService(userDetailsService)// 若无，refresh_token会有UserDetailsService	 is required错误
+                .authorizationCodeServices(authorizationCodeServices)
+                .userApprovalHandler(userApprovalHandler())
+                .tokenServices(tokenService())
+                .pathMapping("/oauth/confirm_access", "/confirm_access")
+                .pathMapping("/oauth/error", "/oauth_error")
+                .allowedTokenEndpointRequestMethods(HttpMethod.POST)
+                .exceptionTranslator(new RestOAuth2WebResponseExceptionTranslator());
+    }
+
+    @Bean
+    public TokenEnhancer tokenEnhancer() {
         return new TokenEnhancer() {
             @Override
             public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
@@ -149,25 +145,23 @@ public class AuthorizationServer extends
 					}
 
                 }*/
-                DefaultOAuth2AccessToken token= (DefaultOAuth2AccessToken) accessToken;
+                DefaultOAuth2AccessToken token = (DefaultOAuth2AccessToken) accessToken;
                 Map<String, Object> additionalInformation = new LinkedHashMap<String, Object>();
-                additionalInformation.put("code",0);
-                additionalInformation.put("msg","success");
+                additionalInformation.put("code", 0);
+                additionalInformation.put("msg", "success");
                 token.setAdditionalInformation(additionalInformation);
                 return accessToken;
             }
         };
     }
 
-	@Override
-	public void configure(AuthorizationServerSecurityConfigurer security)
-			throws Exception {
-		security
-		.tokenKeyAccess("permitAll()")
-		.checkTokenAccess("permitAll()")
-		.allowFormAuthenticationForClients()//允许表单认证
-		;
-	}
-
-	
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security)
+            throws Exception {
+        security
+                .tokenKeyAccess("permitAll()")
+                .checkTokenAccess("permitAll()")
+                .allowFormAuthenticationForClients()//允许表单认证
+        ;
+    }
 }

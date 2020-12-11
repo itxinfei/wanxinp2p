@@ -3,16 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.3.RELEASE</version>
     </parent>
-
     <groupId>cn.itcast.wanxinp2p</groupId>
     <artifactId>wanxinp2p</artifactId>
     <packaging>pom</packaging>
+    <description>万信金融</description>
     <version>1.0-SNAPSHOT</version>
 
     <!--万信金融子模块-->
@@ -25,7 +24,9 @@
         <module>wanxinp2p-transaction-service</module>
         <module>wanxinp2p-repayment-service</module>
         <module>wanxinp2p-depository</module>
-        <module>wanxinp2p-depository-agent-service</module>
+        <module>wanxinp2p-depository-agent-service-1</module>
+        <module>wanxinp2p-depository-agent-service-2</module>
+        <module>wanxinp2p-depository-agent-service-3</module>
         <module>wanxinp2p-content-search-service</module>
         <module>wanxinp2p-account-service</module>
         <module>wanxinp2p-discover-server</module>
