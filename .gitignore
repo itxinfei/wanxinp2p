@@ -1,7 +1,7 @@
 .idea/
-*/target/
+target/
 *.iml
 logs/
-# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
+
 
 

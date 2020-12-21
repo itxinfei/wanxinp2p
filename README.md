@@ -1,8 +1,24 @@
-## 万信金融
-
-### 交流方式：
-QQ技术交流群：863662849<a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=9yLlyD1dRBL97xmBKw43zRt0-6xg8ohb&jump_from=webapi">
-<img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="Java项目交流+求职面试" title="Java项目交流+求职面试"></a><a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=f0hLSE9OTkdHTT8ODlEcEBI" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_02.png"/></a>
+![](E:\code\idea-workspace\wanxinp2p\Doc\log2.png)
+<p align="center">
+  <a href="https://gitee.com/itxinfei">
+    <img alt="code style" src="https://img.shields.io/badge/心飞为你飞-https%3A%2F%2Fgitee.com%2Fitxinfei-green">
+  </a> 
+  <a href="https://qm.qq.com/cgi-bin/qm/qr?k=9yLlyD1dRBL97xmBKw43zRt0-6xg8ohb&jump_from=webapi">
+    <img alt="code style" src="https://img.shields.io/badge/QQ群-863662849-red">
+  </a> 
+  <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=f0hLSE9OTkdHTT8ODlEcEBI">
+    <img alt="code style" src="https://img.shields.io/badge/mail-74701188@qq.com-red">
+  </a> 
+  <a href=" ">
+    <img alt="code style" src="https://img.shields.io/badge/JDK-1.8%2B-brightgreen">
+  </a> 
+  <a href=" ">
+    <img alt="maven" src="https://img.shields.io/badge/maven-3.6.3%2B-yellowgreen">
+  </a>
+  <a href=" ">
+    <img alt="code style" src="https://img.shields.io/badge/license-Apache-green">
+  </a> 
+</p>
 
 #### 一、项目背景
 P2P金融又叫P2P信贷，P2P是 peer-to-peer 或 person-to-person 的简写，意思是个人对个人，P2P金融是指个人与个人间的小额借贷交易，一般需要借助电子商务专业网络平台帮助借贷双方确立借贷关系并完成相关交易手续。
