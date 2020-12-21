@@ -19,6 +19,8 @@
     <img alt="code style" src="https://img.shields.io/badge/license-Apache-green">
   </a> 
 </p>
+#### 测试后台
+http://wanxinp2p-admin-java.itheima.net/
 
 #### 一、项目背景
 P2P金融又叫P2P信贷，P2P是 peer-to-peer 或 person-to-person 的简写，意思是个人对个人，P2P金融是指个人与个人间的小额借贷交易，一般需要借助电子商务专业网络平台帮助借贷双方确立借贷关系并完成相关交易手续。
