@@ -1,4 +1,4 @@
-![](Doc\log2.png)
+![](Doc/log2.png)
 <p align="center">
   <a href="https://gitee.com/itxinfei">
     <img alt="code style" src="https://img.shields.io/badge/心飞为你飞-https%3A%2F%2Fgitee.com%2Fitxinfei-green">
