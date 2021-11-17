@@ -1,4 +1,4 @@
-![](Doc/log2.png)
+![](docs/log2.png)
 <p align="center">
   <a href="https://gitee.com/itxinfei">
     <img alt="code style" src="https://img.shields.io/badge/心飞为你飞-https%3A%2F%2Fgitee.com%2Fitxinfei-green">
@@ -20,10 +20,13 @@
   </a> 
 </p>
 
-#### 前端工程
+- 前端工程
 https://gitee.com/itxinfei/wanxinp2p-portal
 
-#### 在线体验
+- 教学视频
+https://www.bilibili.com/video/BV1Ub4y1f7rk?share_source=copy_web
+
+- 在线体验
 http://wanxinp2p-admin-java.itheima.net/
 
 #### 一、项目背景
@@ -52,7 +55,7 @@ P2P金融又叫P2P信贷，P2P是 peer-to-peer 或 person-to-person 的简写，
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/0815/130453_5d60c2c7_800553.png "屏幕截图.png")
 
 #### 四、技术架构图
-![](Doc/技术架构图.png)
+![](docs/技术架构图.png)
 
 #### 五、技术解决方案
 |  主要的解决方案    |
