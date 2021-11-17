@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "首页",
-  "usingComponents": {
-    "top-header": "/components/TopHead",
-    "button-items": "/components/ButtonItems",
-    "footer-mark": "/components/FooterMark"
-  }
-}

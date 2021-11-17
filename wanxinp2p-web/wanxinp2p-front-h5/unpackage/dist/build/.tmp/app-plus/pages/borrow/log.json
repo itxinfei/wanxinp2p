@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "借还记录！",
-  "usingComponents": {
-    "button-items": "/components/ButtonItems",
-    "top-bar": "/components/TopBar"
-  }
-}

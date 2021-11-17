@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "开通存管",
-  "usingComponents": {
-    "button-items": "/components/ButtonItems",
-    "top-bar": "/components/TopBar"
-  }
-}

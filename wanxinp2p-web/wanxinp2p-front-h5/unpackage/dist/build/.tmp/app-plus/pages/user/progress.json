@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "收款进度！",
-  "usingComponents": {
-    "button-items": "/components/ButtonItems",
-    "lend-cards": "/components/LendCards",
-    "top-bar": "/components/TopBar"
-  }
-}

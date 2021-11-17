@@ -20,7 +20,10 @@
   </a> 
 </p>
 
-#### 测试后台
+#### 前端工程
+https://gitee.com/itxinfei/wanxinp2p-portal
+
+#### 在线体验
 http://wanxinp2p-admin-java.itheima.net/
 
 #### 一、项目背景
