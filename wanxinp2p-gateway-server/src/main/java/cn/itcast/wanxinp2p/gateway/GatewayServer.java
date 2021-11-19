@@ -7,6 +7,8 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 /**
  * API网关微服务
+ *
+ * @author 庞昭
  */
 @SpringBootApplication
 @EnableZuulProxy

@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Wanxinp2pAccountServiceApplicationTests {
+public class Wanxinp2PAccountServiceAccountServiceTests {
 
     @Test
     public void contextLoads() {
