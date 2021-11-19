@@ -16,19 +16,29 @@
 
     <!--万信金融子模块-->
     <modules>
-        <module>wanxinp2p-common</module>
-        <module>wanxinp2p-api</module>
-        <module>wanxinp2p-gateway-server</module>
-        <module>wanxinp2p-consumer-service</module>
-        <module>wanxinp2p-uaa-service</module>
-        <module>wanxinp2p-transaction-service</module>
-        <module>wanxinp2p-repayment-service</module>
-        <module>wanxinp2p-depository</module>
-        <module>wanxinp2p-depository-agent-service-1</module>
-        <module>wanxinp2p-depository-agent-service-2</module>
-        <module>wanxinp2p-depository-agent-service-3</module>
-        <module>wanxinp2p-content-search-service</module>
+        <!--统一账户-->
         <module>wanxinp2p-account-service</module>
+        <!--通用组件-->
+        <module>wanxinp2p-common</module>
+        <!--API接口+各种实体类-->
+        <module>wanxinp2p-api</module>
+        <!--网关服务-->
+        <module>wanxinp2p-gateway-server</module>
+        <!--用户中心-->
+        <module>wanxinp2p-consumer-service</module>
+        <!--统一认证-->
+        <module>wanxinp2p-uaa-service</module>
+        <!--交易中心-->
+        <module>wanxinp2p-transaction-service</module>
+        <!--还款服务-->
+        <module>wanxinp2p-repayment-service</module>
+        <!--银行存管-->
+        <module>wanxinp2p-depository</module>
+        <!--存管代理-->
+        <module>wanxinp2p-depository-agent-service</module>
+        <!--检索服务-->
+        <module>wanxinp2p-content-search-service</module>
+        <!--注册中心-->
         <module>wanxinp2p-discover-server</module>
     </modules>
 
