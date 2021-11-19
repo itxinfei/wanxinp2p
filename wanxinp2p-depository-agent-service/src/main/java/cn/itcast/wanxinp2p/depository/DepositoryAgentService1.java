@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * 存管代理
+ *
+ * @author 庞昭
  */
 @SpringBootApplication(scanBasePackages = {"cn.itcast.wanxinp2p.depository"}, exclude = {
         MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
