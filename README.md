@@ -100,6 +100,3 @@ Apollo安装和导入sql,添加配置文件。
 
 ##### 3、编译工程
 添加vm参数，在application.yml文件头部。比如：-Denv=dev -Dapollo.cluster=DEFAULT -Dserver.port=53010
-
-
-**注：以后有时间在整理文档，安装部署的注意事项吧。项目基本功能都写完了，有问题有需求可以在群（QQ群：863662849 ）里咨询，感谢！！！**
