@@ -1,17 +1,31 @@
+
+<div align="center">
+
 ![](docs/log2.png)
 
-
 # 📊 万信金融P2P平台  
-**互联网金融解决方案 | 提供理财、借贷、风控及银行存管一体化服务**  
-🚀 项目地址：[https://gitee.com/itxinfei/wanxinp2p](https://gitee.com/itxinfei/wanxinp2p)  
-👥 QQ交流群：[661543188](https://qm.qq.com/cgi-bin/qm/qr?k=9yLlyD1dRBL97xmBKw43zRt0-6xg8ohb&jump_from=webapi)  
-📧 邮箱支持：[747011882@qq.com](http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=f0hLSE9OTkdHTT8ODlEcEBI)  
+**互联网金融解决方案 | 提供理财、借贷、风控及银行存管一体化服务**
 
-![JDK 1.8+](https://img.shields.io/badge/JDK-1.8%2B-brightgreen)  
-![Maven 3.6.3+](https://img.shields.io/badge/maven-3.6.3%2B-yellowgreen)  
-![License Apache](https://img.shields.io/badge/license-Apache-green)  
+  <!-- 前端 -->
+  <img src="https://img.shields.io/badge/Vue-42b883?style=flat-square" alt="Vue">  
+  <img src="https://img.shields.io/badge/Element_UI-529B00?style=flat-square" alt="Element UI">  
+  <img src="https://img.shields.io/badge/ECharts-1890FF?style=flat-square" alt="ECharts">  
 
----
+  <!-- 后端 -->
+  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square" alt="Spring Boot">  
+  <img src="https://img.shields.io/badge/Spring_Cloud_Alibaba-FF5722?style=flat-square" alt="Spring Cloud Alibaba">  
+  <img src="https://img.shields.io/badge/MyBatis_Plus-377A9F?style=flat-square" alt="MyBatis Plus">  
+
+  <!-- 中间件 -->
+  <img src="https://img.shields.io/badge/Nacos-008EBA?style=flat-square" alt="Nacos">  
+  <img src="https://img.shields.io/badge/RocketMQ-FF6F00?style=flat-square" alt="RocketMQ">  
+  <img src="https://img.shields.io/badge/ShardingJDBC-8C564A?style=flat-square" alt="ShardingJDBC">  
+
+  <!-- 数据库 -->
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square" alt="MySQL">  
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square" alt="Redis">  
+</div>
+
 
 ## 📌 项目简介  
 **万信金融** 是一款面向互联网大众的金融平台，提供 **P2P理财服务** 和 **个人消费信贷服务**，依托大数据风控技术，实现安全、快捷、稳定的金融服务。  
@@ -115,11 +129,6 @@ java -jar wanxinp2p-gateway-server.jar
 ### 演示地址  
 - **在线体验**：[P2P平台管理端](http://wanxinp2p-admin-java.itheima.net/)  
 - **前端工程**：[万信金融门户](https://gitee.com/itxinfei/wanxinp2p-portal)  
----
-
-## 📱 关注微信公众号  
-![心飞为你飞](docs/心飞为你飞.jpg)  
-**获取最新更新动态与技术支持文档**
 
 ---
 
@@ -131,3 +140,14 @@ java -jar wanxinp2p-gateway-server.jar
 2. **日志排查**：  
    - 日志目录：`logs/wanxinp2p/*.log`  
    - 关键指标监控：`/actuator/prometheus`  
+
+---
+
+### 🔗 项目链接 & 社区支持  
+![微信公众号二维码](docs/心飞为你飞.jpg)  
+🚀 项目地址：[https://gitee.com/itxinfei/wanxinp2p](https://gitee.com/itxinfei/wanxinp2p)  
+👥 QQ交流群：[661543188](https://qm.qq.com/cgi-bin/qm/qr?k=gNgch-wCkfUu-QbI7DZSudrax2BN7vY0&jump_from=webapi&authKey=QHSRnxQvu+h5S3AXGn/DSHrVPiFQAYEk6bSlCE1lS276SFjQAUagV4FG7bHf0OSM)  
+📧 邮箱支持：[747011882@qq.com](http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=f0hLSE9OTkdHTT8ODlEcEBI)  
+*
+
+
