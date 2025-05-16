@@ -6,32 +6,23 @@
 # 📊 万信金融P2P平台  
 **互联网金融解决方案 | 提供理财、借贷、风控及银行存管一体化服务**
 
-  <!-- 基础依赖 -->
-  <img alt="JDK" src="https://img.shields.io/badge/JDK-1.8%2B-brightgreen">
-  <img alt="Maven" src="https://img.shields.io/badge/maven-3.3%2B-yellowgreen">
-  <img alt="License" src="https://img.shields.io/badge/license-Apache-green">
-
-  <!-- 前端 -->
+  <img alt="JDK" src="https://img.shields.io/badge/JDK-1.8-brightgreen">
+  <img alt="Maven" src="https://img.shields.io/badge/Maven-3.x-yellowgreen">
+  <img alt="Spring Boot" src="https://img.shields.io/badge/Spring%20Boot-2.1.3.RELEASE-brightgreen">
+  <img alt="Spring Cloud" src="https://img.shields.io/badge/Spring%20Cloud-Greenwich.RELEASE-orange">
+  <img alt="MyBatis Plus" src="https://img.shields.io/badge/MyBatis%20Plus-3.1.0-blue">
+  <img alt="MySQL" src="https://img.shields.io/badge/MySQL-8.0.11-blueviolet">
+  <img alt="FastJSON" src="https://img.shields.io/badge/FastJSON-1.2.47-success">
+  <img alt="Gson" src="https://img.shields.io/badge/Gson-2.8.2-informational">
+  <img alt="JWT" src="https://img.shields.io/badge/JWT-1.0.9.RELEASE-lightgrey">
+  <img alt="Apache Commons Lang" src="https://img.shields.io/badge/Apache%20Commons%20Lang-2.6-lightgrey">
+  <img alt="Guava" src="https://img.shields.io/badge/Guava-25.0--jre-lightgrey">
+  <img alt="OkHttp" src="https://img.shields.io/badge/OkHttp-3.14.1-red">
+  <img alt="RocketMQ" src="https://img.shields.io/badge/RocketMQ-2.0.2-red">
+  <img alt="Apollo" src="https://img.shields.io/badge/Apollo-1.2.0-red">
+  <img alt="ShardingSphere" src="https://img.shields.io/badge/ShardingSphere-4.0.0--RC1-red">
   <img alt="前端" src="https://img.shields.io/badge/前端-Vue3%20+%20Weex-blueviolet">
   <img alt="前端框架" src="https://img.shields.io/badge/前端框架-ECharts%20+%20Vant-orange">
-
-  <!-- 后端 -->
-  <img alt="后端框架" src="https://img.shields.io/badge/后端-SpringCloud%20+%20MyBatis-green">
-  <img alt="网关" src="https://img.shields.io/badge/网关-SpringCloudGateway-brightgreen">
-
-  <!-- 大数据 -->
-  <img alt="大数据" src="https://img.shields.io/badge/大数据-Spark%20+%20Hive%20+%20HBase-red">
-
-  <!-- 数据库 -->
-  <img alt="数据库" src="https://img.shields.io/badge/数据库-MySQL%20+%20MongoDB%20+%20Redis-yellowgreen">
-
-  <!-- 中间件 -->
-  <img alt="消息队列" src="https://img.shields.io/badge/消息队列-Kafka%20+%20RocketMQ-blue">
-  <img alt="配置中心" src="https://img.shields.io/badge/配置中心-Nacos%20+%20Sentinel-orange">
-
-  <!-- 监控 -->
-  <img alt="监控" src="https://img.shields.io/badge/监控-Prometheus%20+%20SkyWalking-purple">
-
 </div>
 
 
