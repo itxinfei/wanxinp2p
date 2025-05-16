@@ -30,7 +30,7 @@
 
 ## 🧩 功能模块  
 ### 业务模块全景  
-![功能模块](https://broadscope-dialogue-new.oss-cn-beijing.aliyuncs.com/output/20250516/4d7f2718dc16456b9662fea082c6726d.png?Expires=1778897153&OSSAccessKeyId=LTAI5tL97mBYzVcjkG1cUyin&Signature=b9wOttLwmjfsnpg6bgs79cn2Y5Y%3D)  
+![功能模块](docs/功能模块.png)  
 **核心模块**：  
 1. **交易平台**：用户出借、借款、标的管理  
 2. **风控管理**：身份认证、征信评估、风险控制  
