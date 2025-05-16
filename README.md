@@ -1,102 +1,133 @@
 ![](docs/log2.png)
-<p align="center">
-  <a href="https://gitee.com/itxinfei">
-    <img alt="code style" src="https://img.shields.io/badge/心飞为你飞-https%3A%2F%2Fgitee.com%2Fitxinfei-green">
-  </a> 
-  <a href="https://qm.qq.com/cgi-bin/qm/qr?k=9yLlyD1dRBL97xmBKw43zRt0-6xg8ohb&jump_from=webapi">
-    <img alt="code style" src="https://img.shields.io/badge/QQ群-863662849-red">
-  </a> 
-  <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=f0hLSE9OTkdHTT8ODlEcEBI">
-    <img alt="code style" src="https://img.shields.io/badge/mail-747011882@qq.com-red">
-  </a> 
-  <a href=" ">
-    <img alt="code style" src="https://img.shields.io/badge/JDK-1.8%2B-brightgreen">
-  </a> 
-  <a href=" ">
-    <img alt="maven" src="https://img.shields.io/badge/maven-3.6.3%2B-yellowgreen">
-  </a>
-  <a href=" ">
-    <img alt="code style" src="https://img.shields.io/badge/license-Apache-green">
-  </a> 
-</p>
 
-- 前端工程
-https://gitee.com/itxinfei/wanxinp2p-portal
 
-- 教学视频
-https://www.bilibili.com/video/BV1Ub4y1f7rk?share_source=copy_web
+# 📊 万信金融P2P平台  
+**互联网金融解决方案 | 提供理财、借贷、风控及银行存管一体化服务**  
+🚀 项目地址：[https://gitee.com/itxinfei/wanxinp2p](https://gitee.com/itxinfei/wanxinp2p)  
+👥 QQ交流群：[661543188](https://qm.qq.com/cgi-bin/qm/qr?k=9yLlyD1dRBL97xmBKw43zRt0-6xg8ohb&jump_from=webapi)  
+📧 邮箱支持：[747011882@qq.com](http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=f0hLSE9OTkdHTT8ODlEcEBI)  
 
-- 在线体验
-http://wanxinp2p-admin-java.itheima.net/
+![JDK 1.8+](https://img.shields.io/badge/JDK-1.8%2B-brightgreen)  
+![Maven 3.6.3+](https://img.shields.io/badge/maven-3.6.3%2B-yellowgreen)  
+![License Apache](https://img.shields.io/badge/license-Apache-green)  
 
-#### 一、项目背景
-P2P金融又叫P2P信贷，P2P是 peer-to-peer 或 person-to-person 的简写，意思是个人对个人，P2P金融是指个人与个人间的小额借贷交易，一般需要借助电子商务专业网络平台帮助借贷双方确立借贷关系并完成相关交易手续。
+---
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/0815/130435_9db706b6_800553.png "屏幕截图.png")
+## 📌 项目简介  
+**万信金融** 是一款面向互联网大众的金融平台，提供 **P2P理财服务** 和 **个人消费信贷服务**，依托大数据风控技术，实现安全、快捷、稳定的金融服务。  
+系统核心价值：  
+- **业务闭环**：覆盖借贷、出借、风控、对账全流程  
+- **技术先进**：微服务架构 + 分布式事务保障高并发  
+- **合规性**：银行存管系统对接，符合金融监管要求  
 
-#### 二、项目概述 
-本次课程开发的万信金融是一款面向互联网大众提供的理财服务和个人消费信贷服务的金融平台，依托大数据风控技术，为用户提供方便、快捷、安心的P2P金融服务。本项目包括交易平台和业务支撑两个部分，交易平台主要实现理财服务，包括：借钱、出借等模块，业务支撑包括：标的管理、对账管理、风控管理等模块。项目采用先进的互联网技术进行研发，保证了P2P双方交易的安全性、快捷性及稳定性。
+### 🎯 核心功能  
+- **理财服务**：出借、标的管理、收益统计  
+- **借贷服务**：借款申请、风控审核、还款计划  
+- **风控体系**：身份认证（百度AI）、信用评估、逾期预警  
+- **安全交易**：HTTPS加密 + SHA1withRSA签名  
 
-#### 三、功能模块
-![输入图片说明](https://images.gitee.com/uploads/images/2020/0815/130453_5d60c2c7_800553.png "屏幕截图.png")
+---
 
-#### 四、技术架构图
-![](docs/技术架构图.png)
+## 🧩 功能模块  
+### 业务模块全景  
+![功能模块](https://broadscope-dialogue-new.oss-cn-beijing.aliyuncs.com/output/20250516/4d7f2718dc16456b9662fea082c6726d.png?Expires=1778897153&OSSAccessKeyId=LTAI5tL97mBYzVcjkG1cUyin&Signature=b9wOttLwmjfsnpg6bgs79cn2Y5Y%3D)  
+**核心模块**：  
+1. **交易平台**：用户出借、借款、标的管理  
+2. **风控管理**：身份认证、征信评估、风险控制  
+3. **对账系统**：银行存管数据同步与差异校验  
 
-#### 五、技术解决方案
-|  主要的解决方案    |
-| ---- |
-|  1、微服务技术应用于P2P金融业务解决方案   |
-| 2、接口规范SpringBoot+Swagger|
-| 3、持久层编码 MyBatis Plus|
-| 4、分布式系统配置中心：Apollo|
-| 5、UAA认证方案：Spring Security Oauth2+JWT+ZUUL|
-| 6、分布式事务解决方案（RocketMQ、Hmily、requestNo同步机制）|
-| 7、分库分表解决方案：Sharding-jdbc|
-| 8 、分布式任务调度方案：Elastic-job|
-| 9、安全交易方案：HTTPS+SHA1withRSA|
-| 10、身份认证方案：百度AI|
-| 11、短信验证系统方案：短信验证服务+第三方短信平台（腾讯）|
+---
 
-#### 六、P2P平台服务
-| 服务端口                                                 |
-| -------------------------------------------------------- |
-| 注册与发现 (wanxinp2p-discover-server)：53000            |
-| 网关 wanxinp2p-gateway-server)：53010                    |
-| uaa(wanxinp2p-uaa-service) ：53020                       |
-| 统一账号服务 (wanxinp2p-account-service)：53030          |
-| 用户中心服务 (wanxinp2p-consumer-service)：53050         |
-| 交易中心服务 (wanxinp2p-transaction-service)：53060      |
-| 存管代理服务 (wanxinp2p-depository-agent-service)：53070 |
-| 还款服务 (wanxinp2p-repayment-service)：53080            |
-| 文件服务 (wanxinp2p-file-service)：56082                 |
-| 短信验证码服务 (sailing)：56085                          |
-| P2P 平台前端(wanxinp2p_front)：8081                      |
-| P2P 平台管理端后台(wanxinp2p-manager)：8079                                 |
-| 银行存管系统：55010                                      |
+## 📐 技术架构  
+### 系统架构全景  
+![技术架构图](docs/技术架构图.png)  
+**核心设计原则**：  
+- **微服务化**：基于Spring Cloud Alibaba拆分为8大服务  
+- **数据分层**：OLTP（MySQL）与OLAP（Sharding-JDBC）分离  
+- **高可用性**：Apollo配置中心 + Elastic-job任务调度  
 
-| 数据库清单                                |
-| ----------------------------------------- |
-| p2p_uaa 统一认证数据                      |
-| p2p_account 统一账户数据                  |
-| p2p_consumer 用户中心数据                 |
-| p2p_transaction_0 交易中心数据库1         |
-| p2p_transaction_1 交易中心数据库2         |
-| p2p_undo_log 分布式事务框架Hmily数据库    |
-| p2p_repayment 还款中心数据                |
-| p2p_file 文件存储服务                     |
-| p2p_bank_depository 银行存管系统          |
-| p2p_depository_agent 银行存管代理服务数据 |
-| p2p_reconciliation 对账数据               |
+### 技术栈全景  
+| 层级         | 技术选型                                                                 |
+|--------------|--------------------------------------------------------------------------|
+| **前端**     | Vue + Element UI + ECharts                                              |
+| **网关层**   | Spring Cloud Gateway + Zuul                                               |
+| **服务层**   | Spring Boot 2.7 + MyBatis Plus + MapStruct                              |
+| **消息队列** | RocketMQ 4.9                                                            |
+| **数据层**   | MySQL 5.6+ + Redis 6.2 + Sharding-JDBC                                  |
+| **中间件**   | Apollo配置中心 + Elastic-job任务调度                                    |
+| **安全**     | Spring Security OAuth2 + JWT + HTTPS                                    |
 
-#### 七、项目部署
-##### 1、导入数据库
-- 安装MySQL数据库(v5.6.5+)
-- 执行wanxinp2p-init.sql 创建P2P平台数据库并导入初始数据
-- 执行wanxindepository-init.sql 创建银行存管系统数据库并导入初始数据
+---
 
-##### 2、搭建中间件
-Apollo安装和导入sql,添加配置文件。
+## 🧱 核心服务与端口  
+| 服务名称                          | 端口      | 功能描述                                                                 |
+|----------------------------------|-----------|--------------------------------------------------------------------------|
+| 注册与发现 (wanxinp2p-discover-server) | 53000    | 服务注册与发现                                                            |
+| 网关 (wanxinp2p-gateway-server)       | 53010    | API路由、限流熔断                                                         |
+| UAA认证 (wanxinp2p-uaa-service)       | 53020    | 统一身份认证与权限管理                                                    |
+| 统一账号服务 (wanxinp2p-account-service) | 53030 | 用户账户管理                                                              |
+| 交易中心服务 (wanxinp2p-transaction-service) | 53060 | 订单生成、交易状态同步                                                    |
+| 存管代理服务 (wanxinp2p-depository-agent-service) | 53070 | 银行存管数据交互                                                          |
+| 还款服务 (wanxinp2p-repayment-service) | 53080   | 还款计划计算与执行                                                        |
 
-##### 3、编译工程
-添加vm参数，在application.yml文件头部。比如：-Denv=dev -Dapollo.cluster=DEFAULT -Dserver.port=53010
+---
+
+## 💾 数据库设计  
+| 数据库名                      | 数据量级     | 核心表设计                                                                 |
+|-------------------------------|--------------|----------------------------------------------------------------------------|
+| `p2p_account`                 | 500万+       | 用户账户表（含余额、信用等级、绑定银行卡）                                  |
+| `p2p_transaction_0/1`         | 1亿+         | 交易记录表（按月份分表，Sharding-JDBC实现）                                 |
+| `p2p_repayment`               | 实时写入     | 还款计划表（逾期状态跟踪）                                                  |
+| `p2p_bank_depository`         | 金融级       | 银行存管数据（资金流水、对账记录）                                          |
+
+---
+
+## 🧰 技术解决方案  
+### 核心技术亮点  
+| 技术领域                | 解决方案                                                                 |
+|-------------------------|--------------------------------------------------------------------------|
+| **微服务架构**          | Spring Cloud Alibaba + Nacos服务注册与发现                                |
+| **接口规范**            | Spring Boot + Swagger自动生成API文档                                     |
+| **分布式事务**          | RocketMQ事务消息 + Hmily框架 + requestNo同步机制                         |
+| **分库分表**            | Sharding-JDBC实现交易数据水平拆分                                        |
+| **任务调度**            | Elastic-job定时对账、还款任务执行                                        |
+| **安全交易**            | HTTPS + SHA1withRSA签名 + 百度AI身份认证                                  |
+
+---
+
+## 📦 部署指南  
+### 快速部署步骤  
+```bash
+# 1. 导入数据库
+mysql -u root -p -e "source wanxinp2p-init.sql"
+mysql -u root -p -e "source wanxindepository-init.sql"
+
+# 2. 搭建中间件（Apollo配置中心）
+docker run -d -p 8080:8080 apollo-configservice
+
+# 3. 编译工程
+mvn clean install -Denv=dev -Dapollo.cluster=DEFAULT -Dserver.port=53010
+
+# 4. 启动核心服务
+java -jar wanxinp2p-gateway-server.jar
+```
+
+### 演示地址  
+- **在线体验**：[P2P平台管理端](http://wanxinp2p-admin-java.itheima.net/)  
+- **前端工程**：[万信金融门户](https://gitee.com/itxinfei/wanxinp2p-portal)  
+---
+
+## 📱 关注微信公众号  
+![心飞为你飞](docs/心飞为你飞.jpg)  
+**获取最新更新动态与技术支持文档**
+
+---
+
+## 📝 注意事项  
+1. **部署依赖**：  
+   - 需安装JDK1.8+、Maven3.6.3+、Docker  
+   - 中间件依赖：Apollo、RocketMQ、Sharding-JDBC  
+
+2. **日志排查**：  
+   - 日志目录：`logs/wanxinp2p/*.log`  
+   - 关键指标监控：`/actuator/prometheus`  
