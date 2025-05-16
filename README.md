@@ -6,24 +6,32 @@
 # 📊 万信金融P2P平台  
 **互联网金融解决方案 | 提供理财、借贷、风控及银行存管一体化服务**
 
+  <!-- 基础依赖 -->
+  <img alt="JDK" src="https://img.shields.io/badge/JDK-1.8%2B-brightgreen">
+  <img alt="Maven" src="https://img.shields.io/badge/maven-3.3%2B-yellowgreen">
+  <img alt="License" src="https://img.shields.io/badge/license-Apache-green">
+
   <!-- 前端 -->
-  <img src="https://img.shields.io/badge/Vue-42b883?style=flat-square" alt="Vue">  
-  <img src="https://img.shields.io/badge/Element_UI-529B00?style=flat-square" alt="Element UI">  
-  <img src="https://img.shields.io/badge/ECharts-1890FF?style=flat-square" alt="ECharts">  
+  <img alt="前端" src="https://img.shields.io/badge/前端-Vue3%20+%20Weex-blueviolet">
+  <img alt="前端框架" src="https://img.shields.io/badge/前端框架-ECharts%20+%20Vant-orange">
 
   <!-- 后端 -->
-  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square" alt="Spring Boot">  
-  <img src="https://img.shields.io/badge/Spring_Cloud_Alibaba-FF5722?style=flat-square" alt="Spring Cloud Alibaba">  
-  <img src="https://img.shields.io/badge/MyBatis_Plus-377A9F?style=flat-square" alt="MyBatis Plus">  
+  <img alt="后端框架" src="https://img.shields.io/badge/后端-SpringCloud%20+%20MyBatis-green">
+  <img alt="网关" src="https://img.shields.io/badge/网关-SpringCloudGateway-brightgreen">
 
-  <!-- 中间件 -->
-  <img src="https://img.shields.io/badge/Nacos-008EBA?style=flat-square" alt="Nacos">  
-  <img src="https://img.shields.io/badge/RocketMQ-FF6F00?style=flat-square" alt="RocketMQ">  
-  <img src="https://img.shields.io/badge/ShardingJDBC-8C564A?style=flat-square" alt="ShardingJDBC">  
+  <!-- 大数据 -->
+  <img alt="大数据" src="https://img.shields.io/badge/大数据-Spark%20+%20Hive%20+%20HBase-red">
 
   <!-- 数据库 -->
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square" alt="MySQL">  
-  <img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square" alt="Redis">  
+  <img alt="数据库" src="https://img.shields.io/badge/数据库-MySQL%20+%20MongoDB%20+%20Redis-yellowgreen">
+
+  <!-- 中间件 -->
+  <img alt="消息队列" src="https://img.shields.io/badge/消息队列-Kafka%20+%20RocketMQ-blue">
+  <img alt="配置中心" src="https://img.shields.io/badge/配置中心-Nacos%20+%20Sentinel-orange">
+
+  <!-- 监控 -->
+  <img alt="监控" src="https://img.shields.io/badge/监控-Prometheus%20+%20SkyWalking-purple">
+
 </div>
 
 
