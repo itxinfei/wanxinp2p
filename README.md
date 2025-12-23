@@ -140,13 +140,5 @@ java -jar wanxinp2p-gateway-server.jar
    - 日志目录：`logs/wanxinp2p/*.log`  
    - 关键指标监控：`/actuator/prometheus`  
 
----
-
-### 🔗 项目链接 & 社区支持  
-![微信公众号二维码](docs/心飞为你飞.jpg)  
-🚀 项目地址：[https://gitee.com/itxinfei/wanxinp2p](https://gitee.com/itxinfei/wanxinp2p)  
-👥 QQ交流群：[661543188](https://qm.qq.com/cgi-bin/qm/qr?k=gNgch-wCkfUu-QbI7DZSudrax2BN7vY0&jump_from=webapi&authKey=QHSRnxQvu+h5S3AXGn/DSHrVPiFQAYEk6bSlCE1lS276SFjQAUagV4FG7bHf0OSM)  
-📧 邮箱支持：[747011882@qq.com](http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=f0hLSE9OTkdHTT8ODlEcEBI)  
-*
 
 
