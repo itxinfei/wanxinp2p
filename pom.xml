@@ -9,8 +9,8 @@
         <version>4.1.1</version>
         <relativePath/>
     </parent>
-    <groupId>com.xinfeip2p</groupId>
-    <artifactId>xinfeip2p</artifactId>
+    <groupId>com.xfjr</groupId>
+    <artifactId>xfjr</artifactId>
     <packaging>pom</packaging>
     <description>心飞金融</description>
     <version>1.0-SNAPSHOT</version>
@@ -18,29 +18,29 @@
     <!--心飞金融子模块-->
     <modules>
         <!--统一账户-->
-        <module>xinfeip2p-account-service</module>
+        <module>xfjr-account-service</module>
         <!--通用组件-->
-        <module>xinfeip2p-common</module>
+        <module>xfjr-common</module>
         <!--API接口+各种实体类-->
-        <module>xinfeip2p-api</module>
+        <module>xfjr-api</module>
         <!--网关服务-->
-        <module>xinfeip2p-gateway-server</module>
+        <module>xfjr-gateway-server</module>
         <!--用户中心-->
-        <module>xinfeip2p-consumer-service</module>
+        <module>xfjr-consumer-service</module>
         <!--统一认证-->
-        <module>xinfeip2p-uaa-service</module>
+        <module>xfjr-uaa-service</module>
         <!--交易中心-->
-        <module>xinfeip2p-transaction-service</module>
+        <module>xfjr-transaction-service</module>
         <!--还款服务-->
-        <module>xinfeip2p-repayment-service</module>
+        <module>xfjr-repayment-service</module>
         <!--银行存管-->
-        <module>xinfeip2p-depository</module>
+        <module>xfjr-depository</module>
         <!--存管代理-->
-        <module>xinfeip2p-depository-agent-service</module>
+        <module>xfjr-depository-agent-service</module>
         <!--检索服务-->
-        <module>xinfeip2p-content-search-service</module>
+        <module>xfjr-content-search-service</module>
         <!--注册中心-->
-        <module>xinfeip2p-discover-server</module>
+        <module>xfjr-discover-server</module>
     </modules>
 
     <properties>
