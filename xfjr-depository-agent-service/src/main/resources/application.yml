@@ -1,6 +1,7 @@
 app:
   id: depository-agent-service
 apollo:
+  meta: http://192.168.20.130:28080
   bootstrap:
     enabled: true
     #    eagerLoad:
