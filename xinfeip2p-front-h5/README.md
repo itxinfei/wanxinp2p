@@ -1,6 +1,6 @@
-## uni-app项目 万信金融
+## uni-app项目 心飞金融
 
->万信金融项目已H5为主  结合uni-app 的全端特性 同步实现了安卓、iOS、微信小程序的同步实现
+>心飞金融项目已H5为主  结合uni-app 的全端特性 同步实现了安卓、iOS、微信小程序的同步实现
 
 ![image](./demo.png)
 
@@ -28,7 +28,7 @@
 - http://git.itcast.cn/development/project-p2p-java-uniapp
 
 ## 原型
-- http://czpm.itcast.cn/%E4%B8%87%E4%BF%A1%E9%87%91%E8%9E%8D/#g=1&p=%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97
+- http://czpm.itcast.cn/%E5%BF%83%E9%A3%9E%E9%87%91%E8%9E%8D/#g=1&p=%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97
 
 ## 安装使用
 

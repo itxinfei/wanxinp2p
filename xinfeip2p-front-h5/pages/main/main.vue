@@ -56,7 +56,7 @@
 			</view>
 		</view>
 		<!-- 标题 -->
-		<view class="labTitle">万信推荐</view>
+		<view class="labTitle">心飞推荐</view>
 		<!-- 推荐 -->
 		<!-- 已登录 -->
 		<view class="recom" v-if="loginState && userInfo.isBindCard">

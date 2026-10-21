@@ -7,7 +7,7 @@
 			</view>
 			<view class="info">
 				<view class="name">下午好 {{userInfo.fullname}}</view>
-				<view class="label">万信金融账户</view>
+				<view class="label">心飞金融账户</view>
 			</view>
 			<!-- <view class="more" @tap="outLogoin"> > </view> -->
 		</view>

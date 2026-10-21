@@ -48,7 +48,7 @@
                 positionTop: 0,
 				loginData:{
 					grant_type: 'password',
-					client_id: 'wanxin-p2p-web-h5',
+					client_id: 'xinfei-p2p-web-h5',
 					client_secret: 'itcasth5',
 					domain: 'c',
 					authenticationType: 'password'

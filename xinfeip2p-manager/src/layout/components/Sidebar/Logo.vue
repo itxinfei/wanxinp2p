@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      title: '万信金融管理平台',
+      title: '心飞金融管理平台',
       logo: './../../../assets/images/logo.png'
     }
   }

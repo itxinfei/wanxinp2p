@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: '万信金融P2P管理平台',
+  title: '心飞金融P2P管理平台',
 
   /**
    * @type {boolean} true | false
