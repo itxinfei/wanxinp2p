@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 
   title: '心飞金融P2P管理平台',
 

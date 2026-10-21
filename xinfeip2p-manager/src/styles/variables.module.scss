@@ -1,0 +1,13 @@
+// 供 JS 中 import 使用的 SCSS 变量导出（Vite 需 .module.scss 才启用 CSS Modules）
+@import './variables.scss';
+
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}

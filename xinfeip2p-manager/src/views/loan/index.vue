@@ -11,17 +11,17 @@
       <el-table-column align="center" label="名称" prop="name" />
       <el-table-column label="金额(元)" prop="amount" align="center"></el-table-column>
       <el-table-column label="创建时间" align="center">
-        <template slot-scope="scope">
+        <template #default="scope">
           <span>{{changeDate(scope.row.createDate)}}</span>
         </template>
       </el-table-column>
       <el-table-column label="期限(月)" width="110" prop="period" align="center">
-      	<template slot-scope="scope">
+      	<template #default="scope">
       	  <span>{{ scope.row.period/30 }}</span>
       	</template>
       </el-table-column>
       <el-table-column label="状态" prop="projectStatus" align="center">
-				<template slot-scope="scope">
+				<template #default="scope">
 				  <span v-if="scope.row.projectStatus=='COLLECTING'">募集中</span>
 					<span v-if="scope.row.projectStatus=='MISCARRY'">流标</span>
 					<span v-if="scope.row.projectStatus=='REPAYING'">还款中</span>
@@ -29,12 +29,12 @@
 				</template>
 			</el-table-column>
       <el-table-column label="年化利率" width="120" prop="annualRate" align="center">
-        <template slot-scope="scope">
+        <template #default="scope">
           <span>{{ scope.row.annualRate * 100 }}%</span>
         </template>
       </el-table-column>
       <el-table-column label="操作" width="110" prop="period" align="center">
-        <template slot-scope="scope">
+        <template #default="scope">
           <el-button @click="handleClick(scope.row)" type="text" size="small">审核</el-button>
         </template>
       </el-table-column>
