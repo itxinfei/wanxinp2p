@@ -5,7 +5,7 @@ import cn.itcast.xinfeidepository.model.RechargeRequest;
 import cn.itcast.xinfeidepository.model.RechargeResponse;
 import cn.itcast.xinfeidepository.model.WithdrawRequest;
 import cn.itcast.xinfeidepository.model.WithdrawResponse;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 /**
  * <p>

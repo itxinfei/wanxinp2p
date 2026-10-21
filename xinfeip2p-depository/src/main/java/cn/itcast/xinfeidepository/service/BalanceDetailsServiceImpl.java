@@ -22,7 +22,7 @@ import com.alibaba.fastjson2.JSON;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
 

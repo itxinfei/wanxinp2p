@@ -2,7 +2,7 @@ package cn.itcast.xinfeidepository.service;
 
 import cn.itcast.xinfeidepository.entity.RequestDetails;
 import cn.itcast.xinfeidepository.model.BaseResponse;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 /**
  * <p>

@@ -16,6 +16,9 @@ import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
 /**
  * Spring Security 过滤链配置（替代 WebSecurityConfigurerAdapter），
  * 集成 Spring Authorization Server 端点与自定义登录认证。
+ *
+ * 注意：Spring Authorization Server 7.x 移除了 OAuth2AuthorizationServerConfigurer，
+ * 届时需改为手动注册端点过滤器的双过滤链模式。当前使用 1.5.0（与 Security 7.x 编译兼容）。
  */
 @Configuration
 @EnableWebSecurity

@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 
-const resolve = dir => path.join(__dirname, dir)
+const resolve = dir => path.join(import.meta.dirname, dir)
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
@@ -48,9 +48,9 @@ export default defineConfig(({ mode }) => {
       chunkSizeWarningLimit: 2000,
       rollupOptions: {
         output: {
-          manualChunks: {
-            'element-plus': ['element-plus'],
-            'vue-vendor': ['vue', 'vue-router', 'vuex']
+          manualChunks(id) {
+            if (id.includes('element-plus')) return 'element-plus'
+            if (id.includes('node_modules/vue/') || id.includes('node_modules/vue-router') || id.includes('node_modules/vuex') || id.includes('node_modules/pinia')) return 'vue-vendor'
           }
         }
       }

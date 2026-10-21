@@ -8,7 +8,7 @@ import com.xinfeip2p.api.depository.GatewayRequest;
 import com.xinfeip2p.api.depository.model.DepositoryConsumerResponse;
 import com.xinfeip2p.common.domain.RestResponse;
 import com.xinfeip2p.consumer.entity.Consumer;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 public interface ConsumerService extends IService<Consumer> {
     /**

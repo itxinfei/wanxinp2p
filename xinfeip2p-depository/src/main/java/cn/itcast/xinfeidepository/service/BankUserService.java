@@ -1,7 +1,7 @@
 package cn.itcast.xinfeidepository.service;
 
 import cn.itcast.xinfeidepository.entity.BankUser;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 /**
  * <p>
