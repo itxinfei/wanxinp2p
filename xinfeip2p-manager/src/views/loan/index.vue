@@ -35,7 +35,7 @@
       </el-table-column>
       <el-table-column label="操作" width="110" prop="period" align="center">
         <template #default="scope">
-          <el-button @click="handleClick(scope.row)" type="text" size="small">审核</el-button>
+          <el-button @click="handleClick(scope.row)" type="primary" link size="small">审核</el-button>
         </template>
       </el-table-column>
     </el-table>
