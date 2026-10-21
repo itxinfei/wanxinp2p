@@ -1,10 +1,11 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-import locale from 'element-ui/lib/locale/lang/zh-CN' // lang i18n
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 import '@/styles/index.scss' // global css
 
@@ -12,30 +13,23 @@ import App from './App'
 import store from './store'
 import router from './router'
 
-import '@/icons' // icon
+import 'virtual:svg-icons-register' // svg icon sprite
+import { setupIcons } from '@/icons' // icon
 import '@/permission' // permission control
 
-/**
- * If you don't want to use mock-server
- * you want to use MockJs for mock api
- * you can execute: mockXHR()
- *
- * Currently MockJs will be used in the production environment,
- * please remove it before going online! ! !
- */
-import { mockXHR } from '../mock'
-if (process.env.NODE_ENV === 'production') {
-  mockXHR()
-}
+const app = createApp(App)
 
-// set ElementUI lang to EN
-Vue.use(ElementUI, { locale })
+// Element Plus
+app.use(ElementPlus, { locale: zhCn })
+// 挂载 $message / $confirm 以兼容原有页面中的 this.$message / this.$confirm 调用
+app.config.globalProperties.$message = ElMessage
+app.config.globalProperties.$confirm = ElMessageBox.confirm
 
-Vue.config.productionTip = false
+// Vuex / Vue Router
+app.use(store)
+app.use(router)
 
-new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
-})
+// 全局注册 svg-icon 组件
+setupIcons(app)
+
+app.mount('#app')
