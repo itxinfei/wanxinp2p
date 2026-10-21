@@ -1,22 +1,20 @@
-import Vue from 'vue'
 import App from './App'
-
+import { createSSRApp } from 'vue'
 import store from './store'
 import utils from './utils/utils.js'
 import request from './utils/request.js'
 
-Vue.config.productionTip = false
+export function createApp() {
+	const app = createSSRApp(App)
 
-Vue.prototype.$store = store
-Vue.prototype.utils = utils
-Vue.prototype.request = request.request
-Vue.prototype.baseUrl = request.baseUrl
-Vue.prototype.fileServiceUrl = request.fileServiceUrl
+	app.use(store)
 
-App.mpType = 'app'
+	app.config.globalProperties.utils = utils
+	app.config.globalProperties.request = request.request
+	app.config.globalProperties.baseUrl = request.baseUrl
+	app.config.globalProperties.fileServiceUrl = request.fileServiceUrl
 
-const app = new Vue({
-    store,
-    ...App
-})
-app.$mount()
+	return {
+		app
+	}
+}
