@@ -6,199 +6,229 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.3.RELEASE</version>
+        <version>4.1.1</version>
+        <relativePath/>
     </parent>
-    <groupId>cn.itcast.wanxinp2p</groupId>
-    <artifactId>wanxinp2p</artifactId>
+    <groupId>com.xinfeip2p</groupId>
+    <artifactId>xinfeip2p</artifactId>
     <packaging>pom</packaging>
-    <description>万信金融</description>
+    <description>心飞金融</description>
     <version>1.0-SNAPSHOT</version>
 
-    <!--万信金融子模块-->
+    <!--心飞金融子模块-->
     <modules>
         <!--统一账户-->
-        <module>wanxinp2p-account-service</module>
+        <module>xinfeip2p-account-service</module>
         <!--通用组件-->
-        <module>wanxinp2p-common</module>
+        <module>xinfeip2p-common</module>
         <!--API接口+各种实体类-->
-        <module>wanxinp2p-api</module>
+        <module>xinfeip2p-api</module>
         <!--网关服务-->
-        <module>wanxinp2p-gateway-server</module>
+        <module>xinfeip2p-gateway-server</module>
         <!--用户中心-->
-        <module>wanxinp2p-consumer-service</module>
+        <module>xinfeip2p-consumer-service</module>
         <!--统一认证-->
-        <module>wanxinp2p-uaa-service</module>
+        <module>xinfeip2p-uaa-service</module>
         <!--交易中心-->
-        <module>wanxinp2p-transaction-service</module>
+        <module>xinfeip2p-transaction-service</module>
         <!--还款服务-->
-        <module>wanxinp2p-repayment-service</module>
+        <module>xinfeip2p-repayment-service</module>
         <!--银行存管-->
-        <module>wanxinp2p-depository</module>
+        <module>xinfeip2p-depository</module>
         <!--存管代理-->
-        <module>wanxinp2p-depository-agent-service</module>
+        <module>xinfeip2p-depository-agent-service</module>
         <!--检索服务-->
-        <module>wanxinp2p-content-search-service</module>
+        <module>xinfeip2p-content-search-service</module>
         <!--注册中心-->
-        <module>wanxinp2p-discover-server</module>
+        <module>xinfeip2p-discover-server</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <java.version>25</java.version>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <spring-cloud.version>2025.1.3</spring-cloud.version>
+        <mybatis-plus.version>3.5.9</mybatis-plus.version>
+        <seata.version>2.6.0</seata.version>
+        <sentinel.version>1.8.9</sentinel.version>
+        <rocketmq.version>2.3.1</rocketmq.version>
+        <shardingsphere.version>5.5.2</shardingsphere.version>
+        <fastjson2.version>2.0.53</fastjson2.version>
+        <apollo.version>2.3.0</apollo.version>
+        <springdoc.version>3.1.1</springdoc.version>
+        <authorization-server.version>1.5.0</authorization-server.version>
+        <okhttp.version>4.12.0</okhttp.version>
+        <guava.version>33.4.0-jre</guava.version>
+        <gson.version>2.11.0</gson.version>
+        <commons-lang3.version>3.17.0</commons-lang3.version>
+        <lombok.version>1.18.48</lombok.version>
+        <druid.version>1.2.24</druid.version>
+        <mysql.version>8.4.0</mysql.version>
+        <shedlock.version>7.10.1</shedlock.version>
     </properties>
 
-    <!--依赖管理-->
     <dependencyManagement>
         <dependencies>
-            <!-- 分布式事务 -->
-            <dependency>
-                <groupId>org.dromara</groupId>
-                <artifactId>hmily-springcloud</artifactId>
-                <version>2.0.4-RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>com.esotericsoftware</groupId>
-                <artifactId>kryo</artifactId>
-                <version>4.0.2</version>
-            </dependency>
-            <!-- 分布式任务调度 -->
-            <dependency>
-                <groupId>com.dangdang</groupId>
-                <artifactId>elastic-job-lite-core</artifactId>
-                <version>2.1.5</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dangdang</groupId>
-                <artifactId>elastic-job-lite-spring</artifactId>
-                <version>2.1.5</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.kuhn-he</groupId>
-                <artifactId>elastic-job-lite-spring-boot-starter</artifactId>
-                <version>2.1.53</version>
-            </dependency>
+            <!-- Spring Cloud 统一依赖管理 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.RELEASE</version>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- 分布式事务 Seata（替代 hmily），Seata 2.x 起坐标迁移至 org.apache.seata -->
             <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>2.9.2</version>
+                <groupId>org.apache.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata.version}</version>
             </dependency>
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>2.9.2</version>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.0</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>3.1.0</version>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>javax.interceptor</groupId>
-                <artifactId>javax.interceptor-api</artifactId>
-                <version>1.2</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>1.2.47</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ctrip.framework.apollo</groupId>
-                <artifactId>apollo-client</artifactId>
-                <version>1.2.0</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>1.1.16</version>
-            </dependency>
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.11</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>3.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-generator</artifactId>
-                <version>3.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis-typehandlers-jsr310</artifactId>
-                <version>1.0.2</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>2.6</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>25.0-jre</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>2.8.2</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-spring-boot-starter</artifactId>
-                <version>2.0.2</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-jwt</artifactId>
-                <version>1.0.9.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.security.oauth.boot</groupId>
-                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-                <version>2.1.3.RELEASE</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.shardingsphere</groupId>
-                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-                <version>4.0.0-RC1</version>
-            </dependency>
-            <!-- http 网络请求库 -->
-            <dependency>
-                <groupId>com.squareup.okhttp3</groupId>
-                <artifactId>okhttp</artifactId>
-                <version>3.14.1</version>
-            </dependency>
+
+            <!-- 流控 Sentinel（替代 sentinel-zuul-adapter） -->
             <dependency>
                 <groupId>com.alibaba.csp</groupId>
-                <artifactId>sentinel-zuul-adapter</artifactId>
-                <version>1.6.2</version>
+                <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
+                <version>${sentinel.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.csp</groupId>
                 <artifactId>sentinel-datasource-apollo</artifactId>
-                <version>1.6.2</version>
+                <version>${sentinel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-transport-simple-http</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+
+            <!-- 分布式任务调度（@Scheduled + ShedLock，替代 ElasticJob） -->
+            <dependency>
+                <groupId>net.javacrumbs.shedlock</groupId>
+                <artifactId>shedlock-spring</artifactId>
+                <version>${shedlock.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.javacrumbs.shedlock</groupId>
+                <artifactId>shedlock-provider-jdbc-template</artifactId>
+                <version>${shedlock.version}</version>
+            </dependency>
+
+            <!-- API 文档 springdoc-openapi（替代 springfox） -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+
+            <!-- 认证授权 Spring Authorization Server（替代 spring-security-oauth2） -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-oauth2-authorization-server</artifactId>
+                <version>${authorization-server.version}</version>
+            </dependency>
+
+            <!-- 持久层 MyBatis-Plus（Spring Boot 3 适配版，内置 JSR310 支持） -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!-- MyBatis-Plus 3.5.9 起分页插件独立为 jsqlparser 模块 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-jsqlparser</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <!-- 分库分表 ShardingSphere（替代 sharding-jdbc 4） -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+
+            <!-- JSON：fastjson2（替代 fastjson 1.x） -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+
+            <!-- 配置中心 Apollo（保留并升级） -->
+            <dependency>
+                <groupId>com.ctrip.framework.apollo</groupId>
+                <artifactId>apollo-client</artifactId>
+                <version>${apollo.version}</version>
+            </dependency>
+
+            <!-- 连接池 Druid（Spring Boot 3 适配版） -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-3-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!-- 数据库驱动 -->
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <!-- 消息队列 RocketMQ -->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq.version}</version>
+            </dependency>
+
+            <!-- HTTP 客户端 -->
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+
+            <!-- 工具类 -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <!-- OpenAPI 3 注解（io.swagger.v3.oas.annotations），配合 springdoc 使用 -->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>2.2.9</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>${project.name}</finalName>
@@ -226,8 +256,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>25</source>
+                    <target>25</target>
+                    <parameters>true</parameters>
+                    <!-- JDK 23+ 默认关闭隐式注解处理，需显式开启以启用 Lombok -->
+                    <proc>full</proc>
                 </configuration>
             </plugin>
             <plugin>

@@ -1,0 +1,19 @@
+# -Denv=dev -Dapollo.cluster=DEFAULT -Dserver.port=53010
+app:
+  id: gateway-server
+apollo:
+  bootstrap:
+    enabled: true
+    namespaces: application,micro_service.spring-boot-http,micro_service.spring-eureka,micro_service.spring-boot-redis
+
+spring:
+  application:
+    name: gateway-server
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:53020/oauth2/jwks
+
+#logging:
+#  config: classpath:log4j2-dev.xml

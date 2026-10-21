@@ -3,7 +3,7 @@
 
 ![](docs/log2.png)
 
-# 📊 万信金融P2P平台  
+# 📊 心飞金融P2P平台  
 **互联网金融解决方案 | 提供理财、借贷、风控及银行存管一体化服务**
 
   <img alt="JDK" src="https://img.shields.io/badge/JDK-1.8-brightgreen">
@@ -27,7 +27,7 @@
 
 
 ## 📌 项目简介  
-**万信金融** 是一款面向互联网大众的金融平台，提供 **P2P理财服务** 和 **个人消费信贷服务**，依托大数据风控技术，实现安全、快捷、稳定的金融服务。  
+**心飞金融** 是一款面向互联网大众的金融平台，提供 **P2P理财服务** 和 **个人消费信贷服务**，依托大数据风控技术，实现安全、快捷、稳定的金融服务。  
 系统核心价值：  
 - **业务闭环**：覆盖借贷、出借、风控、对账全流程  
 - **技术先进**：微服务架构 + 分布式事务保障高并发  
@@ -75,13 +75,13 @@
 ## 🧱 核心服务与端口  
 | 服务名称                          | 端口      | 功能描述                                                                 |
 |----------------------------------|-----------|--------------------------------------------------------------------------|
-| 注册与发现 (wanxinp2p-discover-server) | 53000    | 服务注册与发现                                                            |
-| 网关 (wanxinp2p-gateway-server)       | 53010    | API路由、限流熔断                                                         |
-| UAA认证 (wanxinp2p-uaa-service)       | 53020    | 统一身份认证与权限管理                                                    |
-| 统一账号服务 (wanxinp2p-account-service) | 53030 | 用户账户管理                                                              |
-| 交易中心服务 (wanxinp2p-transaction-service) | 53060 | 订单生成、交易状态同步                                                    |
-| 存管代理服务 (wanxinp2p-depository-agent-service) | 53070 | 银行存管数据交互                                                          |
-| 还款服务 (wanxinp2p-repayment-service) | 53080   | 还款计划计算与执行                                                        |
+| 注册与发现 (xinfeip2p-discover-server) | 53000    | 服务注册与发现                                                            |
+| 网关 (xinfeip2p-gateway-server)       | 53010    | API路由、限流熔断                                                         |
+| UAA认证 (xinfeip2p-uaa-service)       | 53020    | 统一身份认证与权限管理                                                    |
+| 统一账号服务 (xinfeip2p-account-service) | 53030 | 用户账户管理                                                              |
+| 交易中心服务 (xinfeip2p-transaction-service) | 53060 | 订单生成、交易状态同步                                                    |
+| 存管代理服务 (xinfeip2p-depository-agent-service) | 53070 | 银行存管数据交互                                                          |
+| 还款服务 (xinfeip2p-repayment-service) | 53080   | 还款计划计算与执行                                                        |
 
 ---
 
@@ -112,8 +112,8 @@
 ### 快速部署步骤  
 ```bash
 # 1. 导入数据库
-mysql -u root -p -e "source wanxinp2p-init.sql"
-mysql -u root -p -e "source wanxindepository-init.sql"
+mysql -u root -p -e "source xinfeip2p-init.sql"
+mysql -u root -p -e "source xinfeidepository-init.sql"
 
 # 2. 搭建中间件（Apollo配置中心）
 docker run -d -p 8080:8080 apollo-configservice
@@ -122,12 +122,12 @@ docker run -d -p 8080:8080 apollo-configservice
 mvn clean install -Denv=dev -Dapollo.cluster=DEFAULT -Dserver.port=53010
 
 # 4. 启动核心服务
-java -jar wanxinp2p-gateway-server.jar
+java -jar xinfeip2p-gateway-server.jar
 ```
 
 ### 演示地址  
-- **在线体验**：[P2P平台管理端](http://wanxinp2p-admin-java.itheima.net/)  
-- **前端工程**：[万信金融门户](https://gitee.com/itxinfei/wanxinp2p-portal)  
+- **在线体验**：[P2P平台管理端](http://xinfeip2p-admin-java.itheima.net/)  
+- **前端工程**：[心飞金融门户](https://gitee.com/itxinfei/xinfeip2p-portal)  
 
 ---
 
@@ -137,7 +137,7 @@ java -jar wanxinp2p-gateway-server.jar
    - 中间件依赖：Apollo、RocketMQ、Sharding-JDBC  
 
 2. **日志排查**：  
-   - 日志目录：`logs/wanxinp2p/*.log`  
+   - 日志目录：`logs/xinfeip2p/*.log`  
    - 关键指标监控：`/actuator/prometheus`  
 
 
