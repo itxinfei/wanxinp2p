@@ -97,18 +97,18 @@
 
 | 服务 | 模块 | 端口 | 说明 |
 |------|------|------|------|
-| 注册中心 | `xinfeip2p-discover-server` | 53000 | Eureka Server |
-| 网关服务 | `xinfeip2p-gateway-server` | 53010 | 路由转发、鉴权、Sentinel 限流 |
-| 统一认证 | `xinfeip2p-uaa-service` | 53020 | OAuth2 授权服务器 + JWT 签发 |
-| 统一账户 | `xinfeip2p-account-service` | 53030 | 用户账户、余额、银行卡 |
-| 用户中心 | `xinfeip2p-consumer-service` | 53050 | 个人信息、实名认证 |
-| 交易中心 | `xinfeip2p-transaction-service` | 53060 | 标的管理、出借、放款 |
-| 存管代理 | `xinfeip2p-depository-agent-service` | 53070 | 银行存管数据交互代理 |
-| 还款服务 | `xinfeip2p-repayment-service` | 53080 | 还款计划与执行 |
-| 检索服务 | `xinfeip2p-content-search-service` | 54081 | Elasticsearch 全文检索 |
-| 银行存管 | `xinfeip2p-depository` | 55010 | 存管系统模拟（独立部署） |
+| 注册中心 | `xfjr-discover-server` | 53000 | Eureka Server |
+| 网关服务 | `xfjr-gateway-server` | 53010 | 路由转发、鉴权、Sentinel 限流 |
+| 统一认证 | `xfjr-uaa-service` | 53020 | OAuth2 授权服务器 + JWT 签发 |
+| 统一账户 | `xfjr-account-service` | 53030 | 用户账户、余额、银行卡 |
+| 用户中心 | `xfjr-consumer-service` | 53050 | 个人信息、实名认证 |
+| 交易中心 | `xfjr-transaction-service` | 53060 | 标的管理、出借、放款 |
+| 存管代理 | `xfjr-depository-agent-service` | 53070 | 银行存管数据交互代理 |
+| 还款服务 | `xfjr-repayment-service` | 53080 | 还款计划与执行 |
+| 检索服务 | `xfjr-content-search-service` | 54081 | Elasticsearch 全文检索 |
+| 银行存管 | `xfjr-depository` | 55010 | 存管系统模拟（独立部署） |
 
-> 公共模块：`xinfeip2p-common`（通用工具）、`xinfeip2p-api`（API 接口与实体）
+> 公共模块：`xfjr-common`（通用工具）、`xfjr-api`（API 接口与实体）
 
 ---
 
@@ -171,10 +171,10 @@ mysql -u root -p < docs/p2p_sql/p2p_transaction_0.sql
 mvn clean install -DskipTests
 
 # 4. 按顺序启动服务（端口通过启动参数注入）
-java -jar xinfeip2p-discover-server/target/xinfeip2p-discover-server.jar
-java -jar xinfeip2p-uaa-service/target/xinfeip2p-uaa-service.jar -Denv=dev -Dserver.port=53020
-java -jar xinfeip2p-account-service/target/xinfeip2p-account-service.jar
-java -jar xinfeip2p-gateway-server/target/xinfeip2p-gateway-server.jar -Denv=dev -Dserver.port=53010
+java -jar xfjr-discover-server/target/xfjr-discover-server.jar
+java -jar xfjr-uaa-service/target/xfjr-uaa-service.jar -Denv=dev -Dserver.port=53020
+java -jar xfjr-account-service/target/xfjr-account-service.jar
+java -jar xfjr-gateway-server/target/xfjr-gateway-server.jar -Denv=dev -Dserver.port=53010
 # ... 其余服务同理
 ```
 
@@ -182,10 +182,10 @@ java -jar xinfeip2p-gateway-server/target/xinfeip2p-gateway-server.jar -Denv=dev
 
 ```bash
 # 管理后台
-cd xinfeip2p-manager && npm install && npm run dev
+cd xfjr-manager && npm install && npm run dev
 
 # H5 移动端（uni-app，使用 HBuilderX 打开运行）
-cd xinfeip2p-front-h5
+cd xfjr-front-h5
 ```
 
 ---
@@ -194,20 +194,20 @@ cd xinfeip2p-front-h5
 
 ```
 wanxinp2p
-├── xinfeip2p-discover-server        # 注册中心（Eureka）
-├── xinfeip2p-gateway-server         # 网关服务（Spring Cloud Gateway）
-├── xinfeip2p-uaa-service            # 统一认证（OAuth2 + JWT）
-├── xinfeip2p-account-service        # 统一账户服务
-├── xinfeip2p-consumer-service       # 用户中心服务
-├── xinfeip2p-transaction-service    # 交易中心服务
-├── xinfeip2p-repayment-service      # 还款服务
-├── xinfeip2p-depository-agent-service # 存管代理服务
-├── xinfeip2p-content-search-service # 检索服务（Elasticsearch）
-├── xinfeip2p-depository             # 银行存管系统（模拟）
-├── xinfeip2p-common                 # 公共组件（工具类、通用配置）
-├── xinfeip2p-api                    # API 接口定义与实体类
-├── xinfeip2p-manager                # 管理后台前端（Vue + Element UI）
-├── xinfeip2p-front-h5               # H5 移动端前端（uni-app）
+├── xfjr-discover-server        # 注册中心（Eureka）
+├── xfjr-gateway-server         # 网关服务（Spring Cloud Gateway）
+├── xfjr-uaa-service            # 统一认证（OAuth2 + JWT）
+├── xfjr-account-service        # 统一账户服务
+├── xfjr-consumer-service       # 用户中心服务
+├── xfjr-transaction-service    # 交易中心服务
+├── xfjr-repayment-service      # 还款服务
+├── xfjr-depository-agent-service # 存管代理服务
+├── xfjr-content-search-service # 检索服务（Elasticsearch）
+├── xfjr-depository             # 银行存管系统（模拟）
+├── xfjr-common                 # 公共组件（工具类、通用配置）
+├── xfjr-api                    # API 接口定义与实体类
+├── xfjr-manager                # 管理后台前端（Vue + Element UI）
+├── xfjr-front-h5               # H5 移动端前端（uni-app）
 ├── docs/                            # 项目文档与 SQL 脚本
 └── pom.xml                          # Maven 父 POM
 ```
@@ -220,4 +220,4 @@ wanxinp2p
 2. **启动顺序**：注册中心 → 认证服务 → 业务服务 → 网关
 3. **JDK 要求**：项目使用 JDK 25 编译，Lombok 1.18.48+ 已适配；JDK 23+ 需 `-proc:full` 开启注解处理（已在 POM 中配置）
 4. **日志排查**：日志目录 `logs/`，关键监控端点 `/actuator/health`
-5. **存管模块**：`xinfeip2p-depository` 为银行存管模拟系统，包名独立（`cn.itcast.xinfeidepository`），可单独部署
+5. **存管模块**：`xfjr-depository` 为银行存管模拟系统，包名独立（`cn.itcast.xinfeidepository`），可单独部署
