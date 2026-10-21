@@ -3,7 +3,7 @@ package cn.itcast.xinfeidepository.service;
 import cn.itcast.xinfeidepository.entity.RechargeDetails;
 import cn.itcast.xinfeidepository.model.RechargeRequest;
 import cn.itcast.xinfeidepository.model.RechargeResponse;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 /**
  * <p>

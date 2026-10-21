@@ -5,7 +5,7 @@ import cn.itcast.xinfeidepository.entity.User;
 import cn.itcast.xinfeidepository.model.PersonalRegisterRequest;
 import cn.itcast.xinfeidepository.model.PersonalRegisterResponse;
 import cn.itcast.xinfeidepository.model.UserDTO;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 /**
  * <p>

@@ -10,7 +10,7 @@ import cn.itcast.xinfeidepository.mapper.RechargeDetailsMapper;
 import cn.itcast.xinfeidepository.message.GatewayMessageProducer;
 import cn.itcast.xinfeidepository.model.RechargeRequest;
 import cn.itcast.xinfeidepository.model.RechargeResponse;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

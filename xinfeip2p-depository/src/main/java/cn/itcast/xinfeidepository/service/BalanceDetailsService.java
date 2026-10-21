@@ -2,7 +2,7 @@ package cn.itcast.xinfeidepository.service;
 
 import cn.itcast.xinfeidepository.entity.BalanceDetails;
 import cn.itcast.xinfeidepository.model.*;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.math.BigDecimal;

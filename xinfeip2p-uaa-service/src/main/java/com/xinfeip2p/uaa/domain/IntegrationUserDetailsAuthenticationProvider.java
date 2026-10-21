@@ -1,9 +1,10 @@
 package com.xinfeip2p.uaa.domain;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,9 +12,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.Map;
 
 /**
- * 统一用户认证处理，集成了网页(简化模式、授权码模式用户登录)认证  与  password模式认证
+ * 统一用户认证处理，集成了网页(简化模式、授权码模式用户登录)认证  与  password模式认证。
+ * Spring Security 7.x 移除了 AbstractUserDetailsAuthenticationProvider，
+ * 改为直接实现 AuthenticationProvider 接口。
  */
-public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
+public class IntegrationUserDetailsAuthenticationProvider implements AuthenticationProvider {
 
     private IntegrationUserDetailsAuthenticationHandler authenticationHandler  = null;
 
@@ -21,19 +24,29 @@ public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDe
         this.authenticationHandler = authenticationHandler;
     }
 
-    @SuppressWarnings("deprecation")
-    protected void additionalAuthenticationChecks(UserDetails userDetails,
-                                                  UsernamePasswordAuthenticationToken authentication)
-            throws AuthenticationException {
-        //仅在父类中验证用户的状态
+    @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        UserDetails user = retrieveUser(authentication);
+        return createSuccessAuthentication(user, authentication);
     }
 
+    @Override
+    public boolean supports(Class<?> authentication) {
+        return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
+    }
 
-    protected final UserDetails retrieveUser(String username,
-                                             UsernamePasswordAuthenticationToken authentication)
-            throws AuthenticationException {
+    /**
+     * 认证成功后构建已认证的 UsernamePasswordAuthenticationToken
+     */
+    private Authentication createSuccessAuthentication(UserDetails user, Authentication authentication) {
+        UsernamePasswordAuthenticationToken result =
+                new UsernamePasswordAuthenticationToken(user, authentication.getCredentials(), user.getAuthorities());
+        result.setDetails(authentication.getDetails());
+        return result;
+    }
+
+    private UserDetails retrieveUser(Authentication authentication) throws AuthenticationException {
         try {
-
             UserDetails loadedUser = authenticationUser(authentication);
             if (loadedUser == null) {
                 throw new InternalAuthenticationServiceException(
@@ -51,7 +64,8 @@ public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDe
         }
     }
 
-    private UserDetails authenticationUser(UsernamePasswordAuthenticationToken authentication) {
+    @SuppressWarnings("unchecked")
+    private UserDetails authenticationUser(Authentication authentication) {
 
         Object details = authentication.getDetails();
         String domain = null;
@@ -61,7 +75,7 @@ public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDe
             domain = webAuthenticationDetails.getDomain();
             authenticationType = webAuthenticationDetails.getAuthenticationType();
         }else if(details instanceof Map){ //password模式认证
-            Map<String ,String> webAuthenticationDetails = (Map)details;
+            Map<String ,String> webAuthenticationDetails = (Map<String,String>)details;
             domain = webAuthenticationDetails.get("domain");
             authenticationType = webAuthenticationDetails.get("authenticationType");
         }else{ //超出预估的情况
@@ -78,7 +92,8 @@ public class IntegrationUserDetailsAuthenticationProvider extends AbstractUserDe
             throw new InternalAuthenticationServiceException(
                     "authenticationType is blank");
         }
-        return authenticationHandler.authentication(domain, authenticationType ,authentication);
+        UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
+        return authenticationHandler.authentication(domain, authenticationType ,token);
     }
 
 }

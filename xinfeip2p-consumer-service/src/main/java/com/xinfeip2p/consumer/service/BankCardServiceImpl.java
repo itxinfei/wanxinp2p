@@ -4,7 +4,7 @@ import com.xinfeip2p.api.consumer.model.BankCardDTO;
 import com.xinfeip2p.consumer.entity.BankCard;
 import com.xinfeip2p.consumer.mapper.BankCardMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 

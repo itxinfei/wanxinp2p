@@ -9,7 +9,7 @@ import cn.itcast.xinfeidepository.mapper.WithdrawDetailsMapper;
 import cn.itcast.xinfeidepository.message.GatewayMessageProducer;
 import cn.itcast.xinfeidepository.model.WithdrawRequest;
 import cn.itcast.xinfeidepository.model.WithdrawResponse;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

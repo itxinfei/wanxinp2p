@@ -33,7 +33,7 @@ public class OkHttpUtil {
 	 * @return
 	 */
 	public static RestResponse post(String url, String json) {
-		okhttp3.RequestBody body = okhttp3.RequestBody.create(JSON_TYPE, json);
+		okhttp3.RequestBody body = okhttp3.RequestBody.create(json, JSON_TYPE);
 		Request request = new Request.Builder().url(url).post(body).build();
 		try (Response response = okHttpClient.newCall(request).execute()) {
 			okhttp3.ResponseBody responseBody = response.body();

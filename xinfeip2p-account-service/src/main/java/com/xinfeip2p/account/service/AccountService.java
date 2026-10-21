@@ -5,7 +5,7 @@ import com.xinfeip2p.api.account.model.AccountDTO;
 import com.xinfeip2p.api.account.model.AccountLoginDTO;
 import com.xinfeip2p.api.account.model.AccountRegisterDTO;
 import com.xinfeip2p.common.domain.RestResponse;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 
 public interface AccountService extends IService<Account> {

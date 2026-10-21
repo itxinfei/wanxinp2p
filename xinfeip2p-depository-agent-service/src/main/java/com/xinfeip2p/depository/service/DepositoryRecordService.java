@@ -6,7 +6,7 @@ import com.xinfeip2p.api.depository.model.*;
 import com.xinfeip2p.api.transaction.model.ModifyProjectStatusDTO;
 import com.xinfeip2p.api.transaction.model.ProjectDTO;
 import com.xinfeip2p.depository.entity.DepositoryRecord;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 public interface DepositoryRecordService extends IService<DepositoryRecord> {
     /**

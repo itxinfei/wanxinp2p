@@ -3,7 +3,7 @@ package cn.itcast.xinfeidepository.service;
 import cn.itcast.xinfeidepository.entity.Project;
 import cn.itcast.xinfeidepository.model.CreateProjectResponse;
 import cn.itcast.xinfeidepository.model.ModifyProjectResponse;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**

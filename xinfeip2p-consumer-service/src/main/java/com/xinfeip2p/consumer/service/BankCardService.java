@@ -2,7 +2,7 @@ package com.xinfeip2p.consumer.service;
 
 import com.xinfeip2p.api.consumer.model.BankCardDTO;
 import com.xinfeip2p.consumer.entity.BankCard;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 /**
  * 用户绑定银行卡信息 服务类

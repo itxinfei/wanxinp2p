@@ -17,7 +17,7 @@ import com.xinfeip2p.consumer.mapper.ConsumerMapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.BeanUtils;

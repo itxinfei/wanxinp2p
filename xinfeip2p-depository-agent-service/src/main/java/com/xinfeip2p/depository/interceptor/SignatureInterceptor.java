@@ -154,7 +154,7 @@ public class SignatureInterceptor implements Interceptor {
 
                 // 重新构造结果集, 原因是response.body().toString();调用后, body中值会请空
 
-                response = response.newBuilder().body(ResponseBody.create(response.body().contentType(), parseObject.toJSONString())).build();
+                response = response.newBuilder().body(ResponseBody.create(parseObject.toJSONString(), response.body().contentType())).build();
 
             } else {
 
@@ -166,7 +166,7 @@ public class SignatureInterceptor implements Interceptor {
 
                 // 构造新的返回值
 
-                response = response.newBuilder().body(ResponseBody.create(response.body().contentType(), parseObject.toJSONString())).build();
+                response = response.newBuilder().body(ResponseBody.create(parseObject.toJSONString(), response.body().contentType())).build();
 
             }
 

@@ -5,7 +5,7 @@ import cn.itcast.xinfeidepository.entity.BankCard;
 import cn.itcast.xinfeidepository.model.BankCardDTO;
 import cn.itcast.xinfeidepository.model.BankCardQuery;
 import cn.itcast.xinfeidepository.model.BankCardRequest;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 import java.math.BigDecimal;
 

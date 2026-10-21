@@ -4,7 +4,7 @@ import cn.itcast.xinfeidepository.entity.Tender;
 import cn.itcast.xinfeidepository.model.ConfirmLoanResponse;
 import cn.itcast.xinfeidepository.model.UserAutoPreTransactionRequest;
 import cn.itcast.xinfeidepository.model.UserAutoPreTransactionResponse;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.spring.service.IService;
 
 /**
  * <p>
