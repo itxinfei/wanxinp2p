@@ -1,144 +1,223 @@
-
 <div align="center">
 
-![](docs/log2.png)
+# 心飞金融 P2P 平台
 
-# 📊 心飞金融P2P平台  
-**互联网金融解决方案 | 提供理财、借贷、风控及银行存管一体化服务**
+**互联网金融解决方案 | 理财 · 借贷 · 风控 · 银行存管一体化**
 
-  <img alt="JDK" src="https://img.shields.io/badge/JDK-1.8-brightgreen">
-  <img alt="Maven" src="https://img.shields.io/badge/Maven-3.x-yellowgreen">
-  <img alt="Spring Boot" src="https://img.shields.io/badge/Spring%20Boot-2.1.3.RELEASE-brightgreen">
-  <img alt="Spring Cloud" src="https://img.shields.io/badge/Spring%20Cloud-Greenwich.RELEASE-orange">
-  <img alt="MyBatis Plus" src="https://img.shields.io/badge/MyBatis%20Plus-3.1.0-blue">
-  <img alt="MySQL" src="https://img.shields.io/badge/MySQL-8.0.11-blueviolet">
-  <img alt="FastJSON" src="https://img.shields.io/badge/FastJSON-1.2.47-success">
-  <img alt="Gson" src="https://img.shields.io/badge/Gson-2.8.2-informational">
-  <img alt="JWT" src="https://img.shields.io/badge/JWT-1.0.9.RELEASE-lightgrey">
-  <img alt="Apache Commons Lang" src="https://img.shields.io/badge/Apache%20Commons%20Lang-2.6-lightgrey">
-  <img alt="Guava" src="https://img.shields.io/badge/Guava-25.0--jre-lightgrey">
-  <img alt="OkHttp" src="https://img.shields.io/badge/OkHttp-3.14.1-red">
-  <img alt="RocketMQ" src="https://img.shields.io/badge/RocketMQ-2.0.2-red">
-  <img alt="Apollo" src="https://img.shields.io/badge/Apollo-1.2.0-red">
-  <img alt="ShardingSphere" src="https://img.shields.io/badge/ShardingSphere-4.0.0--RC1-red">
-  <img alt="前端" src="https://img.shields.io/badge/前端-Vue3%20+%20Weex-blueviolet">
-  <img alt="前端框架" src="https://img.shields.io/badge/前端框架-ECharts%20+%20Vant-orange">
+<img alt="JDK" src="https://img.shields.io/badge/JDK-25-brightgreen">
+<img alt="Spring Boot" src="https://img.shields.io/badge/Spring%20Boot-4.1.1-brightgreen">
+<img alt="Spring Cloud" src="https://img.shields.io/badge/Spring%20Cloud-2025.1.3-orange">
+<img alt="MyBatis Plus" src="https://img.shields.io/badge/MyBatis%20Plus-3.5.9-blue">
+<img alt="MySQL" src="https://img.shields.io/badge/MySQL-8.4.0-blueviolet">
+<img alt="RocketMQ" src="https://img.shields.io/badge/RocketMQ-2.3.1-red">
+<img alt="Seata" src="https://img.shields.io/badge/Seata-2.6.0-red">
+<img alt="ShardingSphere" src="https://img.shields.io/badge/ShardingSphere-5.5.2-red">
+<img alt="Apollo" src="https://img.shields.io/badge/Apollo-2.3.0-red">
+<img alt="Sentinel" src="https://img.shields.io/badge/Sentinel-1.8.9-red">
+<img alt="Springdoc" src="https://img.shields.io/badge/springdoc--openapi-3.1.1-success">
+<img alt="AuthServer" src="https://img.shields.io/badge/Auth%20Server-1.5.0-success">
+<img alt="ShedLock" src="https://img.shields.io/badge/ShedLock-7.10.1-informational">
+<img alt="FastJSON2" src="https://img.shields.io/badge/FastJSON2-2.0.53-lightgrey">
+<img alt="前端" src="https://img.shields.io/badge/前端-Vue%20%2B%20uni--app-blueviolet">
+
 </div>
 
+---
 
-## 📌 项目简介  
-**心飞金融** 是一款面向互联网大众的金融平台，提供 **P2P理财服务** 和 **个人消费信贷服务**，依托大数据风控技术，实现安全、快捷、稳定的金融服务。  
-系统核心价值：  
-- **业务闭环**：覆盖借贷、出借、风控、对账全流程  
-- **技术先进**：微服务架构 + 分布式事务保障高并发  
-- **合规性**：银行存管系统对接，符合金融监管要求  
+## 项目简介
 
-### 🎯 核心功能  
-- **理财服务**：出借、标的管理、收益统计  
-- **借贷服务**：借款申请、风控审核、还款计划  
-- **风控体系**：身份认证（百度AI）、信用评估、逾期预警  
-- **安全交易**：HTTPS加密 + SHA1withRSA签名  
+**心飞金融** 是一款面向互联网大众的金融平台，提供 **P2P 理财服务** 和 **个人消费信贷服务**，依托大数据风控技术，实现安全、快捷、稳定的金融服务。
+
+系统核心价值：
+
+- **业务闭环**：覆盖开户、借贷、出借、风控、还款、对账全流程
+- **技术先进**：Spring Boot 4 + Spring Cloud 2025 微服务架构，分布式事务保障数据一致性
+- **合规安全**：银行存管系统对接，资金流向透明，符合金融监管要求
+
+### 核心功能
+
+| 功能域 | 说明 |
+|--------|------|
+| 统一认证 | OAuth2 授权码模式 + JWT 令牌，支持密码 / 短信验证码登录 |
+| 统一账户 | 用户开户、银行卡绑定、余额管理 |
+| 用户中心 | 个人信息、实名认证（百度 AI）、资产总览 |
+| 交易中心 | 标的管理、出借投标、满标放款 |
+| 还款服务 | 还款计划生成、按期还款、逾期处理 |
+| 存管代理 | 对接银行存管系统，资金流水同步 |
+| 全文检索 | Elasticsearch 标的多条件检索 |
 
 ---
 
-## 🧩 功能模块  
-### 业务模块全景  
-![功能模块](docs/功能模块.png)  
-**核心模块**：  
-1. **交易平台**：用户出借、借款、标的管理  
-2. **风控管理**：身份认证、征信评估、风险控制  
-3. **对账系统**：银行存管数据同步与差异校验  
+## 功能模块
+
+![功能模块](docs/功能模块.png)
+
+**核心模块**：
+
+1. **交易平台**：用户出借、借款、标的全生命周期管理
+2. **风控管理**：身份认证、征信评估、风险控制
+3. **存管对账**：银行存管数据同步与差异校验
 
 ---
 
-## 📐 技术架构  
-### 系统架构全景  
-![技术架构图](docs/技术架构图.png)  
-**核心设计原则**：  
-- **微服务化**：基于Spring Cloud Alibaba拆分为8大服务  
-- **数据分层**：OLTP（MySQL）与OLAP（Sharding-JDBC）分离  
-- **高可用性**：Apollo配置中心 + Elastic-job任务调度  
+## 技术架构
 
-### 技术栈全景  
-| 层级         | 技术选型                                                                 |
-|--------------|--------------------------------------------------------------------------|
-| **前端**     | Vue + Element UI + ECharts                                              |
-| **网关层**   | Spring Cloud Gateway + Zuul                                               |
-| **服务层**   | Spring Boot 2.7 + MyBatis Plus + MapStruct                              |
-| **消息队列** | RocketMQ 4.9                                                            |
-| **数据层**   | MySQL 5.6+ + Redis 6.2 + Sharding-JDBC                                  |
-| **中间件**   | Apollo配置中心 + Elastic-job任务调度                                    |
-| **安全**     | Spring Security OAuth2 + JWT + HTTPS                                    |
+![技术架构图](docs/技术架构图.png)
 
----
+**核心设计原则**：
 
-## 🧱 核心服务与端口  
-| 服务名称                          | 端口      | 功能描述                                                                 |
-|----------------------------------|-----------|--------------------------------------------------------------------------|
-| 注册与发现 (xinfeip2p-discover-server) | 53000    | 服务注册与发现                                                            |
-| 网关 (xinfeip2p-gateway-server)       | 53010    | API路由、限流熔断                                                         |
-| UAA认证 (xinfeip2p-uaa-service)       | 53020    | 统一身份认证与权限管理                                                    |
-| 统一账号服务 (xinfeip2p-account-service) | 53030 | 用户账户管理                                                              |
-| 交易中心服务 (xinfeip2p-transaction-service) | 53060 | 订单生成、交易状态同步                                                    |
-| 存管代理服务 (xinfeip2p-depository-agent-service) | 53070 | 银行存管数据交互                                                          |
-| 还款服务 (xinfeip2p-repayment-service) | 53080   | 还款计划计算与执行                                                        |
+- **微服务化**：基于 Spring Cloud 拆分为 12 个模块，Eureka 服务注册与发现
+- **网关统一入口**：Spring Cloud Gateway 统一路由、鉴权、限流
+- **配置外置**：Apollo 配置中心集中管理各环境配置
+- **数据分层**：OLTP（MySQL + ShardingSphere 分库分表）与检索（Elasticsearch）分离
 
----
+### 技术栈总览
 
-## 💾 数据库设计  
-| 数据库名                      | 数据量级     | 核心表设计                                                                 |
-|-------------------------------|--------------|----------------------------------------------------------------------------|
-| `p2p_account`                 | 500万+       | 用户账户表（含余额、信用等级、绑定银行卡）                                  |
-| `p2p_transaction_0/1`         | 1亿+         | 交易记录表（按月份分表，Sharding-JDBC实现）                                 |
-| `p2p_repayment`               | 实时写入     | 还款计划表（逾期状态跟踪）                                                  |
-| `p2p_bank_depository`         | 金融级       | 银行存管数据（资金流水、对账记录）                                          |
+| 层级 | 技术选型 |
+|------|----------|
+| **基础框架** | JDK 25 + Spring Boot 4.1.1 + Spring Cloud 2025.1.3 |
+| **前端** | 管理后台 Vue + Element UI / 移动端 uni-app |
+| **网关层** | Spring Cloud Gateway + Sentinel 限流熔断 |
+| **服务治理** | Eureka 注册发现 + OpenFeign 声明式调用 |
+| **认证授权** | Spring Authorization Server 1.5 + JWT |
+| **持久层** | MyBatis-Plus 3.5.9 + Druid 连接池 + MySQL 8.4 |
+| **分库分表** | ShardingSphere 5.5.2 JDBC |
+| **消息队列** | RocketMQ（事务消息 + 延时消息） |
+| **分布式事务** | Seata 2.6（AT 模式） |
+| **任务调度** | @Scheduled + ShedLock 7.10 分布式锁 |
+| **配置中心** | Apollo 2.3 |
+| **全文检索** | Elasticsearch |
+| **API 文档** | springdoc-openapi 3.1.1（OpenAPI 3 规范） |
+| **序列化** | FastJSON2 2.0.53 + Jackson |
+| **安全** | HTTPS + SHA1withRSA 签名 + 百度 AI 身份认证 |
 
 ---
 
-## 🧰 技术解决方案  
-### 核心技术亮点  
-| 技术领域                | 解决方案                                                                 |
-|-------------------------|--------------------------------------------------------------------------|
-| **微服务架构**          | Spring Cloud Alibaba + Nacos服务注册与发现                                |
-| **接口规范**            | Spring Boot + Swagger自动生成API文档                                     |
-| **分布式事务**          | RocketMQ事务消息 + Hmily框架 + requestNo同步机制                         |
-| **分库分表**            | Sharding-JDBC实现交易数据水平拆分                                        |
-| **任务调度**            | Elastic-job定时对账、还款任务执行                                        |
-| **安全交易**            | HTTPS + SHA1withRSA签名 + 百度AI身份认证                                  |
+## 核心服务与端口
+
+| 服务 | 模块 | 端口 | 说明 |
+|------|------|------|------|
+| 注册中心 | `xinfeip2p-discover-server` | 53000 | Eureka Server |
+| 网关服务 | `xinfeip2p-gateway-server` | 53010 | 路由转发、鉴权、Sentinel 限流 |
+| 统一认证 | `xinfeip2p-uaa-service` | 53020 | OAuth2 授权服务器 + JWT 签发 |
+| 统一账户 | `xinfeip2p-account-service` | 53030 | 用户账户、余额、银行卡 |
+| 用户中心 | `xinfeip2p-consumer-service` | 53050 | 个人信息、实名认证 |
+| 交易中心 | `xinfeip2p-transaction-service` | 53060 | 标的管理、出借、放款 |
+| 存管代理 | `xinfeip2p-depository-agent-service` | 53070 | 银行存管数据交互代理 |
+| 还款服务 | `xinfeip2p-repayment-service` | 53080 | 还款计划与执行 |
+| 检索服务 | `xinfeip2p-content-search-service` | 54081 | Elasticsearch 全文检索 |
+| 银行存管 | `xinfeip2p-depository` | 55010 | 存管系统模拟（独立部署） |
+
+> 公共模块：`xinfeip2p-common`（通用工具）、`xinfeip2p-api`（API 接口与实体）
 
 ---
 
-## 📦 部署指南  
-### 快速部署步骤  
+## 数据库设计
+
+| 数据库 | 说明 |
+|--------|------|
+| `p2p_uaa` | 统一认证数据（OAuth2 客户端、用户凭证） |
+| `p2p_account` | 统一账户数据（余额、信用等级、绑定银行卡） |
+| `p2p_consumer` | 用户中心数据（个人信息、实名认证） |
+| `p2p_transaction_0/1` | 交易中心（ShardingSphere 水平拆分为 2 库） |
+| `p2p_repayment` | 还款计划数据（还款状态跟踪、逾期记录） |
+| `p2p_bank_depository` | 银行存管数据（资金流水、对账记录） |
+| `p2p_depository_agent` | 存管代理服务数据 |
+| `p2p_reconciliation` | 对账数据 |
+| `p2p_undo_log` | Seata AT 模式回滚日志表 |
+
+---
+
+## 技术解决方案
+
+| 技术领域 | 解决方案 |
+|----------|----------|
+| **微服务架构** | Spring Cloud 2025 + Eureka 注册发现 + OpenFeign 声明式调用 |
+| **统一认证** | Spring Authorization Server 1.5，OAuth2 授权码 + JWT |
+| **接口文档** | springdoc-openapi 3.1.1，OpenAPI 3 注解自动生成 Swagger UI |
+| **分布式事务** | Seata 2.6 AT 模式 + RocketMQ 事务消息双重保障 |
+| **分库分表** | ShardingSphere 5.5.2 JDBC，交易数据按用户 ID 水平拆分 |
+| **任务调度** | @Scheduled + ShedLock 7.10 分布式锁，避免多实例重复执行 |
+| **限流熔断** | Sentinel 1.8.9 Gateway 适配器，规则存储于 Apollo 动态推送 |
+| **安全交易** | HTTPS + SHA1withRSA 数字签名 + 百度 AI 人脸/身份证识别 |
+| **消息可靠性** | RocketMQ 同步发送 + 消费重试 + 死信队列 |
+
+---
+
+## 快速开始
+
+### 环境要求
+
+- JDK 25+
+- Maven 3.9+
+- MySQL 8.0+
+- Redis 6+
+- RocketMQ 5.x
+- Apollo 2.x（配置中心）
+- Elasticsearch 7.x+
+
+### 部署步骤
+
 ```bash
-# 1. 导入数据库
-mysql -u root -p -e "source xinfeip2p-init.sql"
-mysql -u root -p -e "source xinfeidepository-init.sql"
+# 1. 初始化数据库
+mysql -u root -p < docs/p2p_sql/p2p_account.sql
+mysql -u root -p < docs/p2p_sql/p2p_transaction_0.sql
+# ... 其余数据库脚本见 docs/p2p_sql/
 
-# 2. 搭建中间件（Apollo配置中心）
-docker run -d -p 8080:8080 apollo-configservice
+# 2. 启动 Apollo 配置中心并导入配置
+#    导入 docs/Apollo_sql/p2p_apollo.sql
 
-# 3. 编译工程
-mvn clean install -Denv=dev -Dapollo.cluster=DEFAULT -Dserver.port=53010
+# 3. 编译整个工程
+mvn clean install -DskipTests
 
-# 4. 启动核心服务
-java -jar xinfeip2p-gateway-server.jar
+# 4. 按顺序启动服务（端口通过启动参数注入）
+java -jar xinfeip2p-discover-server/target/xinfeip2p-discover-server.jar
+java -jar xinfeip2p-uaa-service/target/xinfeip2p-uaa-service.jar -Denv=dev -Dserver.port=53020
+java -jar xinfeip2p-account-service/target/xinfeip2p-account-service.jar
+java -jar xinfeip2p-gateway-server/target/xinfeip2p-gateway-server.jar -Denv=dev -Dserver.port=53010
+# ... 其余服务同理
 ```
 
-### 演示地址  
-- **在线体验**：[P2P平台管理端](http://xinfeip2p-admin-java.itheima.net/)  
-- **前端工程**：[心飞金融门户](https://gitee.com/itxinfei/xinfeip2p-portal)  
+### 前端启动
+
+```bash
+# 管理后台
+cd xinfeip2p-manager && npm install && npm run dev
+
+# H5 移动端（uni-app，使用 HBuilderX 打开运行）
+cd xinfeip2p-front-h5
+```
 
 ---
 
-## 📝 注意事项  
-1. **部署依赖**：  
-   - 需安装JDK1.8+、Maven3.6.3+、Docker  
-   - 中间件依赖：Apollo、RocketMQ、Sharding-JDBC  
+## 项目结构
 
-2. **日志排查**：  
-   - 日志目录：`logs/xinfeip2p/*.log`  
-   - 关键指标监控：`/actuator/prometheus`  
+```
+wanxinp2p
+├── xinfeip2p-discover-server        # 注册中心（Eureka）
+├── xinfeip2p-gateway-server         # 网关服务（Spring Cloud Gateway）
+├── xinfeip2p-uaa-service            # 统一认证（OAuth2 + JWT）
+├── xinfeip2p-account-service        # 统一账户服务
+├── xinfeip2p-consumer-service       # 用户中心服务
+├── xinfeip2p-transaction-service    # 交易中心服务
+├── xinfeip2p-repayment-service      # 还款服务
+├── xinfeip2p-depository-agent-service # 存管代理服务
+├── xinfeip2p-content-search-service # 检索服务（Elasticsearch）
+├── xinfeip2p-depository             # 银行存管系统（模拟）
+├── xinfeip2p-common                 # 公共组件（工具类、通用配置）
+├── xinfeip2p-api                    # API 接口定义与实体类
+├── xinfeip2p-manager                # 管理后台前端（Vue + Element UI）
+├── xinfeip2p-front-h5               # H5 移动端前端（uni-app）
+├── docs/                            # 项目文档与 SQL 脚本
+└── pom.xml                          # Maven 父 POM
+```
 
+---
 
+## 注意事项
 
+1. **配置依赖**：各服务运行时配置托管在 Apollo，需先启动 Apollo 并导入 `docs/Apollo_sql/p2p_apollo.sql`
+2. **启动顺序**：注册中心 → 认证服务 → 业务服务 → 网关
+3. **JDK 要求**：项目使用 JDK 25 编译，Lombok 1.18.48+ 已适配；JDK 23+ 需 `-proc:full` 开启注解处理（已在 POM 中配置）
+4. **日志排查**：日志目录 `logs/`，关键监控端点 `/actuator/health`
+5. **存管模块**：`xinfeip2p-depository` 为银行存管模拟系统，包名独立（`cn.itcast.xinfeidepository`），可单独部署
