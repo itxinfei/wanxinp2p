@@ -6,7 +6,7 @@ type: project
 
 服务器192.168.20.130(xfwl,sudo)中间件全量部署验证通过(2026-10-21)。
 
-容器：mysql8(3306,32库) | rmqnamesrv(9876)+rmqbroker(10911,RocketMQ5.3.1) | apollo三件套(8080/8092/8070) | elasticsearch(9200,9.4.5,green)
+容器：mysql8(3306,32库) | rmqnamesrv(9876)+rmqbroker(10911,RocketMQ5.3.1) | apollo三件套(28080/8092/8070) | elasticsearch(9200,9.4.5,green)
 
 关键：Docker网络xfjr-net内用容器名互联；Apollo2.4.0官方SQL已导入(configdb19表+portaldb18表)，本地备份.joycode/apollo*-v2.4.0.sql；RocketMQ5.x的mqadmin全路径/home/rocketmq/rocketmq-5.3.1/bin/mqadmin；broker.conf须无BOM+LF换行否则Properties.load失败。
 

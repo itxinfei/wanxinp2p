@@ -1,19 +1,39 @@
-# command -Denv=DEV -Dapollo.cacheDir=/opt/data/cache-dir -Dapollo.cluster=DEFAULT
-app:
-  id: xinfeidepository
-apollo:
-  bootstrap:
-    enabled: true
-    #    eagerLoad:
-    #      enabled: true
-    namespaces: application,micro_service.spring-boot-druid,micro_service.spring-boot-http,micro_service.spring-freemarker,micro_service.mybatis-plus,micro_service.spring-rocketmq
-spring:
-  application:
-    name: xinfeidepository
-# 日志配置
-#logging:
-#  config: classpath:log4j2-dev.xml
-
-
-
-
+# command -Denv=DEV -Dapollo.cacheDir=/opt/data/cache-dir -Dapollo.cluster=DEFAULT
+
+app:
+
+  id: xinfeidepository
+
+apollo:
+  meta: http://192.168.20.130:28080
+  bootstrap:
+  bootstrap:
+
+    enabled: true
+
+    #    eagerLoad:
+
+    #      enabled: true
+
+    namespaces: application,micro_service.spring-boot-druid,micro_service.spring-boot-http,micro_service.spring-freemarker,micro_service.mybatis-plus,micro_service.spring-rocketmq
+
+spring:
+
+  application:
+
+    name: xinfeidepository
+
+# 日志配置
+
+#logging:
+
+#  config: classpath:log4j2-dev.xml
+
+
+
+
+
+
+
+
+

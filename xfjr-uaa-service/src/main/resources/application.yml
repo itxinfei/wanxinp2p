@@ -2,6 +2,7 @@
 app:
   id: uaa-service
 apollo:
+  meta: http://192.168.20.130:28080
   bootstrap:
     enabled: true #启动阶段注入配置
     #    eagerLoad:
