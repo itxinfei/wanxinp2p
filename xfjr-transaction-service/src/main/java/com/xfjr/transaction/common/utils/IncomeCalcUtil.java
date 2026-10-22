@@ -48,6 +48,6 @@ public class IncomeCalcUtil {
         // 年利率
         BigDecimal yearRate = new BigDecimal(0.1);
 
-        log.info(getIncomeTotalInterest(invest, yearRate, month));
+        log.info(String.valueOf(getIncomeTotalInterest(invest, yearRate, month)));
     }
 }

@@ -76,7 +76,7 @@ public class WithdrawDetailsServiceImpl extends ServiceImpl<WithdrawDetailsMappe
 			response.setSuccess();
 			//producer.withdraw(withdrawRequest.getAppCode(), response);
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			log.error(String.valueOf(e.getMessage()));
 
 			//更新提现记录结果
 			withdrawDetails.setStatus(StatusCode.STATUS_FAIL.getCode());

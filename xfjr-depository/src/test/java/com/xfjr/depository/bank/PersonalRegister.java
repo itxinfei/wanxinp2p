@@ -29,6 +29,6 @@ public class PersonalRegister {
 		BeanUtils.copyProperties(bankCard, bankCardRequest);
 		bankCardRequest.setPassword("888888");
 		bankCardRequest.setUserType(1);
-		log.info(bankCardRequest);
+		log.info(String.valueOf(bankCardRequest));
 	}
 }

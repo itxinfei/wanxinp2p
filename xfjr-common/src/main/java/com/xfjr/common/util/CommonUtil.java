@@ -21,7 +21,7 @@ public class CommonUtil {
 	}
 
 	public static void main(String[] args) {
-		log.info(hiddenMobile("15378791911"));
+		log.info(String.valueOf(hiddenMobile("15378791911")));
 	}
 
 }
