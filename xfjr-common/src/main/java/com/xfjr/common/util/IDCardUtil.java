@@ -49,6 +49,6 @@ public class IDCardUtil {
 	}
 
 	public static void main(String[] args) {
-		log.info(getInfo("658182198109222913"));
+		log.info(String.valueOf(getInfo("658182198109222913")));
 	}
 }

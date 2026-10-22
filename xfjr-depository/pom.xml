@@ -125,6 +125,7 @@
         <dependency>
             <groupId>com.xfjr</groupId>
             <artifactId>xfjr-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
 </dependencies>
 

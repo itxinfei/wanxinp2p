@@ -72,6 +72,6 @@ public class PasswordUtil {
 	}
 
 	public static void main(String[] args) {
-		log.info(generate("admin"));
+		log.info(String.valueOf(generate("admin")));
 	}
 }

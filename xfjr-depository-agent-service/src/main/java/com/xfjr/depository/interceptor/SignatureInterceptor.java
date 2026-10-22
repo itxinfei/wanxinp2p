@@ -228,9 +228,9 @@ public class SignatureInterceptor implements Interceptor {
 
         String base = str.substring(0, str.indexOf("?") + 1);
 
-        log.info(base);
+        log.info(String.valueOf(base));
 
-        log.info(getParam(str, "reqData"));
+        log.info(String.valueOf(getParam(str, "reqData")));
 
     }
 

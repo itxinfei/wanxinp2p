@@ -70,17 +70,17 @@ public class EncryptUtil {
         String str = "abcd{'a':'b'}";
         String encoded = EncryptUtil.encodeUTF8StringBase64(str);
         String decoded = EncryptUtil.decodeUTF8StringBase64(encoded);
-        log.info(str);
-        log.info(encoded);
-        log.info(decoded);
+        log.info(String.valueOf(str));
+        log.info(String.valueOf(encoded));
+        log.info(String.valueOf(decoded));
 
         String url = "== wo";
         String urlEncoded = EncryptUtil.encodeURL(url);
         String urlDecoded = EncryptUtil.decodeURL(urlEncoded);
         
-        log.info(url);
-        log.info(urlEncoded);
-        log.info(urlDecoded);
+        log.info(String.valueOf(url));
+        log.info(String.valueOf(urlEncoded));
+        log.info(String.valueOf(urlDecoded));
     }
 
 

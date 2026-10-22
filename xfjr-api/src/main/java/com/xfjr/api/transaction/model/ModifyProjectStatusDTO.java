@@ -58,6 +58,6 @@ public class ModifyProjectStatusDTO {
                 + "&platformNo=" + URLEncoder.encode("xfjr", "utf-8")
                 + "&reqData=" + URLEncoder.encode(reqData, "utf-8")
                 + "&signature=" + URLEncoder.encode(sign, "utf-8");
-        log.info(str);
+        log.info(String.valueOf(str));
     }
 }
