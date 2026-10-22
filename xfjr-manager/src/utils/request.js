@@ -21,7 +21,7 @@ service.interceptors.request.use(
       // please modify it according to the actual situation
       config.headers['Authorization'] = `Bearer ` + getToken()
     }
-    if (config.url === '/uaa/oauth/token') {
+    if (config.url === '/uaa/oauth2/token') {
       config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
       config.transformRequest = function () {
         let ret = ''

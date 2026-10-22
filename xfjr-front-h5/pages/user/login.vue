@@ -48,7 +48,7 @@
                 positionTop: 0,
 				loginData:{
 					grant_type: 'password',
-					client_id: 'xinfei-p2p-web-h5',
+					client_id: 'xfjr-web-h5',
 					client_secret: 'itcasth5',
 					domain: 'c',
 					authenticationType: 'password'
@@ -121,7 +121,7 @@
 			},
 			log(data){
 				this.request({
-					url: 'uaa/oauth/token',
+					url: 'uaa/oauth2/token',
 					params: data,
 					method: 'POST'
 				}).then(res => {

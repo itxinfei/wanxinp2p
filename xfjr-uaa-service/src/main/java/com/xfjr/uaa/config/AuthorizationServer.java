@@ -1,6 +1,7 @@
 package com.xfjr.uaa.config;
 
 import com.xfjr.uaa.domain.UnifiedUserDetails;
+import com.xfjr.uaa.oauth.PasswordGrantAuthenticationConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
@@ -18,7 +19,6 @@ import org.springframework.security.oauth2.server.authorization.token.JwtEncodin
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenCustomizer;
 
 import java.time.Duration;
-import java.util.UUID;
 
 /**
  * Spring Authorization Server 配置（替代 spring-security-oauth2 的 @EnableAuthorizationServer）
@@ -31,14 +31,28 @@ public class AuthorizationServer {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
+    /**
+     * 密码模式授权类型（OAuth 2.1 已废弃，Spring Authorization Server 1.x 未内置，
+     * 本项目通过自定义扩展点实现，见 com.xfjr.uaa.oauth 包）。
+     */
+    public static final AuthorizationGrantType PASSWORD_GRANT_TYPE =
+            PasswordGrantAuthenticationConverter.PASSWORD_GRANT_TYPE;
+
+    /**
+     * 注册客户端。客户端清单与 docs/uaa.sql、docs/p2p_sql/xfjr-init.sql 中的
+     * oauth_client_details 种子数据保持一致；密钥待 TR-01 整改为 BCrypt 加密存储。
+     *
+     * @return 客户端仓库
+     */
     @Bean
     public RegisteredClientRepository registeredClientRepository() {
-        // 网页端客户端（授权码模式）
-        RegisteredClient webClient = RegisteredClient.withId(UUID.randomUUID().toString())
-                .clientId("xinfei-client")
-                .clientSecret("{noop}xinfei-secret")
+        // 管理后台客户端（Vue3 管理端，走密码模式直接换令牌）
+        RegisteredClient adminClient = RegisteredClient.withId("xfjr-web-admin")
+                .clientId("xfjr-web-admin")
+                .clientSecret("{noop}itcastb")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+                .authorizationGrantType(PASSWORD_GRANT_TYPE)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
                 .redirectUri("http://localhost:8080/login")
@@ -48,21 +62,34 @@ public class AuthorizationServer {
                 .scope("write")
                 .tokenSettings(tokenSettings())
                 .build();
-        // 密码模式客户端（供移动端/后台使用）
-        // 注意：Spring Authorization Server 1.x 起移除了 password 授权类型（OAuth 2.1 已废弃该模式），
-        // 该客户端改用 client_credentials + refresh_token 获取访问令牌。
-        RegisteredClient passwordClient = RegisteredClient.withId(UUID.randomUUID().toString())
-                .clientId("xinfei-password")
-                .clientSecret("{noop}xinfei-secret")
+        // 移动端客户端（uni-app H5，走密码模式直接换令牌）
+        RegisteredClient h5Client = RegisteredClient.withId("xfjr-web-h5")
+                .clientId("xfjr-web-h5")
+                .clientSecret("{noop}itcasth5")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+                .authorizationGrantType(PASSWORD_GRANT_TYPE)
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                .redirectUri("http://localhost:8080/login")
+                .redirectUri("http://127.0.0.1:8080/login")
                 .scope("read")
                 .scope("write")
                 .tokenSettings(tokenSettings())
                 .build();
-        return new InMemoryRegisteredClientRepository(webClient, passwordClient);
+        // 内部服务客户端（服务间调用，走客户端凭证模式）
+        RegisteredClient internalClient = RegisteredClient.withId("xfjr-internal")
+                .clientId("xfjr-internal")
+                .clientSecret("{noop}xfjr-internal-secret")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
+                .scope("read")
+                .scope("write")
+                .tokenSettings(tokenSettings())
+                .build();
+        return new InMemoryRegisteredClientRepository(adminClient, h5Client, internalClient);
     }
 
     @Bean

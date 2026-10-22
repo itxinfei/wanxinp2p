@@ -20,7 +20,7 @@ function request({url='', params={}, method='GET'}) {
 
     let state = token === "" ? true : false
 
-    if (url === 'uaa/oauth/token' ||
+    if (url === 'uaa/oauth2/token' ||
         url === 'account/sms' || url.search('account/sms/') == 0 ||
         url === 'account/mobiles' || url.search('account/mobiles/') == 0){
         state = false
@@ -38,7 +38,7 @@ function request({url='', params={}, method='GET'}) {
         'Access-Control-Allow-Origin':'*',
         'Content-Type': 'application/json',
     }
-    if(url == 'uaa/oauth/token') {
+    if(url == 'uaa/oauth2/token') {
         header = {...header, 'Content-Type': 'application/x-www-form-urlencoded' }
     }
 
