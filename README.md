@@ -7,17 +7,17 @@
 <img alt="JDK" src="https://img.shields.io/badge/JDK-25-brightgreen">
 <img alt="Spring Boot" src="https://img.shields.io/badge/Spring%20Boot-4.1.1-brightgreen">
 <img alt="Spring Cloud" src="https://img.shields.io/badge/Spring%20Cloud-2025.1.3-orange">
-<img alt="MyBatis Plus" src="https://img.shields.io/badge/MyBatis%20Plus-3.5.9-blue">
+<img alt="MyBatis Plus" src="https://img.shields.io/badge/MyBatis%20Plus-3.5.17-blue">
 <img alt="MySQL" src="https://img.shields.io/badge/MySQL-8.4.0-blueviolet">
-<img alt="RocketMQ" src="https://img.shields.io/badge/RocketMQ-2.3.1-red">
+<img alt="RocketMQ" src="https://img.shields.io/badge/RocketMQ-2.3.6-red">
 <img alt="Seata" src="https://img.shields.io/badge/Seata-2.6.0-red">
-<img alt="ShardingSphere" src="https://img.shields.io/badge/ShardingSphere-5.5.2-red">
-<img alt="Apollo" src="https://img.shields.io/badge/Apollo-2.3.0-red">
-<img alt="Sentinel" src="https://img.shields.io/badge/Sentinel-1.8.9-red">
+<img alt="ShardingSphere" src="https://img.shields.io/badge/ShardingSphere-5.5.3-red">
+<img alt="Apollo" src="https://img.shields.io/badge/Apollo-2.5.0-red">
+<img alt="Sentinel" src="https://img.shields.io/badge/Sentinel-1.8.10-red">
 <img alt="Springdoc" src="https://img.shields.io/badge/springdoc--openapi-3.1.1-success">
 <img alt="AuthServer" src="https://img.shields.io/badge/Auth%20Server-1.5.0-success">
 <img alt="ShedLock" src="https://img.shields.io/badge/ShedLock-7.10.1-informational">
-<img alt="FastJSON2" src="https://img.shields.io/badge/FastJSON2-2.0.53-lightgrey">
+<img alt="FastJSON2" src="https://img.shields.io/badge/FastJSON2-2.0.66-lightgrey">
 <img alt="前端" src="https://img.shields.io/badge/前端-Vue%20%2B%20uni--app-blueviolet">
 
 </div>
@@ -80,15 +80,15 @@
 | **网关层** | Spring Cloud Gateway + Sentinel 限流熔断 |
 | **服务治理** | Eureka 注册发现 + OpenFeign 声明式调用 |
 | **认证授权** | Spring Authorization Server 1.5 + JWT |
-| **持久层** | MyBatis-Plus 3.5.9 + Druid 连接池 + MySQL 8.4 |
-| **分库分表** | ShardingSphere 5.5.2 JDBC |
-| **消息队列** | RocketMQ（事务消息 + 延时消息） |
+| **持久层** | MyBatis-Plus 3.5.17 + Druid 连接池 + MySQL 8.4 |
+| **分库分表** | ShardingSphere 5.5.3 JDBC |
+| **消息队列** | RocketMQ 2.3.6（事务消息 + 延时消息） |
 | **分布式事务** | Seata 2.6（AT 模式） |
 | **任务调度** | @Scheduled + ShedLock 7.10 分布式锁 |
-| **配置中心** | Apollo 2.3 |
+| **配置中心** | Apollo 2.5 |
 | **全文检索** | Elasticsearch |
 | **API 文档** | springdoc-openapi 3.1.1（OpenAPI 3 规范） |
-| **序列化** | FastJSON2 2.0.53 + Jackson |
+| **序列化** | FastJSON2 2.0.66 + Jackson |
 | **安全** | HTTPS + SHA1withRSA 签名 + 百度 AI 身份认证 |
 
 ---
@@ -209,6 +209,9 @@ cd xfjr-front-h5
 ├── xfjr-manager                # 管理后台前端（Vue 3 + Element Plus + Vite）
 ├── xfjr-front-h5               # H5 移动端前端（uni-app）
 ├── docs/                            # 项目文档与 SQL 脚本
+│   ├── 需求文档.md                  # 目标态需求（v4.2，业务规则 + 34 项功能需求）
+│   ├── 重构规划文档.md              # 微服务重构规划（v1.2，分期实施计划）
+│   └── ...                          # 架构图、SQL 脚本、流程图等
 └── pom.xml                          # Maven 父 POM
 ```
 
