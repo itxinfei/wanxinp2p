@@ -2,7 +2,7 @@ package com.xfjr.depository.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.xfjr.depository.XinfeidepositoryServer;
+import com.xfjr.depository.XfjrDepositoryServer;
 import com.xfjr.depository.bank.BankCardNumberGenerator;
 import com.xfjr.depository.bank.ChineseIDCardNumberGenerator;
 import com.xfjr.depository.bank.ChineseMobileNumberGenerator;
@@ -18,7 +18,7 @@ import org.springframework.test.context.ActiveProfiles;
 import java.math.BigDecimal;
 
 @ActiveProfiles("dev")
-@SpringBootTest(classes = {XinfeidepositoryServer.class})
+@SpringBootTest(classes = {XfjrDepositoryServer.class})
 public class BankCardServiceTest {
 
     private static final Logger log = LoggerFactory.getLogger(BankCardServiceTest.class);

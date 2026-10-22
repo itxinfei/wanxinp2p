@@ -13,7 +13,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @Configuration
 public class ResouceServerConfig {
 
-    public static final String RESOURCE_ID = "xinfei-resource";
+    public static final String RESOURCE_ID = "xfjr-resource";
 
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {

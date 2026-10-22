@@ -2,7 +2,7 @@
 
 app:
 
-  id: xinfeidepository
+  id: xfjr-depository
 
 apollo:
   meta: http://192.168.20.130:28080
@@ -21,7 +21,7 @@ spring:
 
   application:
 
-    name: xinfeidepository
+    name: xfjr-depository
 
 # 日志配置
 
