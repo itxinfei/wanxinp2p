@@ -1,10 +1,14 @@
 package com.xfjr.common.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
 public class MD5Util {
+    private static final Logger log = LoggerFactory.getLogger(MD5Util.class);
+
 	/**
 	 * 获取字符串的MD5摘要计算结果
 	 * @param plainText
@@ -32,7 +36,7 @@ public class MD5Util {
             // 16位的加密  
             //return buf.toString().substring(8, 24);  
         } catch (NoSuchAlgorithmException e) {  
-            e.printStackTrace();  
+            log.error(e.getMessage(), e);  
             return null;  
         }  
   

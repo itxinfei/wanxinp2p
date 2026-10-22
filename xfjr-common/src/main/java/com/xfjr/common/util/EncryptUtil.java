@@ -1,4 +1,6 @@
 package com.xfjr.common.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.io.UnsupportedEncodingException;
@@ -7,6 +9,8 @@ import java.net.URLEncoder;
 import java.util.Base64;
 
 public class EncryptUtil {
+    private static final Logger log = LoggerFactory.getLogger(EncryptUtil.class);
+
 
     public static String encodeBase64(byte[] bytes){
         String encoded = Base64.getEncoder().encodeToString(bytes);
@@ -24,7 +28,7 @@ public class EncryptUtil {
         try {
             encoded = Base64.getEncoder().encodeToString(str.getBytes("utf-8"));
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
         return encoded;
 
@@ -36,7 +40,7 @@ public class EncryptUtil {
         try {
             decoded = new String(bytes,"utf-8");
         }catch(UnsupportedEncodingException e){
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
         return decoded;
     }
@@ -46,7 +50,7 @@ public class EncryptUtil {
 		try {
 			encoded =  URLEncoder.encode(url, "utf-8");
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 		return encoded;
 	}
@@ -57,7 +61,7 @@ public class EncryptUtil {
 		try {
 			decoded = URLDecoder.decode(url, "utf-8");
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 		return decoded;
 	}
@@ -66,17 +70,17 @@ public class EncryptUtil {
         String str = "abcd{'a':'b'}";
         String encoded = EncryptUtil.encodeUTF8StringBase64(str);
         String decoded = EncryptUtil.decodeUTF8StringBase64(encoded);
-        System.out.println(str);
-        System.out.println(encoded);
-        System.out.println(decoded);
+        log.info(str);
+        log.info(encoded);
+        log.info(decoded);
 
         String url = "== wo";
         String urlEncoded = EncryptUtil.encodeURL(url);
         String urlDecoded = EncryptUtil.decodeURL(urlEncoded);
         
-        System.out.println(url);
-        System.out.println(urlEncoded);
-        System.out.println(urlDecoded);
+        log.info(url);
+        log.info(urlEncoded);
+        log.info(urlDecoded);
     }
 
 

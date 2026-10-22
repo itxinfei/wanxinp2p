@@ -1,4 +1,6 @@
 package com.xfjr.api.transaction.model;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.xfjr.common.util.EncryptUtil;
 import com.xfjr.common.util.RSAUtil;
@@ -18,6 +20,8 @@ import java.net.URLEncoder;
  */
 @Data
 public class ModifyProjectStatusDTO {
+    private static final Logger log = LoggerFactory.getLogger(ModifyProjectStatusDTO.class);
+
     /**
      * 请求流水号
      */
@@ -54,6 +58,6 @@ public class ModifyProjectStatusDTO {
                 + "&platformNo=" + URLEncoder.encode("xfjr", "utf-8")
                 + "&reqData=" + URLEncoder.encode(reqData, "utf-8")
                 + "&signature=" + URLEncoder.encode(sign, "utf-8");
-        System.out.println(str);
+        log.info(str);
     }
 }

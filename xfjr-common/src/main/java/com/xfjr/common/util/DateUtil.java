@@ -1,4 +1,6 @@
 package com.xfjr.common.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.text.DateFormat;
@@ -13,6 +15,8 @@ import java.util.*;
  *
  */
 public class DateUtil {
+    private static final Logger log = LoggerFactory.getLogger(DateUtil.class);
+
 
     public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
 
@@ -271,7 +275,7 @@ public class DateUtil {
         try {
             date = new SimpleDateFormat(YYYY_MM_DD_HH_MM_SS).parse(specifiedDay);
         } catch (ParseException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
         c.setTime(date);
         int day = c.get(Calendar.DATE);
@@ -294,7 +298,7 @@ public class DateUtil {
         try {
             date = new SimpleDateFormat(YYYY_MM_DD_HH_MM_SS).parse(specifiedDay);
         } catch (ParseException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
         c.setTime(date);
         int day = c.get(Calendar.DATE);
@@ -418,7 +422,7 @@ public class DateUtil {
             int u = (int) ((toDate.getTime() - dateFormat.parse(DateUtil.getCurrDateTimeStr()).getTime()) / 1000);
             return u;
         } catch (ParseException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
         }
         return 0;
     }

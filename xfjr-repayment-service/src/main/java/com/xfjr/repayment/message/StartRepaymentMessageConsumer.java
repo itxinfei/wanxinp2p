@@ -1,4 +1,6 @@
 package com.xfjr.repayment.message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -25,6 +27,8 @@ import org.springframework.stereotype.Component;
 @RocketMQMessageListener(topic = "TP_START_REPAYMENT", consumerGroup = "CID_START_REPAYMENT")
 
 public class StartRepaymentMessageConsumer implements RocketMQListener<String> {
+    private static final Logger log = LoggerFactory.getLogger(StartRepaymentMessageConsumer.class);
+
 
 
 
@@ -38,7 +42,7 @@ public class StartRepaymentMessageConsumer implements RocketMQListener<String> {
 
     public void onMessage(String msg) {
 
-        System.out.println("消费消息：" + msg);
+        log.info("消费消息：" + msg);
 
         //1.解析消息
 

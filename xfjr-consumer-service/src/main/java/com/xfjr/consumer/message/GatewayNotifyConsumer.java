@@ -1,4 +1,6 @@
 package com.xfjr.consumer.message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.xfjr.api.depository.model.DepositoryConsumerResponse;
 import com.xfjr.consumer.service.ConsumerService;
@@ -20,6 +22,8 @@ import java.util.List;
 
 @Component
 public class GatewayNotifyConsumer {
+    private static final Logger log = LoggerFactory.getLogger(GatewayNotifyConsumer.class);
+
 
     @Autowired
     private ConsumerService consumerService;
@@ -40,7 +44,7 @@ public class GatewayNotifyConsumer {
                     String topic = message.getTopic();
                     String tag = message.getTags();
                     String body = new String(message.getBody(), StandardCharsets.UTF_8);
-                    System.out.println("从存管代理服务那里发来消息："+body);
+                    log.info("从存管代理服务那里发来消息："+body);
                     if(tag.equals("PERSONAL_REGISTER")){
                         DepositoryConsumerResponse response = JSON.parseObject(body, DepositoryConsumerResponse.class);
                         consumerService.modifyResult(response);

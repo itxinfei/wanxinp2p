@@ -151,13 +151,13 @@ public class RepaymentServiceImpl implements RepaymentService {
         //生成还款明细
         repaymentPlanList.forEach(repaymentPlan -> {
             RepaymentDetail repaymentDetail=saveRepaymentDetail(repaymentPlan);
-            System.out.println("当前分片："+shardingItem+"\n"+repaymentPlan);
+            log.info("当前分片："+shardingItem+"\n"+repaymentPlan);
             //还款预处理
             Boolean proRepaymentResult = preRepayment(repaymentPlan,repaymentDetail.getRequestNo());
 
             if(proRepaymentResult){
                 //未完待续
-                System.out.println("还款预处理成功");
+                log.info("还款预处理成功");
                 String preRequestNo=repaymentDetail.getRequestNo();
                 RepaymentRequest repaymentRequest=generateRepaymentRequest(repaymentPlan,preRequestNo);
                 repaymentProducer.confirmRepayment(repaymentPlan,repaymentRequest);

@@ -1,10 +1,14 @@
 package com.xfjr.common.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class IPUtil {
+    private static final Logger log = LoggerFactory.getLogger(IPUtil.class);
+
 
     public static String getIpAddr(HttpServletRequest request) {
 
@@ -38,7 +42,7 @@ public class IPUtil {
                 try {
                     inet = InetAddress.getLocalHost();
                 } catch (UnknownHostException e) {
-                    e.printStackTrace();
+                    log.error(e.getMessage(), e);
                 }
                 ip = inet.getHostAddress();
             }

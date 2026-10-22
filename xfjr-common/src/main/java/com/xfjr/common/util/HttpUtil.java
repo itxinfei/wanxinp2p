@@ -1,4 +1,6 @@
 package com.xfjr.common.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -12,6 +14,8 @@ import java.util.Map;
  * http 工具类
  */
 public class HttpUtil {
+    private static final Logger log = LoggerFactory.getLogger(HttpUtil.class);
+
 
     public static String getAccessToken(String ak,String sk) throws  Exception {
         // 获取token地址
@@ -32,7 +36,7 @@ public class HttpUtil {
             /*Map<String, List<String>> map = connection.getHeaderFields();
             // 遍历所有的响应头字段
             for (String key : map.keySet()) {
-                System.err.println(key + "--->" + map.get(key));
+                log.error(key + "--->" + map.get(key));
             }*/
             // 定义 BufferedReader输入流来读取URL的响应
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -98,7 +102,7 @@ public class HttpUtil {
         Map<String, List<String>> headers = connection.getHeaderFields();
         // 遍历所有的响应头字段
         /*for (String key : headers.keySet()) {
-            System.err.println(key + "--->" + headers.get(key));
+            log.error(key + "--->" + headers.get(key));
         }*/
         // 定义 BufferedReader输入流来读取URL的响应
         BufferedReader in = null;
@@ -111,7 +115,7 @@ public class HttpUtil {
         }
         in.close();
         connection.disconnect();
-        //System.err.println("result:" + result);
+        //log.error("result:" + result);
         return result;
     }
 }

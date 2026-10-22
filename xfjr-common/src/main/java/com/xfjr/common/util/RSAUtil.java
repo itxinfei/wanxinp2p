@@ -1,4 +1,6 @@
 package com.xfjr.common.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.crypto.Cipher;
 import java.io.ByteArrayInputStream;
@@ -10,6 +12,8 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 public class RSAUtil {
+    private static final Logger log = LoggerFactory.getLogger(RSAUtil.class);
+
 
 	public static final String SIGN_ALGORITHMS = "SHA1WithRSA";
 	final static Base64.Decoder decoder = Base64.getDecoder();
@@ -37,7 +41,7 @@ public class RSAUtil {
 
 			return encoder.encodeToString(signed);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 
 		return null;
@@ -67,7 +71,7 @@ public class RSAUtil {
 			return bverify;
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 
 		return false;

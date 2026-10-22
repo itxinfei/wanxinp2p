@@ -1,4 +1,6 @@
 package com.xfjr.common.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.xfjr.common.domain.CommonErrorCode;
 import com.xfjr.common.domain.RestResponse;
@@ -17,6 +19,8 @@ import java.util.concurrent.TimeUnit;
  * </p>
  */
 public class OkHttpUtil {
+    private static final Logger log = LoggerFactory.getLogger(OkHttpUtil.class);
+
 
 	private static OkHttpClient okHttpClient = new OkHttpClient().newBuilder().retryOnConnectionFailure(true)
                 .connectTimeout(10, TimeUnit.SECONDS)
@@ -41,7 +45,7 @@ public class OkHttpUtil {
 				return JSON.parseObject(responseBody.string(), RestResponse.class);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 		return RestResponse.validfail(CommonErrorCode.E_100106.getDesc());
 	}

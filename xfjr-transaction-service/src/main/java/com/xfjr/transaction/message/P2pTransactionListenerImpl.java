@@ -1,4 +1,6 @@
 package com.xfjr.transaction.message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -33,6 +35,8 @@ import org.springframework.stereotype.Component;
 @RocketMQTransactionListener
 
 public class P2pTransactionListenerImpl implements RocketMQLocalTransactionListener {
+    private static final Logger log = LoggerFactory.getLogger(P2pTransactionListenerImpl.class);
+
 
 
 
@@ -106,7 +110,7 @@ public class P2pTransactionListenerImpl implements RocketMQLocalTransactionListe
 
     public RocketMQLocalTransactionState checkLocalTransaction(Message msg) {
 
-        System.out.println("事务回查");
+        log.info("事务回查");
 
         //1. 解析消息
 
