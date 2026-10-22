@@ -220,4 +220,4 @@ cd xfjr-front-h5
 2. **启动顺序**：注册中心 → 认证服务 → 业务服务 → 网关
 3. **JDK 要求**：项目使用 JDK 25 编译，Lombok 1.18.48+ 已适配；JDK 23+ 需 `-proc:full` 开启注解处理（已在 POM 中配置）
 4. **日志排查**：日志目录 `logs/`，关键监控端点 `/actuator/health`
-5. **存管模块**：`xfjr-depository` 为银行存管模拟系统，包名独立（`cn.itcast.xinfeidepository`），可单独部署
+5. **存管模块**：`xfjr-depository` 为银行存管模拟系统，包名独立（`com.xfjr.depository`），可单独部署；主类为 `XfjrDepositoryServer`

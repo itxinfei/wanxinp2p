@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("com.xfjr.depository.mapper")
-public class XinfeidepositoryServer {
+public class XfjrDepositoryServer {
     public static void main(String[] args) {
-        SpringApplication.run(XinfeidepositoryServer.class, args);
+        SpringApplication.run(XfjrDepositoryServer.class, args);
     }
 }
