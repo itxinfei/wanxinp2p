@@ -76,7 +76,7 @@
 | 层级 | 技术选型 |
 |------|----------|
 | **基础框架** | JDK 25 + Spring Boot 4.1.1 + Spring Cloud 2025.1.3 |
-| **前端** | 管理后台 Vue + Element UI / 移动端 uni-app |
+| **前端** | 管理后台 Vue 3 + Element Plus + Vite / 移动端 uni-app（Vue 3） |
 | **网关层** | Spring Cloud Gateway + Sentinel 限流熔断 |
 | **服务治理** | Eureka 注册发现 + OpenFeign 声明式调用 |
 | **认证授权** | Spring Authorization Server 1.5 + JWT |
@@ -193,7 +193,7 @@ cd xfjr-front-h5
 ## 项目结构
 
 ```
-wanxinp2p
+心飞金融（xfjr）
 ├── xfjr-discover-server        # 注册中心（Eureka）
 ├── xfjr-gateway-server         # 网关服务（Spring Cloud Gateway）
 ├── xfjr-uaa-service            # 统一认证（OAuth2 + JWT）
@@ -206,7 +206,7 @@ wanxinp2p
 ├── xfjr-depository             # 银行存管系统（模拟）
 ├── xfjr-common                 # 公共组件（工具类、通用配置）
 ├── xfjr-api                    # API 接口定义与实体类
-├── xfjr-manager                # 管理后台前端（Vue + Element UI）
+├── xfjr-manager                # 管理后台前端（Vue 3 + Element Plus + Vite）
 ├── xfjr-front-h5               # H5 移动端前端（uni-app）
 ├── docs/                            # 项目文档与 SQL 脚本
 └── pom.xml                          # Maven 父 POM
