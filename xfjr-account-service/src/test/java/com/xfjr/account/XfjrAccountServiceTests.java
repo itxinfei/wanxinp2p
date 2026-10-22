@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class xinfeip2PAccountServiceAccountServiceTests {
+public class XfjrAccountServiceTests {
 
     @Test
     public void contextLoads() {

@@ -1,15 +1,20 @@
-# 金融管理后台
+# 心飞金融管理后台（xfjr-manager）
+
+> 心飞金融 P2P 平台统一运营管理前端。
 
 ## 项目信息
 
-- git：http://git.itcast.cn/development/project-p2p-cmm-java-react
-- mock：https://mock.boxuegu.com/project/335/interface/api/7056
+- 所属项目：心飞金融 P2P 平台（xfjr）
+- 技术栈：Vue 3 + Element Plus + Vite（由 vue-element-admin / Vue 2 + element-ui 升级而来）
+- 接口规范：统一 `/api/v1/...`
 
 ## 技术栈
 
--   使用 vue-element-admin 集成方案
-
--  vue [2.6.10] + element-ui[2.7.0] + axios 
+- 构建：Vite 8 + `@vitejs/plugin-vue`
+- 框架：Vue 3.5 + vue-router 5 + vuex 4
+- 组件库：Element Plus 2.9
+- 请求：Axios 1.7（全局拦截错误并统一提示）
+- 样式：Sass + normalize.css + nprogress
 
 ## 图示
  ![image](demo.png)

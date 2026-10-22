@@ -139,7 +139,7 @@
     }
   }
 
-  /* reset element-ui css */
+  /* reset element-plus css */
   .login-container {
     .el-input {
       display: inline-block;
