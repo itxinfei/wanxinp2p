@@ -72,7 +72,7 @@
           username: 'admin',
           password: '',
           grant_type: 'password',
-          client_id:'xinfei-p2p-web-admin',
+          client_id:'xfjr-web-admin',
           client_secret:'itcastb',
           domain:'b',
           authenticationType:'password'
