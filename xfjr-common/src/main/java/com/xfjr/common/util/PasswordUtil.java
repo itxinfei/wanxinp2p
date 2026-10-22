@@ -1,4 +1,6 @@
 package com.xfjr.common.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.apache.commons.codec.binary.Hex;
 
@@ -14,6 +16,8 @@ import java.util.Random;
  */
 
 public class PasswordUtil {
+    private static final Logger log = LoggerFactory.getLogger(PasswordUtil.class);
+
 	/**
 	 * 生成含有随机盐的密码
 	 */
@@ -68,6 +72,6 @@ public class PasswordUtil {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(generate("admin"));
+		log.info(generate("admin"));
 	}
 }

@@ -1,4 +1,6 @@
 package com.xfjr.transaction.common.utils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 
@@ -10,7 +12,9 @@ import java.math.BigDecimal;
  * @author wuzhao@itcast.cn
  * @since 2019/6/11
  */
-public class IncomeCalcUtil {
+public class IncomeCalcUtil {
+    private static final Logger log = LoggerFactory.getLogger(IncomeCalcUtil.class);
+
 
     /**
      * 等额本息 投资人收益计算
@@ -44,6 +48,6 @@ public class IncomeCalcUtil {
         // 年利率
         BigDecimal yearRate = new BigDecimal(0.1);
 
-        System.out.println(getIncomeTotalInterest(invest, yearRate, month));
+        log.info(getIncomeTotalInterest(invest, yearRate, month));
     }
 }

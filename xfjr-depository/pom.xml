@@ -122,6 +122,10 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-jsqlparser</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.xfjr</groupId>
+            <artifactId>xfjr-common</artifactId>
+        </dependency>
 </dependencies>
 
     <!--<distributionManagement>

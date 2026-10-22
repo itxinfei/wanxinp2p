@@ -1,4 +1,6 @@
 package com.xfjr.common.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -11,6 +13,8 @@ import java.util.Map;
  *
  */
 public class IDCardUtil {
+    private static final Logger log = LoggerFactory.getLogger(IDCardUtil.class);
+
 
 	/**
 	 * 通过身份证号码获取出生日期、性别、年龄
@@ -45,6 +49,6 @@ public class IDCardUtil {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(getInfo("658182198109222913"));
+		log.info(getInfo("658182198109222913"));
 	}
 }

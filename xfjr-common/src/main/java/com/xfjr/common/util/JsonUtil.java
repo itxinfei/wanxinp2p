@@ -1,5 +1,7 @@
 
 package com.xfjr.common.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONException;
@@ -12,6 +14,8 @@ import java.util.Map;
 
 
 public class JsonUtil {
+    private static final Logger log = LoggerFactory.getLogger(JsonUtil.class);
+
 
     public static String objectTojson(Object object){
         return JSON.toJSONString(object);
@@ -30,7 +34,7 @@ public class JsonUtil {
         try {
             jsoMap = JSONObject.parseObject(strJson,Map.class);
         } catch (JSONException e) {
-            System.out.println("json转换Map出错："+e.getMessage());
+            log.info("json转换Map出错："+e.getMessage());
         }
         
         return jsoMap;
@@ -45,7 +49,7 @@ public class JsonUtil {
         try {
             list = JSONObject.parseObject(strJson, List.class);
         } catch (JSONException e) {
-            System.out.println("json转换List出错："+e.getMessage());
+            log.info("json转换List出错："+e.getMessage());
         }
         return list;
     }

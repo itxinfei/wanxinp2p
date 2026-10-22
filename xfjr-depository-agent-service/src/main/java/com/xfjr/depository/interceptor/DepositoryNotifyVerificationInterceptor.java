@@ -77,7 +77,7 @@ public class DepositoryNotifyVerificationInterceptor implements HandlerIntercept
 		try (PrintWriter pw = response.getWriter()) {
 			pw.write(s);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 	}
 }

@@ -1,4 +1,6 @@
 package com.xfjr.repayment.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.xfjr.repayment.model.EqualInterestRepayment;
 import com.xfjr.repayment.model.EqualPrincipalRepayment;
@@ -12,7 +14,9 @@ import java.util.Map;
  * 还款计算工具类
  * </p>
  */
-public class RepaymentUtil {
+public class RepaymentUtil {
+    private static final Logger log = LoggerFactory.getLogger(RepaymentUtil.class);
+
 
     /**
      * 生成 等额本息还款计划
@@ -248,10 +252,10 @@ public class RepaymentUtil {
 
         // 调用等额本息, 看每期还款明细
         final EqualInterestRepayment equalInterestRepayment = fixedRepayment(invest, yearRate, month, new BigDecimal(0.03));
-        System.out.println("等额本息: " + equalInterestRepayment);
+        log.info("等额本息: " + equalInterestRepayment);
 
         // 调用等额本金, 看每期还款明细
         final EqualPrincipalRepayment equalPrincipalRepayment = fixedCapital(invest, yearRate, month, new BigDecimal(0.03));
-        System.out.println("等额本金: " + equalPrincipalRepayment);
+        log.info("等额本金: " + equalPrincipalRepayment);
     }
 }

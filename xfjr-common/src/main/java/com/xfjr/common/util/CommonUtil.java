@@ -1,4 +1,6 @@
 package com.xfjr.common.util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -8,6 +10,8 @@ import org.apache.commons.lang3.StringUtils;
  * </p>
  */
 public class CommonUtil {
+    private static final Logger log = LoggerFactory.getLogger(CommonUtil.class);
+
 
 	public static String hiddenMobile(String mobile) {
 		if (StringUtils.isBlank(mobile)) {
@@ -17,7 +21,7 @@ public class CommonUtil {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(hiddenMobile("15378791911"));
+		log.info(hiddenMobile("15378791911"));
 	}
 
 }
