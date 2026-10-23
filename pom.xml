@@ -37,6 +37,14 @@
         <module>xfjr-depository</module>
         <!--存管代理-->
         <module>xfjr-depository-agent-service</module>
+        <!--风控服务（新增）-->
+        <module>xfjr-risk-service</module>
+        <!--对账服务（新增）-->
+        <module>xfjr-reconciliation-service</module>
+        <!--文件服务（新增）-->
+        <module>xfjr-file-service</module>
+        <!--消息服务（新增）-->
+        <module>xfjr-message-service</module>
         <!--检索服务-->
         <module>xfjr-content-search-service</module>
         <!--注册中心-->
