@@ -3,26 +3,25 @@ package com.xfjr.reconciliation.common;
 import com.xfjr.common.domain.ErrorCode;
 
 public enum ReconciliationErrorCode implements ErrorCode {
-    E_110101(110101, "业务处理失败"),
+    E_RECON_110101(110101, "对账处理失败"),
+    E_RECON_110102(110102, "账单文件为空或格式错误"),
     ;
 
-    private int code;
-    private String desc;
+    private final int code;
+    private final String desc;
 
-    public int getCode() { return code; }
-    public String getDesc() { return desc; }
-
-    private ReconciliationErrorCode(int code, String desc) {
+    ReconciliationErrorCode(int code, String desc) {
         this.code = code;
         this.desc = desc;
     }
 
-    public static ReconciliationErrorCode setErrorCode(int code) {
-        for (ReconciliationErrorCode errorCode : ReconciliationErrorCode.values()) {
-            if (errorCode.getCode() == code) {
-                return errorCode;
-            }
-        }
-        return null;
+    @Override
+    public int getCode() {
+        return code;
+    }
+
+    @Override
+    public String getDesc() {
+        return desc;
     }
 }

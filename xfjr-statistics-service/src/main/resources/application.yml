@@ -1,0 +1,12 @@
+server:
+  port: 53080
+app:
+  id: statistics-service
+apollo:
+  meta: http://192.168.20.130:28080
+  bootstrap:
+    enabled: true
+    namespaces: application,micro_service.spring-boot-druid,micro_service.spring-boot-http,micro_service.spring-eureka,micro_service.mybatis-plus
+spring:
+  application:
+    name: statistics-service

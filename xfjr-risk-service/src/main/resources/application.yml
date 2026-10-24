@@ -10,3 +10,8 @@ apollo:
 spring:
   application:
     name: risk-service
+
+risk:
+  base-score: 100
+  pass-threshold: 80
+  reject-threshold: 40

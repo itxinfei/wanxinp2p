@@ -41,4 +41,16 @@ public class ProjectQueryParamsDTO {
 
 	@Schema(description = "是否是债权出让标")
 	private Integer isAssignment;
+
+	@Schema(description = "全文关键词(名称+描述分词匹配)")
+	private String keyword;
+
+	@Schema(description = "标的金额下限")
+	private BigDecimal amountMin;
+
+	@Schema(description = "标的金额上限")
+	private BigDecimal amountMax;
+
+	@Schema(description = "还款方式")
+	private String repaymentWay;
 }

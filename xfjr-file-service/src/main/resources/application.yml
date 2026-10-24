@@ -10,3 +10,9 @@ apollo:
 spring:
   application:
     name: file-service
+
+file:
+  storage:
+    local-path: /tmp/xfjr-file
+  whitelist: image/jpeg,image/png,image/gif,application/pdf,text/plain
+  max-size: 10485760

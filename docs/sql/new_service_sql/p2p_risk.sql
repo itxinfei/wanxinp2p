@@ -29,6 +29,7 @@ CREATE TABLE `risk_list` (
   `dimension` varchar(16) DEFAULT NULL COMMENT '维度：MOBILE-手机号 ID_CARD-身份证 DEVICE-设备 IP-IP',
   `value` varchar(128) NOT NULL COMMENT '名单值',
   `reason` varchar(255) DEFAULT NULL COMMENT '命中/加入原因',
+  `operator` varchar(64) DEFAULT NULL COMMENT '操作人',
   `status` tinyint(1) DEFAULT '1' COMMENT '状态 1生效 0失效',
   `create_date` datetime DEFAULT NULL COMMENT '创建时间',
   `update_date` datetime DEFAULT NULL COMMENT '更新时间',

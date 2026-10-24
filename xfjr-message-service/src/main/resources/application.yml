@@ -1,5 +1,5 @@
 server:
-  port: 53070
+  port: 53061
 app:
   id: message-service
 apollo:
@@ -10,3 +10,7 @@ apollo:
 spring:
   application:
     name: message-service
+
+message:
+  max-per-hour: 5
+  max-retry: 3

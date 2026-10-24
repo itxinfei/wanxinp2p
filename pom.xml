@@ -47,6 +47,8 @@
         <module>xfjr-message-service</module>
         <!--检索服务-->
         <module>xfjr-content-search-service</module>
+        <!--统计分析服务（新增）-->
+        <module>xfjr-statistics-service</module>
         <!--注册中心-->
         <module>xfjr-discover-server</module>
     </modules>

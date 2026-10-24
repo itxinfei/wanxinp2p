@@ -3,26 +3,28 @@ package com.xfjr.file.common;
 import com.xfjr.common.domain.ErrorCode;
 
 public enum FileErrorCode implements ErrorCode {
-    E_120101(120101, "业务处理失败"),
+    E_FILE_120101(120101, "文件类型不支持"),
+    E_FILE_120102(120102, "文件大小超过上限"),
+    E_FILE_120103(120103, "文件不存在"),
+    E_FILE_120104(120104, "文件已删除或过期"),
+    E_FILE_120105(120105, "文件存储失败"),
     ;
 
-    private int code;
-    private String desc;
+    private final int code;
+    private final String desc;
 
-    public int getCode() { return code; }
-    public String getDesc() { return desc; }
-
-    private FileErrorCode(int code, String desc) {
+    FileErrorCode(int code, String desc) {
         this.code = code;
         this.desc = desc;
     }
 
-    public static FileErrorCode setErrorCode(int code) {
-        for (FileErrorCode errorCode : FileErrorCode.values()) {
-            if (errorCode.getCode() == code) {
-                return errorCode;
-            }
-        }
-        return null;
+    @Override
+    public int getCode() {
+        return code;
+    }
+
+    @Override
+    public String getDesc() {
+        return desc;
     }
 }

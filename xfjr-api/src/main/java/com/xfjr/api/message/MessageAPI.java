@@ -1,14 +1,18 @@
 package com.xfjr.api.message;
 
 import com.xfjr.common.domain.RestResponse;
+import java.util.List;
 
 /**
  * 消息服务契约（供网关/其他服务通过 Feign 调用）
  */
 public interface MessageAPI {
 
-    /**
-     * 服务健康检查
-     */
     RestResponse<String> health();
+
+    RestResponse<NotificationDTO> send(SendNotificationRequest req);
+
+    RestResponse<List<NotificationTemplateDTO>> templates();
+
+    RestResponse<List<NotificationDTO>> myMessages(String receiverId);
 }

@@ -15,6 +15,9 @@ public enum ContentSearchErrorCode implements ErrorCode {
 	 * 不存在的用户信息
 	 */
 	E_190102(190102,"请求失败"),
+	E_190101(190101,"检索请求处理失败"),
+	E_190201(190201,"索引写入失败"),
+	E_190202(190202,"索引删除失败"),
 	;
 
 	private int code;
