@@ -75,7 +75,7 @@
 | 序列化 | FastJSON2 2.0.66 + Jackson |
 | 前端 | 管理后台 Vue 3 + Element Plus + Vite；移动端 uni-app |
 
-![架构](docs/技术架构图.png)
+架构图上没有画，因为画了也只是一个服务列表的复述——真正的信息是上面那张表和下面的库表拆分，看图不如看表。
 
 ## 数据库
 
@@ -90,8 +90,6 @@
 | `p2p_depository_agent` | 存管代理数据 |
 | `p2p_reconciliation` | 对账数据 |
 | `p2p_undo_log` | Seata 回滚日志 |
-
-![模块](docs/功能模块.png)
 
 ## 跑起来
 
