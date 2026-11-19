@@ -1,226 +1,158 @@
 <div align="center">
 
-# 心飞金融 P2P 平台
+# 心飞金融（xfjr）
 
-**互联网金融解决方案 | 理财 · 借贷 · 风控 · 银行存管一体化**
+理财 · 借贷 · 风控 · 存管，一套完整的互联网金融演示系统
 
 <img alt="JDK" src="https://img.shields.io/badge/JDK-25-brightgreen">
 <img alt="Spring Boot" src="https://img.shields.io/badge/Spring%20Boot-4.1.1-brightgreen">
 <img alt="Spring Cloud" src="https://img.shields.io/badge/Spring%20Cloud-2025.1.3-orange">
-<img alt="MyBatis Plus" src="https://img.shields.io/badge/MyBatis%20Plus-3.5.17-blue">
-<img alt="MySQL" src="https://img.shields.io/badge/MySQL-8.4.0-blueviolet">
 <img alt="RocketMQ" src="https://img.shields.io/badge/RocketMQ-2.3.6-red">
 <img alt="Seata" src="https://img.shields.io/badge/Seata-2.6.0-red">
 <img alt="ShardingSphere" src="https://img.shields.io/badge/ShardingSphere-5.5.3-red">
 <img alt="Apollo" src="https://img.shields.io/badge/Apollo-2.5.0-red">
-<img alt="Sentinel" src="https://img.shields.io/badge/Sentinel-1.8.10-red">
-<img alt="Springdoc" src="https://img.shields.io/badge/springdoc--openapi-3.1.1-success">
-<img alt="AuthServer" src="https://img.shields.io/badge/Auth%20Server-1.5.0-success">
-<img alt="ShedLock" src="https://img.shields.io/badge/ShedLock-7.10.1-informational">
-<img alt="FastJSON2" src="https://img.shields.io/badge/FastJSON2-2.0.66-lightgrey">
-<img alt="前端" src="https://img.shields.io/badge/前端-Vue%20%2B%20uni--app-blueviolet">
 
 </div>
 
----
+> **声明**：本项目是学习用的演示系统，不接入真实资金，不提供任何金融产品。P2P 网贷业务在国内已于 2020 年整体清退，此处的"出借""投标"等概念仅用于还原技术场景，不具备现实业务意义。
 
-## 项目简介
+## 这个项目在练什么
 
-**心飞金融** 是一款面向互联网大众的金融平台，提供 **P2P 理财服务** 和 **个人消费信贷服务**，依托大数据风控技术，实现安全、快捷、稳定的金融服务。
+金融系统难的不是增删改查，是这四件事：
 
-系统核心价值：
+1. **一笔钱不能同时进两个户** —— Seata AT 模式 + RocketMQ 事务消息双保险
+2. **交易数据量长得快** —— ShardingSphere 按用户 ID 把交易库水平拆成两个
+3. **多个服务要同时改状态** —— 状态机驱动，不许越过节点
+4. **对账必须平** —— 存管代理独立成服务，资金流水和业务流水分开记，差异单独校验
 
-- **业务闭环**：覆盖开户、借贷、出借、风控、还款、对账全流程
-- **技术先进**：Spring Boot 4 + Spring Cloud 2025 微服务架构，分布式事务保障数据一致性
-- **合规安全**：银行存管系统对接，资金流向透明，符合金融监管要求
+这四条构成了项目的骨架，其余都是围绕它们的业务包装。
 
-### 核心功能
+## 功能域
 
-| 功能域 | 说明 |
-|--------|------|
-| 统一认证 | OAuth2 授权码模式 + JWT 令牌，支持密码 / 短信验证码登录 |
-| 统一账户 | 用户开户、银行卡绑定、余额管理 |
+| 域 | 内容 |
+|---|---|
+| 统一认证 | OAuth2 授权码模式 + JWT，密码与短信验证码登录 |
+| 统一账户 | 开户、绑卡、余额、信用等级 |
 | 用户中心 | 个人信息、实名认证（百度 AI）、资产总览 |
 | 交易中心 | 标的管理、出借投标、满标放款 |
 | 还款服务 | 还款计划生成、按期还款、逾期处理 |
-| 存管代理 | 对接银行存管系统，资金流水同步 |
-| 全文检索 | Elasticsearch 标的多条件检索 |
+| 存管代理 | 与银行存管系统做数据交互 |
+| 全文检索 | Elasticsearch 多条件标的检索 |
 
----
+## 服务与端口
 
-## 功能模块
+| 服务 | 模块 | 端口 |
+|---|---|---|
+| 注册中心 | `xfjr-discover-server` | 53000 |
+| 网关 | `xfjr-gateway-server` | 53010 |
+| 统一认证 | `xfjr-uaa-service` | 53020 |
+| 统一账户 | `xfjr-account-service` | 53030 |
+| 用户中心 | `xfjr-consumer-service` | 53050 |
+| 交易中心 | `xfjr-transaction-service` | 53060 |
+| 存管代理 | `xfjr-depository-agent-service` | 53070 |
+| 还款服务 | `xfjr-repayment-service` | 53080 |
+| 检索服务 | `xfjr-content-search-service` | 54081 |
+| 银行存管（模拟） | `xfjr-depository` | 55010 |
 
-![功能模块](docs/功能模块.png)
+公共模块：`xfjr-common`、`xfjr-api`。
 
-**核心模块**：
+## 技术选型
 
-1. **交易平台**：用户出借、借款、标的全生命周期管理
-2. **风控管理**：身份认证、征信评估、风险控制
-3. **存管对账**：银行存管数据同步与差异校验
+| 层 | 选型 |
+|---|---|
+| 基础 | JDK 25 + Spring Boot 4.1.1 + Spring Cloud 2025.1.3 |
+| 注册发现 | Eureka |
+| 网关 | Spring Cloud Gateway + Sentinel 1.8.10（规则存 Apollo 动态推送） |
+| 认证 | Spring Authorization Server 1.5 + JWT |
+| 持久层 | MyBatis-Plus 3.5.17 + Druid + MySQL 8.4 |
+| 分库分表 | ShardingSphere 5.5.3 JDBC |
+| 消息 | RocketMQ 2.3.6（事务消息 + 延时消息 + 死信队列） |
+| 分布式事务 | Seata 2.6（AT 模式） |
+| 调度 | `@Scheduled` + ShedLock 7.10 |
+| 配置 | Apollo 2.5 |
+| 检索 | Elasticsearch |
+| 文档 | springdoc-openapi 3.1.1 |
+| 序列化 | FastJSON2 2.0.66 + Jackson |
+| 前端 | 管理后台 Vue 3 + Element Plus + Vite；移动端 uni-app |
 
----
+![架构](docs/技术架构图.png)
 
-## 技术架构
+## 数据库
 
-![技术架构图](docs/技术架构图.png)
-
-**核心设计原则**：
-
-- **微服务化**：基于 Spring Cloud 拆分为 12 个模块，Eureka 服务注册与发现
-- **网关统一入口**：Spring Cloud Gateway 统一路由、鉴权、限流
-- **配置外置**：Apollo 配置中心集中管理各环境配置
-- **数据分层**：OLTP（MySQL + ShardingSphere 分库分表）与检索（Elasticsearch）分离
-
-### 技术栈总览
-
-| 层级 | 技术选型 |
-|------|----------|
-| **基础框架** | JDK 25 + Spring Boot 4.1.1 + Spring Cloud 2025.1.3 |
-| **前端** | 管理后台 Vue 3 + Element Plus + Vite / 移动端 uni-app（Vue 3） |
-| **网关层** | Spring Cloud Gateway + Sentinel 限流熔断 |
-| **服务治理** | Eureka 注册发现 + OpenFeign 声明式调用 |
-| **认证授权** | Spring Authorization Server 1.5 + JWT |
-| **持久层** | MyBatis-Plus 3.5.17 + Druid 连接池 + MySQL 8.4 |
-| **分库分表** | ShardingSphere 5.5.3 JDBC |
-| **消息队列** | RocketMQ 2.3.6（事务消息 + 延时消息） |
-| **分布式事务** | Seata 2.6（AT 模式） |
-| **任务调度** | @Scheduled + ShedLock 7.10 分布式锁 |
-| **配置中心** | Apollo 2.5 |
-| **全文检索** | Elasticsearch |
-| **API 文档** | springdoc-openapi 3.1.1（OpenAPI 3 规范） |
-| **序列化** | FastJSON2 2.0.66 + Jackson |
-| **安全** | HTTPS + SHA1withRSA 签名 + 百度 AI 身份认证 |
-
----
-
-## 核心服务与端口
-
-| 服务 | 模块 | 端口 | 说明 |
-|------|------|------|------|
-| 注册中心 | `xfjr-discover-server` | 53000 | Eureka Server |
-| 网关服务 | `xfjr-gateway-server` | 53010 | 路由转发、鉴权、Sentinel 限流 |
-| 统一认证 | `xfjr-uaa-service` | 53020 | OAuth2 授权服务器 + JWT 签发 |
-| 统一账户 | `xfjr-account-service` | 53030 | 用户账户、余额、银行卡 |
-| 用户中心 | `xfjr-consumer-service` | 53050 | 个人信息、实名认证 |
-| 交易中心 | `xfjr-transaction-service` | 53060 | 标的管理、出借、放款 |
-| 存管代理 | `xfjr-depository-agent-service` | 53070 | 银行存管数据交互代理 |
-| 还款服务 | `xfjr-repayment-service` | 53080 | 还款计划与执行 |
-| 检索服务 | `xfjr-content-search-service` | 54081 | Elasticsearch 全文检索 |
-| 银行存管 | `xfjr-depository` | 55010 | 存管系统模拟（独立部署） |
-
-> 公共模块：`xfjr-common`（通用工具）、`xfjr-api`（API 接口与实体）
-
----
-
-## 数据库设计
-
-| 数据库 | 说明 |
-|--------|------|
-| `p2p_uaa` | 统一认证数据（OAuth2 客户端、用户凭证） |
-| `p2p_account` | 统一账户数据（余额、信用等级、绑定银行卡） |
-| `p2p_consumer` | 用户中心数据（个人信息、实名认证） |
-| `p2p_transaction_0/1` | 交易中心（ShardingSphere 水平拆分为 2 库） |
-| `p2p_repayment` | 还款计划数据（还款状态跟踪、逾期记录） |
-| `p2p_bank_depository` | 银行存管数据（资金流水、对账记录） |
-| `p2p_depository_agent` | 存管代理服务数据 |
+| 库 | 内容 |
+|---|---|
+| `p2p_uaa` | OAuth2 客户端、用户凭证 |
+| `p2p_account` | 余额、信用等级、绑定银行卡 |
+| `p2p_consumer` | 个人信息、实名认证 |
+| `p2p_transaction_0/1` | 交易数据，ShardingSphere 水平拆两库 |
+| `p2p_repayment` | 还款计划、逾期记录 |
+| `p2p_bank_depository` | 存管资金流水 |
+| `p2p_depository_agent` | 存管代理数据 |
 | `p2p_reconciliation` | 对账数据 |
-| `p2p_undo_log` | Seata AT 模式回滚日志表 |
+| `p2p_undo_log` | Seata 回滚日志 |
 
----
+![模块](docs/功能模块.png)
 
-## 技术解决方案
+## 跑起来
 
-| 技术领域 | 解决方案 |
-|----------|----------|
-| **微服务架构** | Spring Cloud 2025 + Eureka 注册发现 + OpenFeign 声明式调用 |
-| **统一认证** | Spring Authorization Server 1.5，OAuth2 授权码 + JWT |
-| **接口文档** | springdoc-openapi 3.1.1，OpenAPI 3 注解自动生成 Swagger UI |
-| **分布式事务** | Seata 2.6 AT 模式 + RocketMQ 事务消息双重保障 |
-| **分库分表** | ShardingSphere 5.5.2 JDBC，交易数据按用户 ID 水平拆分 |
-| **任务调度** | @Scheduled + ShedLock 7.10 分布式锁，避免多实例重复执行 |
-| **限流熔断** | Sentinel 1.8.9 Gateway 适配器，规则存储于 Apollo 动态推送 |
-| **安全交易** | HTTPS + SHA1withRSA 数字签名 + 百度 AI 人脸/身份证识别 |
-| **消息可靠性** | RocketMQ 同步发送 + 消费重试 + 死信队列 |
-
----
-
-## 快速开始
-
-### 环境要求
-
-- JDK 25+
-- Maven 3.9+
-- MySQL 8.0+
-- Redis 6+
-- RocketMQ 5.x
-- Apollo 2.x（配置中心）
-- Elasticsearch 7.x+
-
-### 部署步骤
+环境：JDK 25、Maven 3.9+、MySQL 8.0+、Redis 6+、RocketMQ 5.x、Apollo 2.x、Elasticsearch 7.x+。
 
 ```bash
-# 1. 初始化数据库
+# 1. 建库
 mysql -u root -p < docs/p2p_sql/p2p_account.sql
 mysql -u root -p < docs/p2p_sql/p2p_transaction_0.sql
-# ... 其余数据库脚本见 docs/p2p_sql/
+# 其余脚本见 docs/p2p_sql/
 
-# 2. 启动 Apollo 配置中心并导入配置
-#    导入 docs/Apollo_sql/p2p_apollo.sql
+# 2. 起 Apollo，导入 docs/Apollo_sql/p2p_apollo.sql
 
-# 3. 编译整个工程
+# 3. 编译
 mvn clean install -DskipTests
 
-# 4. 按顺序启动服务（端口通过启动参数注入）
+# 4. 按顺序启动
 java -jar xfjr-discover-server/target/xfjr-discover-server.jar
 java -jar xfjr-uaa-service/target/xfjr-uaa-service.jar -Denv=dev -Dserver.port=53020
 java -jar xfjr-account-service/target/xfjr-account-service.jar
 java -jar xfjr-gateway-server/target/xfjr-gateway-server.jar -Denv=dev -Dserver.port=53010
-# ... 其余服务同理
 ```
 
-### 前端启动
+前端：
 
 ```bash
-# 管理后台
-cd xfjr-manager && npm install && npm run dev
-
-# H5 移动端（uni-app，使用 HBuilderX 打开运行）
-cd xfjr-front-h5
+cd xfjr-manager && npm install && npm run dev    # 管理后台
+cd xfjr-front-h5                                   # uni-app，用 HBuilderX 打开
 ```
 
----
+## 几个容易踩的坑
 
-## 项目结构
+- **配置全在 Apollo**。不先导入配置，服务起不来，报的错还跟配置无关，容易绕远路。
+- **启动顺序**：注册中心 → 认证 → 业务服务 → 网关。顺序错了网关会一直 503。
+- **JDK 23+ 要开注解处理**：`-proc:full`，父 POM 里已经配好，自己拆模块时注意别丢。
+- **`xfjr-depository` 是模拟系统**，包名 `com.xfjr.depository`，主类 `XfjrDepositoryServer`，可以单独部署，不影响主链路。
+- 日志在 `logs/`，健康检查走 `/actuator/health`。
+
+## 工程结构
 
 ```
-心飞金融（xfjr）
-├── xfjr-discover-server        # 注册中心（Eureka）
-├── xfjr-gateway-server         # 网关服务（Spring Cloud Gateway）
-├── xfjr-uaa-service            # 统一认证（OAuth2 + JWT）
-├── xfjr-account-service        # 统一账户服务
-├── xfjr-consumer-service       # 用户中心服务
-├── xfjr-transaction-service    # 交易中心服务
-├── xfjr-repayment-service      # 还款服务
-├── xfjr-depository-agent-service # 存管代理服务
-├── xfjr-content-search-service # 检索服务（Elasticsearch）
-├── xfjr-depository             # 银行存管系统（模拟）
-├── xfjr-common                 # 公共组件（工具类、通用配置）
-├── xfjr-api                    # API 接口定义与实体类
-├── xfjr-manager                # 管理后台前端（Vue 3 + Element Plus + Vite）
-├── xfjr-front-h5               # H5 移动端前端（uni-app）
-├── docs/                            # 项目文档与 SQL 脚本
-│   ├── 需求文档.md                  # 目标态需求（v4.2，业务规则 + 34 项功能需求）
-│   ├── 重构规划文档.md              # 微服务重构规划（v1.2，分期实施计划）
-│   └── ...                          # 架构图、SQL 脚本、流程图等
-└── pom.xml                          # Maven 父 POM
+xfjr-discover-server        注册中心
+xfjr-gateway-server         网关
+xfjr-uaa-service            统一认证
+xfjr-account-service        统一账户
+xfjr-consumer-service       用户中心
+xfjr-transaction-service    交易中心
+xfjr-repayment-service      还款
+xfjr-depository-agent-service  存管代理
+xfjr-content-search-service 检索
+xfjr-depository             存管模拟
+xfjr-common / xfjr-api      公共组件与接口定义
+xfjr-manager                管理后台（Vue 3 + Element Plus + Vite）
+xfjr-front-h5               H5（uni-app）
+docs/                       需求文档 v4.2、重构规划 v1.2、SQL、架构图
 ```
 
----
+## 许可
 
-## 注意事项
+Apache-2.0，见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)。
 
-1. **配置依赖**：各服务运行时配置托管在 Apollo，需先启动 Apollo 并导入 `docs/Apollo_sql/p2p_apollo.sql`
-2. **启动顺序**：注册中心 → 认证服务 → 业务服务 → 网关
-3. **JDK 要求**：项目使用 JDK 25 编译，Lombok 1.18.48+ 已适配；JDK 23+ 需 `-proc:full` 开启注解处理（已在 POM 中配置）
-4. **日志排查**：日志目录 `logs/`，关键监控端点 `/actuator/health`
-5. **存管模块**：`xfjr-depository` 为银行存管模拟系统，包名独立（`com.xfjr.depository`），可单独部署；主类为 `XfjrDepositoryServer`
+## 联系
+
+QQ 747011882 ｜ 邮箱 747011882@qq.com
