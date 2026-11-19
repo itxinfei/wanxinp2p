@@ -1,22 +1,46 @@
-<div align="center">
+<h1 align="center">心飞金融 · xfjr</h1>
 
-# 心飞金融（xfjr）
+<h4 align="center">理财 · 借贷 · 风控 · 存管 —— 一套完整的互联网金融演示系统</h4>
 
-理财 · 借贷 · 风控 · 存管，一套完整的互联网金融演示系统
+<p align="center">
+  <a href="https://gitee.com/itxinfei/xfjr/stargazers"><img src="https://gitee.com/itxinfei/xfjr/badge/star.svg?theme=gvp" alt="star"></a>
+  <a href="https://gitee.com/itxinfei/xfjr/members"><img src="https://gitee.com/itxinfei/xfjr/badge/fork.svg?theme=gvp" alt="fork"></a>
+  <img src="https://img.shields.io/badge/purpose-learning%20demo-lightgrey.svg" alt="purpose">
+  <img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="license">
+</p>
 
-<img alt="JDK" src="https://img.shields.io/badge/JDK-25-brightgreen">
-<img alt="Spring Boot" src="https://img.shields.io/badge/Spring%20Boot-4.1.1-brightgreen">
-<img alt="Spring Cloud" src="https://img.shields.io/badge/Spring%20Cloud-2025.1.3-orange">
-<img alt="RocketMQ" src="https://img.shields.io/badge/RocketMQ-2.3.6-red">
-<img alt="Seata" src="https://img.shields.io/badge/Seata-2.6.0-red">
-<img alt="ShardingSphere" src="https://img.shields.io/badge/ShardingSphere-5.5.3-red">
-<img alt="Apollo" src="https://img.shields.io/badge/Apollo-2.5.0-red">
+<p align="center">
+  <img src="https://img.shields.io/badge/JDK-25-ED8B00.svg?logo=openjdk&logoColor=white" alt="JDK">
+  <img src="https://img.shields.io/badge/Spring%20Boot-4.1.1-6DB33F.svg?logo=springboot&logoColor=white" alt="Spring Boot">
+  <img src="https://img.shields.io/badge/Spring%20Cloud-2025.1.3-6DB33F.svg?logo=spring&logoColor=white" alt="Spring Cloud">
+  <img src="https://img.shields.io/badge/ShardingSphere-5.5.3-2B6CB0.svg" alt="ShardingSphere">
+  <img src="https://img.shields.io/badge/Seata-2.6-2B6CB0.svg" alt="Seata">
+  <img src="https://img.shields.io/badge/RocketMQ-2.3.6-D77310.svg?logo=apacherocketmq&logoColor=white" alt="RocketMQ">
+  <img src="https://img.shields.io/badge/Apollo-2.5-red.svg" alt="Apollo">
+  <img src="https://img.shields.io/badge/Elasticsearch-7+-FEC514.svg?logo=elasticsearch&logoColor=white" alt="ES">
+  <img src="https://img.shields.io/badge/MySQL-8.4-4479A1.svg?logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/Vue-3-42b883.svg?logo=vue.js&logoColor=white" alt="Vue">
+</p>
 
-</div>
+<p align="center">
+  <a href="#一这是什么">这是什么</a> ·
+  <a href="#二这个项目在练什么">练什么</a> ·
+  <a href="#三功能域">功能域</a> ·
+  <a href="#五技术选型">技术选型</a> ·
+  <a href="#七快速开始">快速开始</a> ·
+  <a href="#八容易踩的坑">踩坑</a> ·
+  <a href="https://gitee.com/itxinfei/xfjr/releases">版本发布</a>
+</p>
 
-> **声明**：本项目是学习用的演示系统，不接入真实资金，不提供任何金融产品。P2P 网贷业务在国内已于 2020 年整体清退，此处的"出借""投标"等概念仅用于还原技术场景，不具备现实业务意义。
+---
 
-## 这个项目在练什么
+> 声明：本项目是学习用的演示系统，不接入真实资金，不提供任何金融产品。P2P 网贷业务在国内已于 2020 年整体清退，此处的"出借""投标"等概念仅用于还原技术场景，不具备现实业务意义。
+
+## 一、这是什么
+
+理财、借贷、风控、存管四个域凑成一套互联网金融演示系统。技术上练的是分布式事务、分库分表、服务编排这几件事；业务上还原的是那个已经退场的 P2P 时代。
+
+## 二、这个项目在练什么
 
 金融系统难的不是增删改查，是这四件事：
 
@@ -27,7 +51,7 @@
 
 这四条构成了项目的骨架，其余都是围绕它们的业务包装。
 
-## 功能域
+## 三、功能域
 
 | 域 | 内容 |
 |---|---|
@@ -39,7 +63,7 @@
 | 存管代理 | 与银行存管系统做数据交互 |
 | 全文检索 | Elasticsearch 多条件标的检索 |
 
-## 服务与端口
+## 四、服务与端口
 
 | 服务 | 模块 | 端口 |
 |---|---|---|
@@ -56,7 +80,7 @@
 
 公共模块：`xfjr-common`、`xfjr-api`。
 
-## 技术选型
+## 五、技术选型
 
 | 层 | 选型 |
 |---|---|
@@ -77,7 +101,7 @@
 
 架构图上没有画，因为画了也只是一个服务列表的复述——真正的信息是上面那张表和下面的库表拆分，看图不如看表。
 
-## 数据库
+## 六、数据库
 
 | 库 | 内容 |
 |---|---|
@@ -91,9 +115,14 @@
 | `p2p_reconciliation` | 对账数据 |
 | `p2p_undo_log` | Seata 回滚日志 |
 
-## 跑起来
+## 七、快速开始
 
 环境：JDK 25、Maven 3.9+、MySQL 8.0+、Redis 6+、RocketMQ 5.x、Apollo 2.x、Elasticsearch 7.x+。
+
+1. 建库
+2. 起 Apollo 并导入配置
+3. 编译
+4. 按顺序启动
 
 ```bash
 # 1. 建库
@@ -120,37 +149,44 @@ cd xfjr-manager && npm install && npm run dev    # 管理后台
 cd xfjr-front-h5                                   # uni-app，用 HBuilderX 打开
 ```
 
-## 几个容易踩的坑
+## 八、容易踩的坑
 
-- **配置全在 Apollo**。不先导入配置，服务起不来，报的错还跟配置无关，容易绕远路。
-- **启动顺序**：注册中心 → 认证 → 业务服务 → 网关。顺序错了网关会一直 503。
-- **JDK 23+ 要开注解处理**：`-proc:full`，父 POM 里已经配好，自己拆模块时注意别丢。
-- **`xfjr-depository` 是模拟系统**，包名 `com.xfjr.depository`，主类 `XfjrDepositoryServer`，可以单独部署，不影响主链路。
-- 日志在 `logs/`，健康检查走 `/actuator/health`。
+- **配置全在 Apollo** —— 不先导入配置，服务起不来，报的错还跟配置无关，容易绕远路
+- **启动顺序** —— 注册中心 → 认证 → 业务服务 → 网关，顺序错了网关会一直 503
+- **JDK 23+ 要开注解处理** —— `-proc:full`，父 POM 里已经配好，自己拆模块时注意别丢
+- **`xfjr-depository` 是模拟系统** —— 包名 `com.xfjr.depository`，主类 `XfjrDepositoryServer`，可以单独部署，不影响主链路
+- **日志与健康检查** —— 日志在 `logs/`，健康检查走 `/actuator/health`
 
-## 工程结构
+## 九、工程结构
 
 ```
-xfjr-discover-server        注册中心
-xfjr-gateway-server         网关
-xfjr-uaa-service            统一认证
-xfjr-account-service        统一账户
-xfjr-consumer-service       用户中心
-xfjr-transaction-service    交易中心
-xfjr-repayment-service      还款
-xfjr-depository-agent-service  存管代理
-xfjr-content-search-service 检索
-xfjr-depository             存管模拟
-xfjr-common / xfjr-api      公共组件与接口定义
-xfjr-manager                管理后台（Vue 3 + Element Plus + Vite）
-xfjr-front-h5               H5（uni-app）
-docs/                       需求文档 v4.2、重构规划 v1.2、SQL、架构图
+xfjr/
+├── xfjr-discover-server            注册中心
+├── xfjr-gateway-server             网关
+├── xfjr-uaa-service                统一认证
+├── xfjr-account-service            统一账户
+├── xfjr-consumer-service           用户中心
+├── xfjr-transaction-service        交易中心
+├── xfjr-repayment-service          还款
+├── xfjr-depository-agent-service   存管代理
+├── xfjr-content-search-service     检索
+├── xfjr-depository                 存管模拟
+├── xfjr-common / xfjr-api          公共组件与接口定义
+├── xfjr-manager                    管理后台（Vue 3 + Element Plus + Vite）
+├── xfjr-front-h5                   H5（uni-app）
+└── docs/                           需求文档 v4.2、重构规划 v1.2、SQL、架构图
 ```
 
-## 许可
+## 十、开源协议
 
 Apache-2.0，见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)。
 
-## 联系
+## 十一、交流
 
-QQ 747011882 ｜ 邮箱 747011882@qq.com
+作者：心飞为你飞（itxinfei）
+
+<p align="center">
+  <a href="https://qm.qq.com/cgi-bin/qm/qr?k=0&group_code=661543188"><img src="https://img.shields.io/badge/QQ%E7%BE%A4-661543188-blue.svg?logo=tencentqq&logoColor=white" alt="QQ群"></a>
+  <a href="mailto:747011882@qq.com"><img src="https://img.shields.io/badge/email-747011882%40qq.com-orange.svg" alt="email"></a>
+  <a href="https://gitee.com/itxinfei"><img src="https://img.shields.io/badge/Gitee-itxinfei-C71D23.svg?logo=gitee&logoColor=white" alt="gitee"></a>
+</p>
