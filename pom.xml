@@ -18,7 +18,7 @@
     <!--心飞金融子模块-->
     <modules>
         <!--统一账户-->
-        <module>xfjr-account-service</module>
+        <module>xfjr-account</module>
         <!--通用组件-->
         <module>xfjr-common</module>
         <!--API接口+各种实体类-->
@@ -26,29 +26,29 @@
         <!--网关服务-->
         <module>xfjr-gateway-server</module>
         <!--用户中心-->
-        <module>xfjr-consumer-service</module>
+        <module>xfjr-consumer</module>
         <!--统一认证-->
-        <module>xfjr-uaa-service</module>
+        <module>xfjr-uaa</module>
         <!--交易中心-->
-        <module>xfjr-transaction-service</module>
+        <module>xfjr-transaction</module>
         <!--还款服务-->
-        <module>xfjr-repayment-service</module>
+        <module>xfjr-repayment</module>
         <!--银行存管-->
         <module>xfjr-depository</module>
         <!--存管代理-->
-        <module>xfjr-depository-agent-service</module>
+        <module>xfjr-depository-agent</module>
         <!--风控服务（新增）-->
-        <module>xfjr-risk-service</module>
+        <module>xfjr-risk</module>
         <!--对账服务（新增）-->
-        <module>xfjr-reconciliation-service</module>
+        <module>xfjr-reconciliation</module>
         <!--文件服务（新增）-->
-        <module>xfjr-file-service</module>
+        <module>xfjr-file</module>
         <!--消息服务（新增）-->
-        <module>xfjr-message-service</module>
+        <module>xfjr-message</module>
         <!--检索服务-->
-        <module>xfjr-content-search-service</module>
+        <module>xfjr-content-search</module>
         <!--统计分析服务（新增）-->
-        <module>xfjr-statistics-service</module>
+        <module>xfjr-statistics</module>
         <!--注册中心-->
         <module>xfjr-discover-server</module>
     </modules>

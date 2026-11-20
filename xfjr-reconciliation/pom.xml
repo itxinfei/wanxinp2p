@@ -7,7 +7,7 @@
         <groupId>com.xfjr</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>xfjr-reconciliation-service</artifactId>
+    <artifactId>xfjr-reconciliation</artifactId>
     <description>对账服务</description>
 
     <properties>

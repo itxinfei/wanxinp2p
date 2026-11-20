@@ -69,13 +69,13 @@
 |---|---|---|
 | 注册中心 | `xfjr-discover-server` | 53000 |
 | 网关 | `xfjr-gateway-server` | 53010 |
-| 统一认证 | `xfjr-uaa-service` | 53020 |
-| 统一账户 | `xfjr-account-service` | 53030 |
-| 用户中心 | `xfjr-consumer-service` | 53050 |
-| 交易中心 | `xfjr-transaction-service` | 53060 |
-| 存管代理 | `xfjr-depository-agent-service` | 53070 |
-| 还款服务 | `xfjr-repayment-service` | 53080 |
-| 检索服务 | `xfjr-content-search-service` | 54081 |
+| 统一认证 | `xfjr-uaa` | 53020 |
+| 统一账户 | `xfjr-account` | 53030 |
+| 用户中心 | `xfjr-consumer` | 53050 |
+| 交易中心 | `xfjr-transaction` | 53060 |
+| 存管代理 | `xfjr-depository-agent` | 53070 |
+| 还款服务 | `xfjr-repayment` | 53080 |
+| 检索服务 | `xfjr-content-search` | 54081 |
 | 银行存管（模拟） | `xfjr-depository` | 55010 |
 
 公共模块：`xfjr-common`、`xfjr-api`。
@@ -137,8 +137,8 @@ mvn clean install -DskipTests
 
 # 4. 按顺序启动
 java -jar xfjr-discover-server/target/xfjr-discover-server.jar
-java -jar xfjr-uaa-service/target/xfjr-uaa-service.jar -Denv=dev -Dserver.port=53020
-java -jar xfjr-account-service/target/xfjr-account-service.jar
+java -jar xfjr-uaa/target/xfjr-uaa.jar -Denv=dev -Dserver.port=53020
+java -jar xfjr-account/target/xfjr-account.jar
 java -jar xfjr-gateway-server/target/xfjr-gateway-server.jar -Denv=dev -Dserver.port=53010
 ```
 
@@ -163,13 +163,13 @@ cd xfjr-front-h5                                   # uni-app，用 HBuilderX 打
 xfjr/
 ├── xfjr-discover-server            注册中心
 ├── xfjr-gateway-server             网关
-├── xfjr-uaa-service                统一认证
-├── xfjr-account-service            统一账户
-├── xfjr-consumer-service           用户中心
-├── xfjr-transaction-service        交易中心
-├── xfjr-repayment-service          还款
-├── xfjr-depository-agent-service   存管代理
-├── xfjr-content-search-service     检索
+├── xfjr-uaa                统一认证
+├── xfjr-account            统一账户
+├── xfjr-consumer           用户中心
+├── xfjr-transaction        交易中心
+├── xfjr-repayment          还款
+├── xfjr-depository-agent   存管代理
+├── xfjr-content-search     检索
 ├── xfjr-depository                 存管模拟
 ├── xfjr-common / xfjr-api          公共组件与接口定义
 ├── xfjr-manager                    管理后台（Vue 3 + Element Plus + Vite）

@@ -7,8 +7,8 @@
         <groupId>com.xfjr</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>xfjr-message-service</artifactId>
-    <description>消息服务</description>
+    <artifactId>xfjr-file</artifactId>
+    <description>文件服务</description>
 
     <properties>
         <java.version>25</java.version>
