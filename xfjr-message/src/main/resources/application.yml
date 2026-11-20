@@ -1,7 +1,7 @@
 server:
   port: 53061
 app:
-  id: message-service
+  id: xfjr-message
 apollo:
   meta: http://192.168.20.130:28080
   bootstrap:
@@ -9,7 +9,7 @@ apollo:
     namespaces: application,micro_service.spring-boot-druid,micro_service.spring-boot-http,micro_service.spring-eureka,micro_service.spring-boot-redis,micro_service.mybatis-plus,micro_service.spring-rocketmq
 spring:
   application:
-    name: message-service
+    name: xfjr-message
 
 message:
   max-per-hour: 5

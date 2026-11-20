@@ -1,7 +1,7 @@
 server:
   port: 53030
 app:
-  id: account-service
+  id: xfjr-account
 apollo:
   meta: http://192.168.20.130:28080
   bootstrap:
@@ -9,7 +9,7 @@ apollo:
     namespaces: application,micro_service.spring-boot-druid,micro_service.spring-boot-http,micro_service.spring-eureka,micro_service.spring-boot-redis,micro_service.mybatis-plus,micro_service.spring-rocketmq
 spring:
   application:
-    name: account-service
+    name: xfjr-account
 # 日志配置-会代替springboot原生日志颜色
 #logging:
 #  config: classpath:log4j2-dev.xml

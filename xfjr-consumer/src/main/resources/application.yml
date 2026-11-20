@@ -1,6 +1,6 @@
 # -Denv=dev -Dapollo.cluster=DEFAULT -Dserver.port=53050
 app:
-  id: consumer-service
+  id: xfjr-consumer
 apollo:
   meta: http://192.168.20.130:28080
   bootstrap:
@@ -9,7 +9,7 @@ apollo:
 
 spring:
   application:
-    name: consumer-service
+    name: xfjr-consumer
 # 日志配置-会代替springboot原生日志颜色
 logging:
   config: classpath:log4j2-dev.xml

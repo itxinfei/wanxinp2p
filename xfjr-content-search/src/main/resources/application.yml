@@ -1,5 +1,5 @@
 app:
-  id: content-search-service
+  id: xfjr-content-search
 apollo:
   meta: http://192.168.20.130:28080
   bootstrap:
@@ -10,7 +10,7 @@ apollo:
 
 spring:
   application:
-    name: content-search-service
+    name: xfjr-content-search
 # 日志配置
 #logging:
 #  config: classpath:log4j2-dev.xml

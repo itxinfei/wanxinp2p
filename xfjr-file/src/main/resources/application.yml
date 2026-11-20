@@ -1,7 +1,7 @@
 server:
   port: 53060
 app:
-  id: file-service
+  id: xfjr-file
 apollo:
   meta: http://192.168.20.130:28080
   bootstrap:
@@ -9,7 +9,7 @@ apollo:
     namespaces: application,micro_service.spring-boot-druid,micro_service.spring-boot-http,micro_service.spring-eureka,micro_service.spring-boot-redis,micro_service.mybatis-plus,micro_service.spring-rocketmq
 spring:
   application:
-    name: file-service
+    name: xfjr-file
 
 file:
   storage:

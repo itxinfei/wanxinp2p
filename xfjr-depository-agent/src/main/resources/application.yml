@@ -1,5 +1,5 @@
 app:
-  id: depository-agent-service
+  id: xfjr-depository-agent
 apollo:
   meta: http://192.168.20.130:28080
   bootstrap:
@@ -9,7 +9,7 @@ apollo:
     namespaces: micro_service.spring-boot-druid,application,micro_service.spring-boot-http,micro_service.spring-eureka,micro_service.spring-cloud-feign,micro_service.mybatis-plus,micro_service.spring-rocketmq,micro_service.spring-boot-redis
 spring:
   application:
-    name: depository-agent-service
+    name: xfjr-depository-agent
 # 日志配置-会代替springboot原生日志颜色
 logging:
   config: classpath:log4j2-dev.xml

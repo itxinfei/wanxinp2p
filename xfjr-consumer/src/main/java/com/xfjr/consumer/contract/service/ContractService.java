@@ -88,7 +88,7 @@ public class ContractService {
         if (!"BROKERAGE".equals(type)) {
             result.add(toDto(genContract(req.getProjectId(), null, req.getBorrowerId(), "BROKERAGE", now)));
         }
-        // 推送签署（FR-133：经 message-service 推送）。此处记录日志；生产环境经 Feign 调用 message-service。
+        // 推送签署（FR-133：经 xfjr-message 推送）。此处记录日志；生产环境经 Feign 调用 xfjr-message。
         for (ContractDTO c : result) {
             log.info("合同 {} 已生成，推送各方签署", c.getContractNo());
         }
@@ -176,7 +176,7 @@ public class ContractService {
         c.setLenderId(lenderId);
         c.setBorrowerId(borrowerId);
         c.setTemplateId(tpl == null ? null : tpl.getId());
-        // 生产环境：渲染为 PDF 后上传 file-service 并回填真实 fileId
+        // 生产环境：渲染为 PDF 后上传 xfjr-file 并回填真实 fileId
         c.setFileId(UUID.randomUUID().toString().replace("-", ""));
         c.setFileHash(sha256(content));
         c.setContent(content);

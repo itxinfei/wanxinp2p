@@ -1,6 +1,6 @@
 # -Denv=dev -Dapollo.cluster=DEFAULT -Dserver.port=53010
 app:
-  id: gateway-server
+  id: xfjr-gateway
 apollo:
   meta: http://192.168.20.130:28080
   bootstrap:
@@ -9,7 +9,7 @@ apollo:
 
 spring:
   application:
-    name: gateway-server
+    name: xfjr-gateway
   security:
     oauth2:
       resourceserver:

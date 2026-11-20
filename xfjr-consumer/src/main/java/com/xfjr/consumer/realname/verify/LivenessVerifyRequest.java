@@ -10,9 +10,9 @@ public class LivenessVerifyRequest {
     private String realName;
     /** OCR 识别身份证号 */
     private String idCard;
-    /** 活体采集件在 file-service 的引用 */
+    /** 活体采集件在 xfjr-file 的引用 */
     private String livenessImageRef;
-    /** 人脸比对件在 file-service 的引用 */
+    /** 人脸比对件在 xfjr-file 的引用 */
     private String faceImageRef;
     /** 挑战类型：ACTION/TEXT/LIGHT */
     private String challengeType;

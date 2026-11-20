@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * 活体/人脸核验对接骨架（FR-135）：调用第三方活体检测/人脸比对服务。
- * 请求发送 OCR 姓名/身份证号 + 图像在 file-service 的引用 + 挑战类型；
+ * 请求发送 OCR 姓名/身份证号 + 图像在 xfjr-file 的引用 + 挑战类型；
  * 响应解析活体分数、人脸比对分数、攻击检测。未配置 url 或调用失败抛出异常（异常流①）。
  */
 @Slf4j

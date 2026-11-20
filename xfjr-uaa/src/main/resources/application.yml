@@ -1,6 +1,6 @@
 # 统一认证
 app:
-  id: uaa-service
+  id: xfjr-uaa
 apollo:
   meta: http://192.168.20.130:28080
   bootstrap:
@@ -11,7 +11,7 @@ apollo:
     namespaces: application,micro_service.spring-boot-druid,micro_service.spring-boot-http,micro_service.spring-eureka,micro_service.spring-cloud-feign
 spring:
   application:
-    name: uaa-service
+    name: xfjr-uaa
   main:
     allow-bean-definition-overriding: true
 # 日志配置

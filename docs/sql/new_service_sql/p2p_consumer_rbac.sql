@@ -1,7 +1,7 @@
 -- 管理后台 RBAC（FR-131）数据库脚本（p2p_consumer 库）
 -- 启用既有六表结构；IF NOT EXISTS 幂等（不覆盖已有数据）
 -- 说明：权威结构见 docs/sql/p2p_sql/xfjr-init.sql；此处保证 p2p_consumer 内存在同构表，
---       供 consumer-service 的 RBAC 端点使用
+--       供 xfjr-consumer 的 RBAC 端点使用
 
 USE `p2p_consumer`;
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 /**
         C端服务代理
         */
-@FeignClient(value = "consumer-service")
+@FeignClient(value = "xfjr-consumer")
 public interface ConsumerApiAgent {
     @GetMapping("/consumer/l/currConsumer/{mobile}")
     RestResponse<ConsumerDTO> getCurrConsumer(@PathVariable("mobile") String mobile);

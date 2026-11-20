@@ -1,5 +1,5 @@
 app:
-  id: transaction-service
+  id: xfjr-transaction
 apollo:
   meta: http://192.168.20.130:28080
   bootstrap:
@@ -9,7 +9,7 @@ apollo:
     namespaces: application,micro_service.spring-boot-http,micro_service.spring-eureka,micro_service.spring-cloud-feign,micro_service.mybatis-plus,micro_service.spring-rocketmq
 spring:
   application:
-    name: transaction-service
+    name: xfjr-transaction
   main:
     allow-bean-definition-overriding: true
 # 日志配置-会代替springboot原生日志颜色

@@ -7,7 +7,7 @@ import com.xfjr.common.domain.RestResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(value = "depository-agent-service")
+@FeignClient(value = "xfjr-depository-agent")
 public interface DepositoryAgentApiAgent {
     @PostMapping("/depository-agent/l/user-auto-pre-transaction")
     RestResponse<String> userAutoPreTransaction(
