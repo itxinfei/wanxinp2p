@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * 创建标的请求数据
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019/5/20
  */
 @Data

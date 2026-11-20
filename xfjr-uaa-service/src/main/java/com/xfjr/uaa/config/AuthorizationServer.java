@@ -49,7 +49,7 @@ public class AuthorizationServer {
         // 管理后台客户端（Vue3 管理端，走密码模式直接换令牌）
         RegisteredClient adminClient = RegisteredClient.withId("xfjr-web-admin")
                 .clientId("xfjr-web-admin")
-                .clientSecret("{noop}itcastb")
+                .clientSecret("{noop}xfjrb")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
                 .authorizationGrantType(PASSWORD_GRANT_TYPE)
@@ -65,7 +65,7 @@ public class AuthorizationServer {
         // 移动端客户端（uni-app H5，走密码模式直接换令牌）
         RegisteredClient h5Client = RegisteredClient.withId("xfjr-web-h5")
                 .clientId("xfjr-web-h5")
-                .clientSecret("{noop}itcasth5")
+                .clientSecret("{noop}xfjrh5")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
                 .authorizationGrantType(PASSWORD_GRANT_TYPE)

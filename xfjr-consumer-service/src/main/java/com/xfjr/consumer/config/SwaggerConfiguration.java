@@ -20,6 +20,6 @@ public class SwaggerConfiguration {
                 .title("心飞金融P2P平台-用户服务API文档")
                 .description("包含用户服务api")
                 .version("1.0.0")
-                .contact(new Contact().name("黑马程序员")));
+                .contact(new Contact().name("心飞金融")));
     }
 }

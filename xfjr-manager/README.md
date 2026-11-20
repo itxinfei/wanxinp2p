@@ -22,7 +22,7 @@
 
 ```bash
 # clone the project
-git clone http://git.itcast.cn/development/project-p2p-cmm-java-react.git
+git clone https://gitee.com/itxinfei/xfjr
 
 # install dependency
 npm install

@@ -5,7 +5,7 @@ package com.xfjr.depository.common.constant;
  * 标的状态枚举类
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019/5/16
  */
 public enum ProjectStatusCode {

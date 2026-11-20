@@ -10,7 +10,7 @@ import java.util.List;
  * 标的满标放款信息
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/21
  */
 @Data

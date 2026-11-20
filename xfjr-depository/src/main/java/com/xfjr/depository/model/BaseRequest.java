@@ -8,7 +8,7 @@ import lombok.Data;
  * 请求参数信息基类
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-23
  */
 @Data

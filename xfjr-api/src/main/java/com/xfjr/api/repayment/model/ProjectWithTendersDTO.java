@@ -12,7 +12,7 @@ import java.util.List;
  * 标的还款信息
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/22
  */
 @Data

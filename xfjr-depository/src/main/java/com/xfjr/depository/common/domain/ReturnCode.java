@@ -5,7 +5,7 @@ package com.xfjr.depository.common.domain;
  * 系统返回码接口
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019/5/22
  */
 public interface ReturnCode {

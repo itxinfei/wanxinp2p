@@ -5,7 +5,7 @@ package com.xfjr.depository.common.constant;
  * 审核状态
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-29
  */
 public enum AuditStatusCode {

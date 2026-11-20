@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * 统一拦截异常处理
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019/5/22
  */
 @Slf4j

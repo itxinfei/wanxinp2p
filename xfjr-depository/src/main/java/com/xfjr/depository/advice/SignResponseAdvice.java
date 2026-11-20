@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.AbstractMappingJack
  * 统一拦截返回数据进行签名
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-23
  */
 @ControllerAdvice

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * 本类用于获取配置文件中的配置, 封装成service方便调用
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019/5/22
  */
 @Service

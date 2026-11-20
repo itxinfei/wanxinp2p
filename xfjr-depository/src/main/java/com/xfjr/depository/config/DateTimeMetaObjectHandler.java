@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * MyBatis-Plus 自动填充创建时间和更新时间
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-27
  */
 @Slf4j

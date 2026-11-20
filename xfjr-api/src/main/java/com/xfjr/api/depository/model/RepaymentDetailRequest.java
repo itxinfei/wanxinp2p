@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * 还款明细请求信息
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/26
  */
 @Data

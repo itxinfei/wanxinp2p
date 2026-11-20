@@ -5,7 +5,7 @@ package com.xfjr.transaction.common.constant;
  * 标的 标的类型 枚举类
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/16
  */
 public enum ProjectTypeCode {

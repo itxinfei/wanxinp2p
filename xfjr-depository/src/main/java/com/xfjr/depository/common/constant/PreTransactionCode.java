@@ -5,7 +5,7 @@ package com.xfjr.depository.common.constant;
  * 预处理业务类型
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-28
  */
 public enum PreTransactionCode {

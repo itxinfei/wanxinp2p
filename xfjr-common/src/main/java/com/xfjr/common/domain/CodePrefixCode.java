@@ -6,7 +6,7 @@ package com.xfjr.common.domain;
  * 可根据业务进行增加
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/16
  */
 public enum CodePrefixCode {

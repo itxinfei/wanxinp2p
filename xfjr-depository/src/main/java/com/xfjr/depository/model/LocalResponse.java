@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * 本地请求响应信息
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-29
  */
 @Schema(name = "LocalResponse<T>", description = "本地请求响应信息")

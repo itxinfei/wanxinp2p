@@ -11,7 +11,7 @@ import java.util.List;
  * 还款信息
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/26
  */
 @Data

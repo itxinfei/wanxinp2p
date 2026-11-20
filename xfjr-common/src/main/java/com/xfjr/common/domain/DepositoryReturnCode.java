@@ -5,7 +5,7 @@ package com.xfjr.common.domain;
  * 存管系统返回状态码
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/17
  */
 public enum DepositoryReturnCode {

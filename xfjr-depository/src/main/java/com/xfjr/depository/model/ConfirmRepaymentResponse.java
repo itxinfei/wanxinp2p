@@ -8,7 +8,7 @@ import lombok.Data;
  * 放款确认请求返回信息
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-28
  */
 @Data

@@ -49,7 +49,7 @@
 				loginData:{
 					grant_type: 'password',
 					client_id: 'xfjr-web-h5',
-					client_secret: 'itcasth5',
+					client_secret: 'xfjrh5',
 					domain: 'c',
 					authenticationType: 'password'
 				}

@@ -8,7 +8,7 @@ import lombok.Data;
  * 创建标的返回数据
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-23
  */
 @Data

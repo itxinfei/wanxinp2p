@@ -5,7 +5,7 @@ package com.xfjr.depository.common.constant;
  * 标的 可用状态 枚举类
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/16
  */
 public enum StatusCode {

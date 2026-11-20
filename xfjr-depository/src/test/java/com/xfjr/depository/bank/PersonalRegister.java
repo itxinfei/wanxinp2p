@@ -13,7 +13,7 @@ import java.math.BigDecimal;
  * 生成用户开户测试数据
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-27
  */
 public class PersonalRegister {

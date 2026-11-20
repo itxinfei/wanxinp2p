@@ -5,7 +5,7 @@ package com.xfjr.depository.common.constant;
  * 银行存管系统请求类型枚举
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/22
  */
 public enum DepositoryRequestTypeCode {

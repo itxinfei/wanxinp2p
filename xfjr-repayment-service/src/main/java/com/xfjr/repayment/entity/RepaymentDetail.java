@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  * 借款人还款明细，针对一个还款计划可多次进行还款
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019-05-22
  */
 @Data

@@ -15,7 +15,7 @@ import java.net.URLEncoder;
  * 修改标的状态DTO
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/24
  */
 @Data

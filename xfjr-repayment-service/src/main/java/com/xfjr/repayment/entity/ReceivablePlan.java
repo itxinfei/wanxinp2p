@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  * 投资人应收明细
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019-05-22
  */
 @Data

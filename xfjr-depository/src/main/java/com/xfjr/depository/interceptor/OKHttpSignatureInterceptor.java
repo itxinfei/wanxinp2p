@@ -19,7 +19,7 @@ import java.net.URLEncoder;
  * okHttp3拦截器, 用于数据签名及验签
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019-05-17
  */
 @Slf4j

@@ -11,7 +11,7 @@ import java.io.PrintWriter;
  * P2P平台请求返回数据工具类
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-24
  */
 public class ResponseUtil {

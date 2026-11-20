@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  * 借款人还款计划
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019-05-22
  */
 @Data

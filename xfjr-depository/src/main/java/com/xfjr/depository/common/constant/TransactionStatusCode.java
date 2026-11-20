@@ -5,7 +5,7 @@ package com.xfjr.depository.common.constant;
  * 交易状态
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-23
  */
 public enum TransactionStatusCode {

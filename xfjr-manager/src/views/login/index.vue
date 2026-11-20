@@ -73,7 +73,7 @@
           password: '',
           grant_type: 'password',
           client_id:'xfjr-web-admin',
-          client_secret:'itcastb',
+          client_secret:'xfjrb',
           domain:'b',
           authenticationType:'password'
         },

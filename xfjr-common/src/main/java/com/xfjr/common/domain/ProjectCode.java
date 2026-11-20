@@ -5,7 +5,7 @@ package com.xfjr.common.domain;
  * 标的状态码枚举类
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/16
  */
 public enum ProjectCode {

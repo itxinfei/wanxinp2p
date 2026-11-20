@@ -7,7 +7,7 @@ package com.xfjr.depository.common.domain;
  * 本地调用系统返回码
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019/5/22
  */
 public enum LocalReturnCode implements ReturnCode {

@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * 银行卡注册信息
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-18
  */
 @Data

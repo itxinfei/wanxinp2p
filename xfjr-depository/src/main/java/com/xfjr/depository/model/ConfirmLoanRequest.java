@@ -11,7 +11,7 @@ import java.util.List;
  * 标的满标放款确认信息
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019/5/28
  */
 @Data

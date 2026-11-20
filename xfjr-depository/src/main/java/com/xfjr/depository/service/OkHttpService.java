@@ -16,7 +16,7 @@ import java.io.IOException;
  * okHttp3请求工具类
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/17
  */
 @Slf4j

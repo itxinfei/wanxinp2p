@@ -5,7 +5,7 @@ package com.xfjr.common.domain;
  * 还款方式 编码
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/22
  */
 public enum RepaymentWayCode {

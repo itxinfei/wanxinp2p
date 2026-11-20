@@ -19,7 +19,7 @@ import java.util.Map;
  * 统一拦截请求处理结果保存
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-23
  */
 @ControllerAdvice

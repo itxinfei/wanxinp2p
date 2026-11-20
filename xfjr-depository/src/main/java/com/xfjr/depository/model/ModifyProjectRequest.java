@@ -8,7 +8,7 @@ import lombok.Data;
  * 更新标的状态请求信息
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019-05-24
  */
 @Data

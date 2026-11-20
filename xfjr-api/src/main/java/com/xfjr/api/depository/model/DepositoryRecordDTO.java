@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * 存管交易记录表
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019-05-17
  */
 @Data

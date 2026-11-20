@@ -5,7 +5,7 @@ package com.xfjr.depository.common.constant;
  * 余额变动类型枚举类
  * </p>
  *
- * @author zhupeiyuan@itcast.cn
+ * @author zhupeiyuan
  * @since 2019/5/18
  */
 public enum BalanceChangeCode {

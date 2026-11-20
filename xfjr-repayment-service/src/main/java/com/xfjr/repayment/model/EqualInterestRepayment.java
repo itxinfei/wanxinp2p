@@ -13,7 +13,7 @@ import java.util.Map;
  * 每个月还给银行固定金额，但每月还款额中的本金比重逐月递增、利息比重逐月递减。
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/22
  */
 @Data

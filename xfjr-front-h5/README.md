@@ -25,10 +25,10 @@
 
 ## Git
 
-- http://git.itcast.cn/development/project-p2p-java-uniapp
+- https://gitee.com/itxinfei/xfjr
 
 ## 原型
-- http://czpm.itcast.cn/%E5%BF%83%E9%A3%9E%E9%87%91%E8%9E%8D/#g=1&p=%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97
+- 原型设计稿：早期 Axure 稿，未随仓库提供
 
 ## 安装使用
 

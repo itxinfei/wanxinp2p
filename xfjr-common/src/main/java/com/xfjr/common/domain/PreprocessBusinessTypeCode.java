@@ -5,7 +5,7 @@ package com.xfjr.common.domain;
  * 预处理业务类型状态码
  * </p>
  *
- * @author wuzhao@itcast.cn
+ * @author wuzhao
  * @since 2019/5/20
  */
 public enum PreprocessBusinessTypeCode {
