@@ -1,7 +1,7 @@
 app:
   id: xfjr-content-search
 apollo:
-  meta: http://192.168.20.130:28080
+  meta: http://192.168.20.88:28080
   bootstrap:
     enabled: true
     #    eagerLoad:

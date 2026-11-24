@@ -3,7 +3,7 @@ server:
 app:
   id: xfjr-message
 apollo:
-  meta: http://192.168.20.130:28080
+  meta: http://192.168.20.88:28080
   bootstrap:
     enabled: true
     namespaces: application,micro_service.spring-boot-druid,micro_service.spring-boot-http,micro_service.spring-eureka,micro_service.spring-boot-redis,micro_service.mybatis-plus,micro_service.spring-rocketmq

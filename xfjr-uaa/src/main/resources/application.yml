@@ -2,7 +2,7 @@
 app:
   id: xfjr-uaa
 apollo:
-  meta: http://192.168.20.130:28080
+  meta: http://192.168.20.88:28080
   bootstrap:
     enabled: true #启动阶段注入配置
     #    eagerLoad:
