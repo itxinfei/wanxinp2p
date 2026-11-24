@@ -17,3 +17,28 @@ target/
 *.zip
 # 运行日志
 logs/
+
+# === 仓库清理：以下本地/临时/备份类文件不入库 ===
+.idea/
+.vscode/
+.hbuilderx/
+*.iml
+*.bak
+*.orig
+*~
+*.log
+* copy.*
+*副本*
+*备份*
+node_modules/
+target/
+dist/
+unpackage/
+.temp/
+*.rar
+*.7z
+*.zip
+*.jks
+*.keystore
+*.p12
+*.key
