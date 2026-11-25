@@ -59,15 +59,15 @@
         <java.version>25</java.version>
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
-        <spring-cloud.version>2025.1.3</spring-cloud.version>
-        <mybatis-plus.version>3.5.17</mybatis-plus.version>
+        <spring-cloud.version>2025.1.4</spring-cloud.version>
+        <mybatis-plus.version>3.5.18.1</mybatis-plus.version>
         <seata.version>2.6.0</seata.version>
         <sentinel.version>1.8.10</sentinel.version>
         <rocketmq.version>2.3.6</rocketmq.version>
         <shardingsphere.version>5.5.3</shardingsphere.version>
         <fastjson2.version>2.0.66</fastjson2.version>
         <apollo.version>2.5.0</apollo.version>
-        <springdoc.version>3.1.1</springdoc.version>
+        <springdoc.version>3.2.1</springdoc.version>
         <authorization-server.version>1.5.0</authorization-server.version>
         <okhttp.version>4.12.0</okhttp.version>
         <guava.version>33.7.2-jre</guava.version>
