@@ -10,6 +10,12 @@ apollo:
 spring:
   application:
     name: xfjr-message
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # 本地校验 JWT 的公钥地址（FR-130）；生产由 Apollo 覆盖
+          jwk-set-uri: http://localhost:53020/oauth2/jwks
 
 message:
   max-per-hour: 5
