@@ -11,8 +11,8 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/JDK-25-ED8B00.svg?logo=openjdk&logoColor=white" alt="JDK">
-  <img src="https://img.shields.io/badge/Spring%20Boot-4.1.1-6DB33F.svg?logo=springboot&logoColor=white" alt="Spring Boot">
-  <img src="https://img.shields.io/badge/Spring%20Cloud-2025.1.3-6DB33F.svg?logo=spring&logoColor=white" alt="Spring Cloud">
+  <img src="https://img.shields.io/badge/Spring%20Boot-4.1.3-6DB33F.svg?logo=springboot&logoColor=white" alt="Spring Boot">
+  <img src="https://img.shields.io/badge/Spring%20Cloud-2025.1.4-6DB33F.svg?logo=spring&logoColor=white" alt="Spring Cloud">
   <img src="https://img.shields.io/badge/ShardingSphere-5.5.3-2B6CB0.svg" alt="ShardingSphere">
   <img src="https://img.shields.io/badge/Seata-2.6-2B6CB0.svg" alt="Seata">
   <img src="https://img.shields.io/badge/RocketMQ-2.3.6-D77310.svg?logo=apacherocketmq&logoColor=white" alt="RocketMQ">
