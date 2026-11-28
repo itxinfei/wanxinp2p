@@ -1,30 +1,21 @@
 package com.xfjr.consumer.common;
 
 import com.xfjr.api.account.model.LoginUser;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
+import com.xfjr.api.security.JwtUserContext;
 
-import jakarta.servlet.http.HttpServletRequest;
-
+/**
+ * 当前登录用户获取入口。
+ *
+ * <p>实现统一委托 {@link JwtUserContext}：用户身份来自本服务校验过的 JWT 声明，
+ * 不再解析外部透传的 {@code jsonToken} 参数（I-01）。
+ */
 public class SecurityUtil {
 
 	/**
 	 * 获取当前登录用户
 	 */
 	public static LoginUser getUser() {
-		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder
-				.getRequestAttributes();
-
-		if (servletRequestAttributes != null) {
-			HttpServletRequest request = servletRequestAttributes.getRequest();
-
-			Object jwt = request.getAttribute("jsonToken");
-			if (jwt instanceof LoginUser) {
-				return (LoginUser) jwt;
-			}
-		}
-
-		return new LoginUser();
+		return JwtUserContext.getUser();
 	}
 
 }

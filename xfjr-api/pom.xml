@@ -38,6 +38,12 @@
             <groupId>tools.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
+        <!-- JWT 读取：服务本地校验后从声明还原用户上下文（FR-130）。
+             Spring Security 7 起 Jwt 类并入 oauth2-jose 工件 -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-jose</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

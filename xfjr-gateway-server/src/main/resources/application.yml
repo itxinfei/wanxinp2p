@@ -16,5 +16,10 @@ spring:
         jwt:
           jwk-set-uri: http://localhost:53020/oauth2/jwks
 
+# 令牌黑名单校验（FR-130 AC1：已吊销令牌返回 401，不转发下游）
+gateway:
+  token-blacklist:
+    enabled: true
+
 #logging:
 #  config: classpath:log4j2-dev.xml
