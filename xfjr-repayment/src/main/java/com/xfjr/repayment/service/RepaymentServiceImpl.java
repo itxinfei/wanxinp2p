@@ -239,9 +239,18 @@ public class RepaymentServiceImpl implements RepaymentService {
         return restResponse.getResult().equals(DepositoryReturnCode.RETURN_CODE_00000.getCode());
     }
 
-    @Override
-    @Transactional
-    public Boolean confirmRepayment(RepaymentPlan repaymentPlan, RepaymentRequest repaymentRequest) {
+    /**
+     * 确认还款（本地事务）：由 RocketMQ 事务消息回调触发，需保证重复消费幂等（I-04/I-05）。
+     */
+    @Override
+    @Transactional
+    public Boolean confirmRepayment(RepaymentPlan repaymentPlan, RepaymentRequest repaymentRequest) {
+        //幂等保护：消息可能重复投递，若计划已是已还款状态则直接返回，避免 receivable_detail 重复插入
+        RepaymentPlan latest = planMapper.selectById(repaymentPlan.getId());
+        if (latest != null && "1".equals(latest.getRepaymentStatus())) {
+            log.info("还款计划已处理过，跳过重复消费，planId={}", repaymentPlan.getId());
+            return true;
+        }
         //1. 更新还款明细：已同步
         String preRequestNo=repaymentRequest.getPreRequestNo();
         repaymentDetailMapper.update(null,Wrappers.<RepaymentDetail>lambdaUpdate().set(RepaymentDetail::getStatus,StatusCode.STATUS_IN.getCode()).eq(RepaymentDetail::getRequestNo,preRequestNo));
@@ -272,7 +281,11 @@ public class RepaymentServiceImpl implements RepaymentService {
         return rows>0;
     }
 
-    @Override
+    /**
+     * 通知存管确认还款（仅远程调用，无本地写）：与本地状态更新分属两段消息，
+     * 靠 MQ 可靠投递 + 消费幂等实现最终一致，不适合也不必要套全局事务。
+     */
+    @Override
     public void invokeConfirmRepayment(RepaymentPlan repaymentPlan, RepaymentRequest repaymentRequest) {
         RestResponse<String> repaymentResponse = depositoryAgentApiAgent.confirmRepayment(repaymentRequest);
         if(!repaymentResponse.getResult().equals(DepositoryReturnCode.RETURN_CODE_00000.getCode())){

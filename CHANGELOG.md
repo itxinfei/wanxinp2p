@@ -25,6 +25,7 @@
 - `transaction.createTender`（投标）、`projectsApprovalStatus`（发标审批）、`loansApprovalStatus`（放款）与 `repayment.executeRepaymentOne`（单笔还款预处理）纳入 `@GlobalTransactional(rollbackFor = Exception.class)`；Seata 注解 import 统一到 `org.apache.seata.*` 新坐标。
 - 还款定时任务改为逐笔独立全局事务（自注入代理调用），单笔失败不中断整批。
 - `consumer.createConsumer`（开户绑卡）纳入 `@GlobalTransactional(rollbackFor = Exception.class)`；存管异步回调 `modifyResult` 仍为本地事务（回调与原事务非同一请求，需幂等保证）。
+- 修复 `repayment.confirmRepayment` 重复消费会重复插入 `receivable_detail` 的问题（新增按库内最新状态的幂等判断）；补齐全量资金写路径扫描结论（规划文档 1.2.1 节）。
 - 澄清 I-05：`cancelRegister` 本就有真实删除逻辑，AT 模式下回滚由 undo_log 自动完成，confirm/cancel 保留用于人工修复并加注说明。
 
 ### 验证
