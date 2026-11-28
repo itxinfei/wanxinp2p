@@ -19,6 +19,10 @@
 - 建表脚本切换为 `oauth2_registered_client`；新增迁移脚本 `docs/sql/p2p_sql/migration/2026-11-28-oauth-client-jdbc.sql`。
 - `.gitignore` 补充忽略 `.cursor/`、`.trae/` 工具规则目录。
 
+### 前端编译产物复核（I-18）
+- 核实 `xfjr-front-h5/unpackage/` 与 `dist/` 均已在仓库根 `.gitignore` 中，`git ls-files` 确认未被跟踪，产物“含旧代码”描述不成立，口径调整为“产物不入库”。
+- 可执行构建入口确认为 `xfjr-front-h5/my-project`（uni-app + vue-cli-service），命令 `npm run build:h5`；本次尝试 `npm install` 在本机两次卡死（无 CPU 占用、无 node_modules 产出）后终止，构建验证未完成，待本地 npm/HBuilderX 环境具备时执行。
+
 ### Apollo 种子清理（I-17 已关闭）
 - 新增 `docs/sql/Apollo_sql/migration/2026-11-28-apollo-seed-cleanup.sql`：删除拼写错误的 `elaticjob.*` 过期键、`rocketmq.producer.group` 旧前缀改为 `xfjr-transaction`、两个历史公网库地址回收为 localhost:3306、name-server 统一 127.0.0.1:9876。只改当前生效配置，dump 原文与历史快照不动。
 
