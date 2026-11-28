@@ -7,7 +7,6 @@ app:
 apollo:
   meta: http://192.168.20.88:28080
   bootstrap:
-  bootstrap:
 
     enabled: true
 
