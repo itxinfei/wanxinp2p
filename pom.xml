@@ -157,10 +157,15 @@
                 <version>${mybatis-plus.version}</version>
             </dependency>
 
-            <!-- 分库分表 ShardingSphere（替代 sharding-jdbc 4） -->
+            <!-- 分库分表 ShardingSphere（替代 sharding-jdbc 4）：jdbc 为驱动聚合包，sharding-core 为分片特性（5.5.x 起特性拆包，需显式引入） -->
             <dependency>
                 <groupId>org.apache.shardingsphere</groupId>
-                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+                <artifactId>shardingsphere-jdbc</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-sharding-core</artifactId>
                 <version>${shardingsphere.version}</version>
             </dependency>
 

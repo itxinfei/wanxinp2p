@@ -25,6 +25,11 @@ xfjr:
     token-uri: http://localhost:53020/oauth2/token
     client-id: xfjr-internal
     client-secret: ${INTERNAL_CLIENT_SECRET:}
+  # 交易库分片（I-07 / DR-02）：默认关闭，走 Apollo 下发的单库数据源。
+  # 开启后按 CONSUMER_ID % 2 路由到 p2p_transaction_0/1（表 project/tender/claim 各 _0/_1），
+  # 连接信息复用 spring.datasource.*；启用前须完成 Seata 联调与分片库 undo_log 验证，见 docs/重构规划文档.md 专题四。
+  sharding:
+    enabled: false
 # 日志配置-会代替springboot原生日志颜色
 logging:
   config: classpath:log4j2-dev.xml

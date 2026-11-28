@@ -19,6 +19,12 @@
 - 建表脚本切换为 `oauth2_registered_client`；新增迁移脚本 `docs/sql/p2p_sql/migration/2026-11-28-oauth-client-jdbc.sql`。
 - `.gitignore` 补充忽略 `.cursor/`、`.trae/` 工具规则目录。
 
+### 分库分表启用就绪（I-07，P1 就绪未启用）
+- 根 pom 的 ShardingSphere 依赖由 `shardingsphere-jdbc-core-spring-boot-starter`（本地仓库不可得）改为 `shardingsphere-jdbc` + `shardingsphere-sharding-core` 5.5.3；不依赖 starter 自动装配，避免 Spring Boot 4 兼容风险。
+- `xfjr-transaction` 新增 `ShardingDataSourceConfiguration`：仅 `xfjr.sharding.enabled=true` 时加载，构建 `ShardingSphereDataSource`（HikariCP × 2），按 `CONSUMER_ID % 2` 路由到 `p2p_transaction_0/1`，分片表 `project/tender/claim` 各 `_0/_1` 且为绑定表组；默认关闭，关闭时链路与升级前一致。
+- `application.yml` 增加 `xfjr.sharding.enabled: false` 与启用前置条件说明（Seata 联调、分片库 undo_log 验证）。
+- 未完成项已在规划文档如实标注：本机无 MySQL/Apollo 环境，未做真实路由执行验证，也未与 Seata AT 联调；灰度双写属专题四 P2。
+
 ### 存管职责边界（I-03 已关闭）
 - `xfjr-depository` 从根 `pom.xml` 聚合中移出，改为独立构建单元（主工程 `mvn install` 不再包含它）；目录保留，`mvn install -f xfjr-depository/pom.xml` 单独构建。
 - 核实其 pom 无 eureka-client 依赖、事实不注册业务 Eureka；端口 55010、库 `p2p_bank_depository`、调用方仅 `xfjr-depository-agent` 经 Apollo `depository.url` 访问。
