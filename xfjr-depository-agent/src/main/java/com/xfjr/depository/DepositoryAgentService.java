@@ -14,8 +14,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication(scanBasePackages = {"com.xfjr.depository"})
 @EnableDiscoveryClient
 @EnableTransactionManagement
-public class DepositoryAgentService1 {
+public class DepositoryAgentService {
     public static void main(String[] args) {
-        SpringApplication.run(DepositoryAgentService1.class, args);
+        SpringApplication.run(DepositoryAgentService.class, args);
     }
 }
