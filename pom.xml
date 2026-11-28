@@ -33,8 +33,7 @@
         <module>xfjr-transaction</module>
         <!--还款服务-->
         <module>xfjr-repayment</module>
-        <!--银行存管-->
-        <module>xfjr-depository</module>
+        <!--银行存管（外部系统模拟，独立构建部署，不在本聚合内，见 docs/存管系统说明.md）-->
         <!--存管代理-->
         <module>xfjr-depository-agent</module>
         <!--风控服务（新增）-->

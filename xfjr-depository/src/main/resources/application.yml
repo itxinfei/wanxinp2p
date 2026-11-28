@@ -20,6 +20,7 @@ spring:
 
   application:
 
+    # 外部银行存管系统（模拟）：不注册业务 Eureka，独立库 p2p_bank_depository，独立端口见 Apollo application 命名空间
     name: xfjr-depository
 
 # 日志配置

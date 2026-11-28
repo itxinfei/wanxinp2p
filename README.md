@@ -76,7 +76,7 @@
 | 存管代理 | `xfjr-depository-agent` | 53070 |
 | 还款服务 | `xfjr-repayment` | 53080 |
 | 检索服务 | `xfjr-content-search` | 54081 |
-| 银行存管（模拟） | `xfjr-depository` | 55010 |
+| 银行存管（模拟，外置独立构建） | `xfjr-depository` | 55010 |
 
 公共模块：`xfjr-common`、`xfjr-api`。
 
@@ -154,7 +154,7 @@ cd xfjr-front-h5                                   # uni-app，用 HBuilderX 打
 - **配置全在 Apollo** —— 不先导入配置，服务起不来，报的错还跟配置无关，容易绕远路
 - **启动顺序** —— 注册中心 → 认证 → 业务服务 → 网关，顺序错了网关会一直 503
 - **JDK 23+ 要开注解处理** —— `-proc:full`，父 POM 里已经配好，自己拆模块时注意别丢
-- **`xfjr-depository` 是模拟系统** —— 包名 `com.xfjr.depository`，主类 `XfjrDepositoryServer`，可以单独部署，不影响主链路
+- **`xfjr-depository` 是外置模拟系统** —— 外部银行存管系统的模拟，已从主工程聚合中移出（根 pom 不含该 module），需先 `mvn install -pl xfjr-common` 再 `mvn install -f xfjr-depository/pom.xml` 独立构建；不注册业务 Eureka，只被存管代理经 `depository.url` 访问。详见 `docs/存管系统说明.md`
 - **日志与健康检查** —— 日志在 `logs/`，健康检查走 `/actuator/health`
 
 ## 九、工程结构

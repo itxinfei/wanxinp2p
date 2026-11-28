@@ -19,6 +19,11 @@
 - 建表脚本切换为 `oauth2_registered_client`；新增迁移脚本 `docs/sql/p2p_sql/migration/2026-11-28-oauth-client-jdbc.sql`。
 - `.gitignore` 补充忽略 `.cursor/`、`.trae/` 工具规则目录。
 
+### 存管职责边界（I-03 已关闭）
+- `xfjr-depository` 从根 `pom.xml` 聚合中移出，改为独立构建单元（主工程 `mvn install` 不再包含它）；目录保留，`mvn install -f xfjr-depository/pom.xml` 单独构建。
+- 核实其 pom 无 eureka-client 依赖、事实不注册业务 Eureka；端口 55010、库 `p2p_bank_depository`、调用方仅 `xfjr-depository-agent` 经 Apollo `depository.url` 访问。
+- 新增 `docs/存管系统说明.md`：外部系统定位、边界表、独立构建启动步骤、迁移真实存管步骤；README 与规划文档 4.13 同步。
+
 ### 前端编译产物复核（I-18）
 - 核实 `xfjr-front-h5/unpackage/` 与 `dist/` 均已在仓库根 `.gitignore` 中，`git ls-files` 确认未被跟踪，产物“含旧代码”描述不成立，口径调整为“产物不入库”。
 - 可执行构建入口确认为 `xfjr-front-h5/my-project`（uni-app + vue-cli-service），命令 `npm run build:h5`；本次尝试 `npm install` 在本机两次卡死（无 CPU 占用、无 node_modules 产出）后终止，构建验证未完成，待本地 npm/HBuilderX 环境具备时执行。
