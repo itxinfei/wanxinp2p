@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import io.seata.spring.annotation.GlobalTransactional;
+import org.apache.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -63,10 +63,16 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         return convertAccountEntityToDTO(account);
     }
 
+    /**
+     * 确认注册（预留）。资金操作走 Seata AT 模式后，正常提交由全局事务统一完成，本方法无调用场景。
+     */
     public void confirmRegister(AccountRegisterDTO registerDTO) {
         log.info("execute confirmRegister");
     }
 
+    /**
+     * 注销注册（人工修复/非事务场景手动回滚用）。开启 AT 模式后异常回滚由 undo_log 自动完成，不再依赖此方法。
+     */
     public void cancelRegister(AccountRegisterDTO registerDTO) {
         log.info("execute cancelRegister");
         //删除账号

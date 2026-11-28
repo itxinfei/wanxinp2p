@@ -1,1 +1,2 @@
 com.xfjr.api.security.InternalClientAutoConfiguration
+com.xfjr.api.seata.SeataAutoConfiguration

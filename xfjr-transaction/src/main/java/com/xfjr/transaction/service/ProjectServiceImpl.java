@@ -30,6 +30,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.spring.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -262,7 +263,12 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project>
         return tenderOverviewDTOS;
     }
 
+    /**
+     * 投标：本地写 tender + 远程查余额/调存管冻结，属资金操作（I-04），必须纳入全局事务。
+     * 任一环节失败时由 Seata AT 模式按 undo_log 回滚本地与下游已提交的 DB 变更。
+     */
     @Override
+    @GlobalTransactional(rollbackFor = Exception.class)
     public TenderDTO createTender(ProjectInvestDTO projectInvestDTO) {
         //1.前置条件判断
         //1.1 判断投标金额是否大于最小投标金额
