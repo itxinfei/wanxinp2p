@@ -24,10 +24,12 @@ import com.xfjr.repayment.message.RepaymentProducer;
 import com.xfjr.repayment.model.EqualInterestRepayment;
 import com.xfjr.repayment.sms.SmsService;
 import com.xfjr.repayment.util.RepaymentUtil;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.seata.spring.annotation.GlobalTransactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -58,11 +60,18 @@ public class RepaymentServiceImpl implements RepaymentService {
     @Autowired
     private RepaymentProducer repaymentProducer;
 
-    @Autowired
-    private ConsumerApiAgent consumerApiAgent;
-
-    @Autowired
-    private SmsService smsService;
+        @Autowired
+    private ConsumerApiAgent consumerApiAgent;
+
+    @Autowired
+    private SmsService smsService;
+
+    /**
+     * 自注入：单笔还款需以代理对象调用才能触发全局事务，不能在同类内部直接 this 调用。
+     */
+    @Autowired
+    @Lazy
+    private RepaymentService self;
 
     @Override
     @Transactional(rollbackFor = BusinessException.class)
@@ -143,28 +152,34 @@ public class RepaymentServiceImpl implements RepaymentService {
         return repaymentDetail;
     }
 
-    @Override
-    public void executeRepayment(String date,int shardingCount,int shardingItem) {
-        //查询到期的还款计划
-        List<RepaymentPlan> repaymentPlanList=selectDueRepayment(date,shardingCount,shardingItem);
-
-        //生成还款明细
-        repaymentPlanList.forEach(repaymentPlan -> {
-            RepaymentDetail repaymentDetail=saveRepaymentDetail(repaymentPlan);
-            log.info("当前分片："+shardingItem+"\n"+repaymentPlan);
-            //还款预处理
-            Boolean proRepaymentResult = preRepayment(repaymentPlan,repaymentDetail.getRequestNo());
-
-            if(proRepaymentResult){
-                //未完待续
-                log.info("还款预处理成功");
-                String preRequestNo=repaymentDetail.getRequestNo();
-                RepaymentRequest repaymentRequest=generateRepaymentRequest(repaymentPlan,preRequestNo);
-                repaymentProducer.confirmRepayment(repaymentPlan,repaymentRequest);
-            }
-        });
-
-
+    @Override
+    public void executeRepayment(String date,int shardingCount,int shardingItem) {
+        //查询到期的还款计划
+        List<RepaymentPlan> repaymentPlanList=selectDueRepayment(date,shardingCount,shardingItem);
+
+        //逐笔独立开全局事务，单笔失败不影响其它计划
+        repaymentPlanList.forEach(repaymentPlan -> self.executeRepaymentOne(repaymentPlan));
+    }
+
+    /**
+     * 单笔还款预处理（I-04）：本地写明细 + 远程存管预处理 + 发送确认消息，属资金操作，纳入全局事务。
+     * 通过 {@code self} 代理调用生效；异常时由 Seata AT 按 undo_log 回滚本地与下游已提交变更。
+     */
+    @Override
+    @GlobalTransactional(rollbackFor = Exception.class)
+    public void executeRepaymentOne(RepaymentPlan repaymentPlan) {
+        RepaymentDetail repaymentDetail=saveRepaymentDetail(repaymentPlan);
+        log.info("当前还款计划：{}", repaymentPlan);
+        //还款预处理
+        Boolean proRepaymentResult = preRepayment(repaymentPlan,repaymentDetail.getRequestNo());
+
+        if(proRepaymentResult){
+            //未完待续
+            log.info("还款预处理成功");
+            String preRequestNo=repaymentDetail.getRequestNo();
+            RepaymentRequest repaymentRequest=generateRepaymentRequest(repaymentPlan,preRequestNo);
+            repaymentProducer.confirmRepayment(repaymentPlan,repaymentRequest);
+        }
     }
 
     /**

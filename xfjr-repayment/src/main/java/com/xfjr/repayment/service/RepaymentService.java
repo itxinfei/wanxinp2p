@@ -34,8 +34,14 @@ public interface RepaymentService {
     /**
      * 执行用户还款
      */
-    //void executeRepayment(String date);
-    void executeRepayment(String date,int shardingCount,int shardingItem);
+    //void executeRepayment(String date);
+    void executeRepayment(String date,int shardingCount,int shardingItem);
+
+    /**
+     * 单笔还款预处理：本地写明细 + 远程存管预处理 + 发送确认消息（I-04，独立全局事务单元）
+     * @param repaymentPlan
+     */
+    void executeRepaymentOne(RepaymentPlan repaymentPlan);
 
     /**
          * 还款预处理：冻结借款人应还金额
