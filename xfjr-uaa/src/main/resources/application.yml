@@ -1,6 +1,10 @@
 # 统一认证
 app:
   id: xfjr-uaa
+xfjr:
+  jwt:
+    # JWT 签名密钥文件（JWK JSON，含私钥）；不存在时首次启动自动生成。生产环境建议由 Apollo/KMS 注入专用路径
+    key-path: ${user.home}/.xfjr/jwt-signing-key.json
 apollo:
   meta: http://192.168.20.88:28080
   bootstrap:
