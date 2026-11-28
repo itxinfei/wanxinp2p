@@ -5,6 +5,12 @@ xfjr:
   jwt:
     # JWT 签名密钥文件（JWK JSON，含私钥）；不存在时首次启动自动生成。生产环境建议由 Apollo/KMS 注入专用路径
     key-path: ${user.home}/.xfjr/jwt-signing-key.json
+  # 服务间内部调用（客户端凭证，FR-130 AC5）；client-secret 只由 Apollo/环境变量注入，勿写死
+  internal-client:
+    enabled: false
+    token-uri: http://localhost:53020/oauth2/token
+    client-id: xfjr-internal
+    client-secret: ${INTERNAL_CLIENT_SECRET:}
 apollo:
   meta: http://192.168.20.88:28080
   bootstrap:
