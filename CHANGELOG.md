@@ -24,10 +24,11 @@
 - 新增 undo_log 建表迁移脚本 `docs/sql/p2p_sql/migration/2026-11-28-seata-undo-log.sql`（覆盖 6 个业务库，执行时机须早于加注解）。
 - `transaction.createTender`（投标）、`projectsApprovalStatus`（发标审批）、`loansApprovalStatus`（放款）与 `repayment.executeRepaymentOne`（单笔还款预处理）纳入 `@GlobalTransactional(rollbackFor = Exception.class)`；Seata 注解 import 统一到 `org.apache.seata.*` 新坐标。
 - 还款定时任务改为逐笔独立全局事务（自注入代理调用），单笔失败不中断整批。
+- `consumer.createConsumer`（开户绑卡）纳入 `@GlobalTransactional(rollbackFor = Exception.class)`；存管异步回调 `modifyResult` 仍为本地事务（回调与原事务非同一请求，需幂等保证）。
 - 澄清 I-05：`cancelRegister` 本就有真实删除逻辑，AT 模式下回滚由 undo_log 自动完成，confirm/cancel 保留用于人工修复并加注说明。
 
 ### 验证
-- `mvn clean install -DskipTests` 全量通过；uaa 18 例、xfjr-api 6 例、transaction 33 例、gateway 4 例等单测通过。
+- `mvn clean install -DskipTests` 全量通过；uaa 18 例、xfjr-api 6 例、transaction 33 例、consumer 33 例、gateway 4 例等单测通过。
 - xfjr-account、xfjr-depository 各 1 例失败为既有环境缺陷（Seata 分组配置缺失、MyBatis 装配），基线复跑确认与本次改动无关。
 
 ## 2026-11-25 基线升级

@@ -96,8 +96,12 @@ public class ConsumerServiceImpl extends ServiceImpl<ConsumerMapper, Consumer> i
         }
     }
 
+    /**
+     * 开户绑卡（I-04）：本地写用户/银行卡 + 远程调存管创建用户，属资金操作，纳入全局事务。
+     * 远程失败时本地更新一并回滚。
+     */
     @Override
-    @Transactional
+    @GlobalTransactional(rollbackFor = Exception.class)
     public RestResponse<GatewayRequest> createConsumer(ConsumerRequest consumerRequest) {
         //1.判断当前用户是否已经开户
         ConsumerDTO consumerDTO=getByMobile(consumerRequest.getMobile());
