@@ -19,6 +19,9 @@
 - 建表脚本切换为 `oauth2_registered_client`；新增迁移脚本 `docs/sql/p2p_sql/migration/2026-11-28-oauth-client-jdbc.sql`。
 - `.gitignore` 补充忽略 `.cursor/`、`.trae/` 工具规则目录。
 
+### Apollo 种子清理（I-17 已关闭）
+- 新增 `docs/sql/Apollo_sql/migration/2026-11-28-apollo-seed-cleanup.sql`：删除拼写错误的 `elaticjob.*` 过期键、`rocketmq.producer.group` 旧前缀改为 `xfjr-transaction`、两个历史公网库地址回收为 localhost:3306、name-server 统一 127.0.0.1:9876。只改当前生效配置，dump 原文与历史快照不动。
+
 ### 检索（I-06 已关闭）
 - xfjr-content-search 移除 `elasticsearch` 7.2.0 与 HLRC 7.2.0，改用 `org.elasticsearch.client:elasticsearch-rest-client` 9.5.7（对齐 ES 9.5.7 服务端），配置项 `xfjr.es.host` 新增 localhost:9200 默认值。
 - `ProjectIndexServiceImpl` 重写为 JSON 直构 DSL（bool/range/term/match + 排序分页），响应解析改用 fastjson2；删除不存在的索引文档按幂等成功处理。
