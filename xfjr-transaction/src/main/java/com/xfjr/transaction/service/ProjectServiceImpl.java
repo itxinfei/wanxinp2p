@@ -158,7 +158,11 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project>
 
     }
 
+    /**
+     * 发标审批：本地写 requestNo/status + 远程调存管创建标的，属资金操作（I-04），纳入全局事务。
+     */
     @Override
+    @GlobalTransactional(rollbackFor = Exception.class)
     public String projectsApprovalStatus(Long id, String approveStatus) {
         //1.根据id查询标的信息并转换为DTO对象
         Project project= getById(id);
@@ -390,7 +394,13 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, Project>
 
     }
 
+    /**
+     * 放款：本地写 tender 状态 + 远程确认放款/修改标的状态 + MQ 启动还款，属资金操作（I-04），纳入全局事务。
+     * <p>注意：事务内发 RocketMQ 消息属于既有行为，消息可能在事务提交前被消费；
+     * 若后续要做事务消息，需要单独改造 {@code updateProjectStatusAndStartRepayment} 的消费侧幂等。
+     */
     @Override
+    @GlobalTransactional(rollbackFor = Exception.class)
     public String loansApprovalStatus(Long id, String approveStatus, String commission) {
         //第一阶段：1. 生成放款明细
         // 标的信息
