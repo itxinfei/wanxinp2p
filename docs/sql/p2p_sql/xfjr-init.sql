@@ -24,23 +24,23 @@ CREATE DATABASE `p2p_file` CHARACTER SET 'utf8' COLLATE 'utf8_general_ci';
 
 Use p2p_uaa;
 
--- Create syntax for TABLE 'oauth_client_details'
-CREATE TABLE `oauth_client_details` (
-  `client_id` varchar(255) NOT NULL,
-  `resource_ids` varchar(255) DEFAULT NULL,
-  `client_secret` varchar(255) DEFAULT NULL,
-  `scope` varchar(255) DEFAULT NULL,
-  `authorized_grant_types` varchar(255) DEFAULT NULL,
-  `web_server_redirect_uri` varchar(255) DEFAULT NULL,
-  `authorities` varchar(255) DEFAULT NULL,
-  `access_token_validity` int(11) DEFAULT NULL,
-  `refresh_token_validity` int(11) DEFAULT NULL,
-  `additional_information` text,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `archived` tinyint(1) DEFAULT '0',
-  `trusted` tinyint(1) DEFAULT '0',
-  `autoapprove` varchar(255) DEFAULT 'false',
-  PRIMARY KEY (`client_id`) USING BTREE
+-- Create syntax for TABLE 'oauth2_registered_client'（Spring Authorization Server 1.5 JDBC 标准表结构，FR-129）
+-- 客户端初始数据由 uaa 的 RegisteredClientSeedRunner 启动时写入，密钥为 BCrypt 密文
+CREATE TABLE `oauth2_registered_client` (
+  `id` varchar(100) NOT NULL,
+  `client_id` varchar(100) NOT NULL,
+  `client_id_issued_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `client_secret` varchar(200) DEFAULT NULL,
+  `client_secret_expires_at` timestamp NULL DEFAULT NULL,
+  `client_name` varchar(200) DEFAULT NULL,
+  `client_authentication_methods` varchar(1000) NOT NULL,
+  `authorization_grant_types` varchar(1000) NOT NULL,
+  `redirect_uris` varchar(1000) DEFAULT NULL,
+  `post_logout_redirect_uris` varchar(1000) DEFAULT NULL,
+  `scopes` varchar(1000) NOT NULL,
+  `client_settings` varchar(2000) NOT NULL,
+  `token_settings` varchar(2000) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- Create syntax for TABLE 'oauth_code'
@@ -539,16 +539,8 @@ CREATE TABLE `fileobject` (
 
 Use p2p_uaa;
 
-LOCK TABLES `oauth_client_details` WRITE;
-/*!40000 ALTER TABLE `oauth_client_details` DISABLE KEYS */;
-
-INSERT INTO `oauth_client_details` (`client_id`, `resource_ids`, `client_secret`, `scope`, `authorized_grant_types`, `web_server_redirect_uri`, `authorities`, `access_token_validity`, `refresh_token_validity`, `additional_information`, `create_time`, `archived`, `trusted`, `autoapprove`)
-VALUES
-  ('xfjr-web-admin','xfjr-resource','xfjrb','read','client_credentials,password,authorization_code,implicit,refresh_token','','ROLE_ADMIN,ROLE_CONSUMER,ROLE_API',7200,259200,NULL,'2019-05-07 18:17:18',0,0,'false'),
-  ('xfjr-web-app','xfjr-resource','123456','read','client_credentials,password,authorization_code,implicit,refresh_token','','ROLE_CONSUMER,ROLE_API',31536000,2592000,NULL,'2019-05-07 18:17:37',0,0,'false'),
-  ('xfjr-web-h5','xfjr-resource','xfjrh5','read','client_credentials,password,authorization_code,implicit,refresh_token','','ROLE_CONSUMER,ROLE_API',31536000,2592000,NULL,'2019-05-07 19:21:23',0,0,'false');
-/*!40000 ALTER TABLE `oauth_client_details` ENABLE KEYS */;
-UNLOCK TABLES;
+-- oauth2_registered_client 无静态种子：由 uaa 的 RegisteredClientSeedRunner 初始化，
+-- 避免明文密钥进入 SQL 仓库（FR-129 AC2）
 
 
 # Dump of table oauth_code

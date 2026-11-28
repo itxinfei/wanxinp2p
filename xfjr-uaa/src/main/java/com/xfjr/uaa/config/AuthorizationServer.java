@@ -4,24 +4,24 @@ import com.xfjr.uaa.domain.UnifiedUserDetails;
 import com.xfjr.uaa.oauth.PasswordGrantAuthenticationConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
-import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
-import org.springframework.security.oauth2.core.oidc.OidcScopes;
-import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
-import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
+import org.springframework.security.oauth2.server.authorization.client.JdbcRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.security.oauth2.server.authorization.token.JwtEncodingContext;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenCustomizer;
 
-import java.time.Duration;
-
 /**
- * Spring Authorization Server 配置（替代 spring-security-oauth2 的 @EnableAuthorizationServer）
+ * Spring Authorization Server 配置（替代 spring-security-oauth2 的 @EnableAuthorizationServer）。
+ *
+ * <p>客户端存储改为 JDBC（FR-129 AC1），密钥以 BCrypt 密文落库（AC2）；
+ * 客户端清单统一定义在 {@link RegisteredClients}，初始数据由
+ * {@link RegisteredClientSeedRunner} 启动时写入。
  */
 @Configuration
 public class AuthorizationServer {
@@ -39,65 +39,19 @@ public class AuthorizationServer {
             PasswordGrantAuthenticationConverter.PASSWORD_GRANT_TYPE;
 
     /**
-     * 注册客户端。客户端清单与 docs/uaa.sql、docs/p2p_sql/xfjr-init.sql 中的
-     * oauth_client_details 种子数据保持一致；密钥待 TR-01 整改为 BCrypt 加密存储。
+     * 注册客户端仓库：JDBC 实现，存储于 {@code oauth2_registered_client}（SAS 1.5 标准表结构）。
      *
+     * @param jdbcTemplate JDBC 模板（数据源由 Apollo 命名空间 micro_service.spring-boot-druid 提供）
      * @return 客户端仓库
      */
     @Bean
-    public RegisteredClientRepository registeredClientRepository() {
-        // 管理后台客户端（Vue3 管理端，走密码模式直接换令牌）
-        RegisteredClient adminClient = RegisteredClient.withId("xfjr-web-admin")
-                .clientId("xfjr-web-admin")
-                .clientSecret("{noop}xfjrb")
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
-                .authorizationGrantType(PASSWORD_GRANT_TYPE)
-                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://localhost:8080/login")
-                .redirectUri("http://127.0.0.1:8080/login")
-                .scope(OidcScopes.OPENID)
-                .scope("read")
-                .scope("write")
-                .tokenSettings(tokenSettings())
-                .build();
-        // 移动端客户端（uni-app H5，走密码模式直接换令牌）
-        RegisteredClient h5Client = RegisteredClient.withId("xfjr-web-h5")
-                .clientId("xfjr-web-h5")
-                .clientSecret("{noop}xfjrh5")
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
-                .authorizationGrantType(PASSWORD_GRANT_TYPE)
-                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://localhost:8080/login")
-                .redirectUri("http://127.0.0.1:8080/login")
-                .scope("read")
-                .scope("write")
-                .tokenSettings(tokenSettings())
-                .build();
-        // 内部服务客户端（服务间调用，走客户端凭证模式）
-        RegisteredClient internalClient = RegisteredClient.withId("xfjr-internal")
-                .clientId("xfjr-internal")
-                .clientSecret("{noop}xfjr-internal-secret")
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
-                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .scope("read")
-                .scope("write")
-                .tokenSettings(tokenSettings())
-                .build();
-        return new InMemoryRegisteredClientRepository(adminClient, h5Client, internalClient);
+    public RegisteredClientRepository registeredClientRepository(JdbcTemplate jdbcTemplate) {
+        return new JdbcRegisteredClientRepository(jdbcTemplate);
     }
 
     @Bean
     public TokenSettings tokenSettings() {
-        return TokenSettings.builder()
-                .accessTokenTimeToLive(Duration.ofSeconds(7200))   // 访问令牌默认有效期2小时
-                .refreshTokenTimeToLive(Duration.ofSeconds(259200)) // 刷新令牌默认有效期3天
-                .build();
+        return RegisteredClients.tokenSettings();
     }
 
     @Bean

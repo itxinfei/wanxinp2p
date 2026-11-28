@@ -80,7 +80,7 @@ public class SecurityConfig {
                 .ignoringRequestMatchers(authorizationServerConfigurer.getEndpointsMatcher()));
 
         http.authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/login", "/login.do", "/public/**", "/webjars/**", "/v2/**",
+                .requestMatchers("/login", "/login.do", "/public/**", "/logout", "/webjars/**", "/v2/**",
                         "/swagger**", "/static/**", "/resources/**", "/druid/**", "/hi",
                         "/confirm_access", "/oauth_error").permitAll()
                 .anyRequest().authenticated());
