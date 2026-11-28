@@ -19,6 +19,11 @@
 - 建表脚本切换为 `oauth2_registered_client`；新增迁移脚本 `docs/sql/p2p_sql/migration/2026-11-28-oauth-client-jdbc.sql`。
 - `.gitignore` 补充忽略 `.cursor/`、`.trae/` 工具规则目录。
 
+### 检索（I-06 已关闭）
+- xfjr-content-search 移除 `elasticsearch` 7.2.0 与 HLRC 7.2.0，改用 `org.elasticsearch.client:elasticsearch-rest-client` 9.5.7（对齐 ES 9.5.7 服务端），配置项 `xfjr.es.host` 新增 localhost:9200 默认值。
+- `ProjectIndexServiceImpl` 重写为 JSON 直构 DSL（bool/range/term/match + 排序分页），响应解析改用 fastjson2；删除不存在的索引文档按幂等成功处理。
+- 因离线仓库缺 `rest5-client` / `elasticsearch-java` 9.4.9，未采用 `co.elastic.clients` 官方 Java Client（已在规划文档注明，后续有网可平滑迁移）。
+
 ### 分布式事务（I-04 / I-05，进行中）
 - `xfjr-api` 新增 `SeataFeignInterceptor`：Feign 出站透传 Seata XID（`TX_XID`），使下游 AT 分支挂到同一全局事务；未开启事务时不注入任何头。自动装配条件为 classpath 存在 Seata。
 - 新增 undo_log 建表迁移脚本 `docs/sql/p2p_sql/migration/2026-11-28-seata-undo-log.sql`（覆盖 6 个业务库，执行时机须早于加注解）。

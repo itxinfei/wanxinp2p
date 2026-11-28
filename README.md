@@ -17,7 +17,7 @@
   <img src="https://img.shields.io/badge/Seata-2.6-2B6CB0.svg" alt="Seata">
   <img src="https://img.shields.io/badge/RocketMQ-2.3.6-D77310.svg?logo=apacherocketmq&logoColor=white" alt="RocketMQ">
   <img src="https://img.shields.io/badge/Apollo-2.5-red.svg" alt="Apollo">
-  <img src="https://img.shields.io/badge/Elasticsearch-7+-FEC514.svg?logo=elasticsearch&logoColor=white" alt="ES">
+  <img src="https://img.shields.io/badge/Elasticsearch-9.5.7-FEC514.svg?logo=elasticsearch&logoColor=white" alt="ES">
   <img src="https://img.shields.io/badge/MySQL-8.4-4479A1.svg?logo=mysql&logoColor=white" alt="MySQL">
   <img src="https://img.shields.io/badge/Vue-3-42b883.svg?logo=vue.js&logoColor=white" alt="Vue">
 </p>

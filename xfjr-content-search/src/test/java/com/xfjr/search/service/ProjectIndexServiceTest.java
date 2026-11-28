@@ -7,10 +7,9 @@ import static org.mockito.Mockito.when;
 import com.xfjr.api.search.model.ProjectQueryParamsDTO;
 import com.xfjr.api.transaction.model.ProjectDTO;
 import com.xfjr.common.domain.BusinessException;
-import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.action.search.SearchRequest;
-import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.Request;
+import org.elasticsearch.client.RestClient;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,11 +23,11 @@ import org.springframework.test.util.ReflectionTestUtils;
 class ProjectIndexServiceTest {
 
     @Mock
-    private RestHighLevelClient client;
+    private RestClient restClient;
     @InjectMocks
     private ProjectIndexServiceImpl service;
 
-    @org.junit.jupiter.api.BeforeEach
+    @BeforeEach
     void setUp() {
         ReflectionTestUtils.setField(service, "projectIndex", "p2p_project");
     }
@@ -36,7 +35,7 @@ class ProjectIndexServiceTest {
     @Test
     @DisplayName("AC1 ES 查询异常 → 抛出 BusinessException（不再吞成 null）")
     void query_should_throw_when_es_fails() throws Exception {
-        when(client.search(any(SearchRequest.class), any(RequestOptions.class)))
+        when(restClient.performRequest(any(Request.class)))
                 .thenThrow(new RuntimeException("connect timeout"));
         ProjectQueryParamsDTO dto = new ProjectQueryParamsDTO();
         dto.setKeyword("测试");

@@ -62,16 +62,12 @@
             <groupId>com.ctrip.framework.apollo</groupId>
             <artifactId>apollo-client</artifactId>
         </dependency>
-        <!-- elasticsearch -->
-        <dependency>
-            <groupId>org.elasticsearch</groupId>
-            <artifactId>elasticsearch</artifactId>
-            <version>7.2.0</version>
-        </dependency>
+        <!-- Elasticsearch 低级 REST 客户端（I-06：替代 HLRC 7.2 / 老 core 包）；
+             查询 DSL 与响应在业务层用 JSON 直构，避免绑定已停止维护的高级客户端 -->
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
-            <artifactId>elasticsearch-rest-high-level-client</artifactId>
-            <version>7.2.0</version>
+            <artifactId>elasticsearch-rest-client</artifactId>
+            <version>9.5.7</version>
         </dependency>
         <!-- API 文档 springdoc-openapi -->
         <dependency>
