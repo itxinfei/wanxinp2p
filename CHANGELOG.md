@@ -19,10 +19,10 @@
 - 建表脚本切换为 `oauth2_registered_client`；新增迁移脚本 `docs/sql/p2p_sql/migration/2026-11-28-oauth-client-jdbc.sql`。
 - `.gitignore` 补充忽略 `.cursor/`、`.trae/` 工具规则目录。
 
-### 分布式事务（I-04 / I-05，第一批）
+### 分布式事务（I-04 / I-05，进行中）
 - `xfjr-api` 新增 `SeataFeignInterceptor`：Feign 出站透传 Seata XID（`TX_XID`），使下游 AT 分支挂到同一全局事务；未开启事务时不注入任何头。自动装配条件为 classpath 存在 Seata。
 - 新增 undo_log 建表迁移脚本 `docs/sql/p2p_sql/migration/2026-11-28-seata-undo-log.sql`（覆盖 6 个业务库，执行时机须早于加注解）。
-- `transaction.createTender`（投标）纳入 `@GlobalTransactional(rollbackFor = Exception.class)`；Seata 注解 import 统一到 `org.apache.seata.*` 新坐标。
+- `transaction.createTender`（投标）、`projectsApprovalStatus`（发标审批）、`loansApprovalStatus`（放款）纳入 `@GlobalTransactional(rollbackFor = Exception.class)`；Seata 注解 import 统一到 `org.apache.seata.*` 新坐标。
 - 澄清 I-05：`cancelRegister` 本就有真实删除逻辑，AT 模式下回滚由 undo_log 自动完成，confirm/cancel 保留用于人工修复并加注说明。
 
 ### 验证
